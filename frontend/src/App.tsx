@@ -1,6 +1,7 @@
 import { Header } from './components/layout/Header';
 import { Hero } from './components/landing/Hero';
 import { DisclaimerStrip } from './components/landing/DisclaimerStrip';
+import { WhySection } from './components/landing/WhySection';
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
       <main>
         <Hero />
         <DisclaimerStrip />
+        <WhySection />
       </main>
     </div>
   );
