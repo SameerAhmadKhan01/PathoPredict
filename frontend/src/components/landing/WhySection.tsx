@@ -1,7 +1,7 @@
 export function WhySection() {
   return (
     <section
-      id="why-pulse"
+      id="why-pathopredict"
       className="relative w-full py-[72px] min-[861px]:py-[104px] border-b border-hairline"
     >
       <div className="max-w-[1120px] mx-auto px-[22px] min-[861px]:px-[32px]">
@@ -27,7 +27,7 @@ export function WhySection() {
             </p>
 
             <p className="font-sans text-base text-text-muted leading-relaxed mb-8">
-              Pulse de-convolutes shared surface symptoms by evaluating multi-vector biometric
+              PathoPredict de-convolutes shared surface symptoms by evaluating multi-vector biometric
               markers, onset chronology, and vital patterns — surfacing high-confidence
               differential risk probabilities before complications take root.
             </p>
@@ -44,7 +44,7 @@ export function WhySection() {
               </div>
               <div className="p-3.5 rounded-[3px] border border-hairline bg-panel text-left">
                 <div className="font-mono text-xs text-blue uppercase tracking-wider mb-1">
-                  Pulse Calibrated
+                  PathoPredict Calibrated
                 </div>
                 <div className="font-sans text-xs text-text-muted leading-normal">
                   Cross-checks secondary indicators to calculate specific pathology probabilities.

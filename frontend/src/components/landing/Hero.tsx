@@ -15,7 +15,7 @@ export function Hero() {
             </h1>
 
             <p className="font-sans text-base min-[861px]:text-lg text-text-muted leading-relaxed max-w-xl mb-8">
-              Pulse transforms raw clinical markers into calibrated probabilistic risk
+              PathoPredict transforms raw clinical markers into calibrated probabilistic risk
               assessments across critical disease pathways, enabling proactive clinical
               interventions rather than reactive care.
             </p>

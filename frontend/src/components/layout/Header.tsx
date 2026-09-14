@@ -37,17 +37,17 @@ export function Header() {
             <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
           </svg>
           <span className="font-serif text-xl tracking-tight font-medium text-text">
-            Pulse
+            PathoPredict
           </span>
         </a>
 
         {/* Desktop Nav Links */}
         <nav className="hidden min-[861px]:flex items-center gap-8 font-sans text-sm tracking-wide">
           <a
-            href="#why-pulse"
+            href="#why-pathopredict"
             className="text-text-muted hover:text-text transition-colors duration-150"
           >
-            Why Pulse
+            Why PathoPredict
           </a>
           <a
             href="#how-it-works"
@@ -110,11 +110,11 @@ export function Header() {
         <div className="min-[861px]:hidden bg-panel border-b border-hairline px-[22px] py-4">
           <nav className="flex flex-col gap-3 font-sans text-sm">
             <a
-              href="#why-pulse"
+              href="#why-pathopredict"
               onClick={() => setMobileMenuOpen(false)}
               className="text-text-muted hover:text-text py-1 transition-colors duration-150"
             >
-              Why Pulse
+              Why PathoPredict
             </a>
             <a
               href="#how-it-works"

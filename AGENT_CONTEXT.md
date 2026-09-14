@@ -1,4 +1,4 @@
-# Agent Context — Pulse (Disease Prediction System)
+# Agent Context — PathoPredict (Disease Prediction System)
 
 Stack: React 18 + TypeScript + Vite + Tailwind CSS (frontend, /frontend) —
 FastAPI + SQLAlchemy + PostgreSQL + scikit-learn/joblib (backend + ML, /backend
