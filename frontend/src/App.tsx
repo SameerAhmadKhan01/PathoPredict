@@ -3,6 +3,7 @@ import { Hero } from './components/landing/Hero';
 import { DisclaimerStrip } from './components/landing/DisclaimerStrip';
 import { WhySection } from './components/landing/WhySection';
 import { HowItWorks } from './components/landing/HowItWorks';
+import { WhatYouGet } from './components/landing/WhatYouGet';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <DisclaimerStrip />
         <WhySection />
         <HowItWorks />
+        <WhatYouGet />
       </main>
     </div>
   );
