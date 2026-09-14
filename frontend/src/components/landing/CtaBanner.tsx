@@ -25,7 +25,7 @@ export function CtaBanner() {
             </p>
 
             <a
-              href="#start"
+              href="/start"
               className="inline-flex items-center justify-center bg-red hover:bg-red-dim text-text text-sm sm:text-base font-medium px-6 py-3 rounded-[3px] border border-transparent transition-colors duration-150 font-sans"
             >
               Start a clinical check

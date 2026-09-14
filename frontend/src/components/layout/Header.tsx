@@ -72,7 +72,7 @@ export function Header() {
             Sign in
           </a>
           <a
-            href="#start"
+            href="/start"
             className="inline-flex items-center justify-center bg-red hover:bg-red-dim text-text text-sm font-medium px-3.5 py-1.5 rounded-[3px] border border-transparent transition-colors duration-150 font-sans"
           >
             Start a check

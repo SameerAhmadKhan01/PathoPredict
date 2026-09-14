@@ -22,7 +22,7 @@ export function Hero() {
 
             <div className="flex flex-wrap items-center gap-5">
               <a
-                href="#start"
+                href="/start"
                 className="inline-flex items-center justify-center bg-red hover:bg-red-dim text-text text-sm font-medium px-5 py-2.5 rounded-[3px] border border-transparent transition-colors duration-150 font-sans"
               >
                 Start a clinical check
