@@ -1,0 +1,15 @@
+Condition,Headache,Sudden Focal Weakness / Hemiparesis,Tremor (Resting or Action),Muscle Rigidity / Spasticity,Seizures / Convulsions,Ataxia / Loss of Balance,Cognitive Decline / Memory Loss,Numbness / Paresthesia,Dysarthria / Aphasia (Speech Issues),Visual Impairment / Optic Neuritis
+Ischemic Stroke,0,1,0,1,0,1,0,1,1,1
+Parkinson's Disease,0,0,1,1,0,1,1,0,1,0
+Multiple Sclerosis (MS),0,0,1,1,0,1,1,1,1,1
+Epilepsy,1,0,0,0,1,0,0,0,0,0
+Alzheimer's Disease,0,0,0,0,0,0,1,0,1,0
+Migraine,1,0,0,0,0,0,0,1,0,1
+Amyotrophic Lateral Sclerosis (ALS),0,0,0,1,0,0,0,0,1,0
+Myasthenia Gravis,0,0,0,0,0,0,0,0,1,1
+Huntington's Disease,0,0,1,1,0,1,1,0,1,0
+Guillain-Barré Syndrome (GBS),0,0,0,0,0,1,0,1,0,0
+Bacterial Meningitis,1,0,0,1,1,0,1,0,0,1
+Normal Pressure Hydrocephalus (NPH),0,0,0,0,0,1,1,0,0,0
+Bell's Palsy,0,1,0,0,0,0,0,0,1,0
+Essential Tremor,0,0,1,0,0,0,0,0,0,0

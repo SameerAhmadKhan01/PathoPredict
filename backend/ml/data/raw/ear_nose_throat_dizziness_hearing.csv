@@ -1,0 +1,15 @@
+Disease,Vertigo,Dizziness,Hearing_Loss,Tinnitus,Ear_Pain,Ear_Discharge,Ear_Fullness,Nausea,Vomiting,Balance_Problems,Fever,Nasal_Congestion,Sinus_Pressure,Headache,Ear_Itching
+Meniere's Disease,1,0,1,1,0,0,1,1,1,1,0,0,0,0,0
+Benign Paroxysmal Positional Vertigo,1,1,0,0,0,0,0,1,0,1,0,0,0,0,0
+Labyrinthitis,1,1,1,1,0,0,0,1,1,1,1,0,0,0,0
+Vestibular Neuritis,1,1,0,0,0,0,0,1,1,1,0,0,0,0,0
+Otitis Media,0,0,1,0,1,1,1,0,0,1,1,0,0,0,0
+Otitis Externa (Swimmer's Ear),0,0,1,0,1,1,1,0,0,0,0,0,0,0,1
+Eustachian Tube Dysfunction,0,1,1,0,1,0,1,0,0,0,0,1,0,0,0
+Acoustic Neuroma,0,1,1,1,0,0,0,0,0,1,0,0,0,1,0
+Cholesteatoma,0,1,1,0,1,1,1,0,0,0,0,0,0,0,0
+Presbycusis,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0
+Otosclerosis,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0
+Sinusitis,0,0,0,0,0,0,1,0,0,0,1,1,1,1,0
+Chronic Tinnitus,0,1,1,1,0,0,0,0,0,0,0,0,0,1,0
+Ear Wax Impaction,0,1,1,1,0,0,1,0,0,0,0,0,0,0,1

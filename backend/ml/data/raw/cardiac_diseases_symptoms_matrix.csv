@@ -1,0 +1,14 @@
+Cardiac Condition,Chest Pain / Pressure,Sharp Pleuritic Pain,Radiation to Arm/Jaw,Shortness of Breath,Palpitations / Tachycardia,Peripheral Edema,Syncope / Fainting,Fever / Chills,Relief Leaning Forward,Exertional Trigger
+Stable Angina,1,0,1,1,0,0,0,0,0,1
+Myocardial Infarction (Heart Attack),1,0,1,1,1,0,1,0,0,0
+Heart Failure,0,0,0,1,1,1,0,0,0,1
+Pericarditis,1,1,0,1,1,0,0,1,1,0
+"Cardiac Arrhythmia (e.g., AFib, SVT)",0,0,0,1,1,0,1,0,0,0
+Aortic Stenosis,1,0,0,1,0,0,1,0,0,1
+Aortic Dissection,1,0,0,1,1,0,1,0,0,0
+Infective Endocarditis,0,0,0,1,0,1,0,1,0,0
+Myocarditis,1,0,0,1,1,1,0,1,0,0
+Takotsubo Cardiomyopathy,1,0,1,1,1,0,1,0,0,0
+Cardiac Tamponade,1,0,0,1,1,0,1,0,1,0
+Brugada Syndrome,0,0,0,0,1,0,1,0,0,0
+Mitral Valve Prolapse (MVP),1,0,0,0,1,0,0,0,0,0

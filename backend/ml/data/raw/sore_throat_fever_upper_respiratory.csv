@@ -1,0 +1,16 @@
+fever,cough,headache,fatigue,chest_pain,joint_pain,sore_throat,shortness_of_breath,nausea,rash,disease
+1,0,1,1,0,0,1,0,0,0,Strep Throat
+1,0,1,1,0,0,1,0,1,0,Tonsillitis
+1,1,1,1,0,0,1,0,0,0,Pharyngitis
+1,1,0,1,0,0,1,0,0,0,Laryngitis
+1,0,0,1,0,0,1,1,0,0,Epiglottitis
+1,1,1,1,0,0,1,1,0,0,Diphtheria
+1,0,1,1,0,1,1,0,0,1,Scarlet Fever
+1,0,1,1,0,1,1,0,1,0,Infectious Mononucleosis
+1,1,1,1,0,0,1,1,0,0,COVID-19
+1,1,0,0,0,0,1,0,0,0,Common Cold
+1,1,1,1,0,1,1,0,1,0,Influenza
+1,1,1,1,0,0,1,0,0,0,Acute Sinusitis
+0,1,1,1,0,0,1,1,0,0,Pertussis
+1,1,1,1,0,0,1,0,0,1,Adenovirus Infection
+1,1,0,1,0,0,1,1,0,0,Respiratory Syncytial Virus Infection
