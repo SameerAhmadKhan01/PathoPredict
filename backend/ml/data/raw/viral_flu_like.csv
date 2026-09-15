@@ -1,0 +1,16 @@
+Disease,Fever,Body_Ache,Fatigue,Chills,Headache,Sweating,Loss_of_Appetite,Nausea,Sore_Throat,Cough,Joint_Pain,Weakness,Runny_Nose,Rash,Swollen_Lymph_Nodes
+Influenza,1,1,1,1,1,1,1,0,1,1,0,1,1,0,0
+Dengue Fever,1,1,1,0,1,0,1,1,0,0,1,1,0,1,0
+COVID-19,1,1,1,1,1,0,1,0,1,1,0,1,1,0,0
+Malaria,1,1,1,1,1,1,1,1,0,0,0,1,0,0,0
+Typhoid Fever,1,1,1,1,1,0,1,1,0,0,0,1,0,1,0
+Chikungunya,1,1,1,0,1,0,0,0,0,0,1,1,0,1,0
+Zika Virus,1,1,0,0,1,0,0,0,0,0,1,0,0,1,0
+Mononucleosis (EBV),1,1,1,0,1,0,1,0,1,0,0,1,0,0,1
+Measles,1,0,1,0,1,0,1,0,1,1,0,0,1,1,0
+Common Cold,0,0,1,0,0,0,0,0,1,1,0,0,1,0,0
+Viral Hepatitis,1,1,1,0,0,0,1,1,0,0,1,1,0,0,0
+Yellow Fever,1,1,1,1,1,0,1,1,0,0,0,1,0,0,0
+Ebola,1,1,1,0,1,0,1,1,1,0,1,1,0,1,0
+Leptospirosis,1,1,1,1,1,0,0,1,0,0,1,1,0,0,0
+Scarlet Fever,1,0,1,1,1,0,1,1,1,0,0,0,0,1,1

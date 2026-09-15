@@ -1,0 +1,16 @@
+Disease,Painful_Urination,Back_Pain,Frequent_Urination,Urgency,Blood_in_Urine,Fever,Cloudy_Urine,Foul_Smelling_Urine,Abdominal_Pain,Nausea,Vomiting,Flank_Pain,Difficulty_Urinating,Swelling,Fatigue
+Urinary Tract Infection (UTI),1,0,1,1,0,0,1,1,1,0,0,0,0,0,0
+Kidney Stones,1,1,1,1,1,0,0,0,1,1,1,1,0,0,0
+Pyelonephritis,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1
+Cystitis,1,0,1,1,1,0,1,0,1,0,0,0,0,0,0
+Interstitial Cystitis,1,0,1,1,0,0,0,0,1,0,0,0,0,0,1
+Benign Prostatic Hyperplasia (BPH),0,0,1,1,0,0,0,0,0,0,0,0,1,0,0
+Prostatitis,1,1,1,1,0,1,0,0,1,0,0,0,1,0,1
+Glomerulonephritis,0,1,0,0,1,1,1,0,0,1,0,1,0,1,1
+Chronic Kidney Disease,0,1,1,0,0,0,1,0,0,1,1,1,0,1,1
+Bladder Cancer,1,1,1,1,1,0,0,0,1,0,0,0,1,0,1
+Urethritis,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0
+Polycystic Kidney Disease,0,1,0,0,1,0,0,0,1,1,0,1,0,1,1
+Kidney Infection,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1
+Overactive Bladder,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0
+Sexually Transmitted Infection (Gonorrhea/Chlamydia),1,0,1,0,0,0,0,0,1,0,0,0,0,0,0

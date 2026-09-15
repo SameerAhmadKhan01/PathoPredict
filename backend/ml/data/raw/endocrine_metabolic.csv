@@ -1,0 +1,16 @@
+Disease,Fatigue,Weight_Gain,Weight_Loss,Increased_Thirst,Frequent_Urination,Cold_Intolerance,Heat_Intolerance,Hair_Loss,Muscle_Weakness,Mood_Changes,Irregular_Heartbeat,Sweating,Constipation,Increased_Appetite,Brittle_Nails
+Hypothyroidism,1,1,0,0,0,1,0,1,1,1,0,0,1,0,1
+Hyperthyroidism,1,0,1,0,0,0,1,1,1,1,1,1,0,1,1
+Type 2 Diabetes,1,0,1,1,1,0,0,0,0,0,0,0,0,1,0
+Type 1 Diabetes,1,0,1,1,1,0,0,0,1,0,0,0,0,1,0
+Cushing's Syndrome,1,1,0,0,0,0,0,0,1,1,0,0,0,1,0
+Addison's Disease,1,0,1,0,0,0,0,0,1,1,0,0,0,0,0
+Polycystic Ovary Syndrome (PCOS),1,1,0,0,0,0,0,1,0,1,0,0,0,0,0
+Metabolic Syndrome,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0
+Graves' Disease,1,0,1,0,0,0,1,1,1,1,1,1,0,1,0
+Hashimoto's Thyroiditis,1,1,0,0,0,1,0,1,1,1,0,0,1,0,0
+Diabetes Insipidus,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0
+Hypoglycemia,1,0,0,0,0,0,0,0,1,1,1,1,0,1,0
+Menopause,1,1,0,0,0,0,1,1,0,1,0,1,0,0,0
+Chronic Fatigue Syndrome,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0
+Obesity,1,1,0,0,0,0,0,0,0,0,0,1,0,1,0

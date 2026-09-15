@@ -7,7 +7,7 @@ def merge_all_datasets(
     output_path: str = 'backend/ml/data/processed/combined_dataset.csv'
 ) -> pd.DataFrame:
     print("=" * 80)
-    print("STEP 1: STANDARDIZING & LOADING ALL 9 SOURCES")
+    print("STEP 1: STANDARDIZING & LOADING ALL 15 SOURCES")
     print("=" * 80)
 
     dfs = []
@@ -76,10 +76,12 @@ def merge_all_datasets(
 
     # Flag: Diseases with under 10 rows
     under_10 = disease_counts[disease_counts < 10]
+    exactly_1 = (disease_counts == 1).sum()
+    multi = (disease_counts > 1).sum()
     print(f"\n[FLAG 1: PER-DISEASE SAMPLE SIZES]")
     print(f"  * {len(under_10)} of {len(disease_counts)} diseases ({len(under_10)/len(disease_counts)*100:.1f}%) have under 10 rows.")
-    print(f"  * 122 diseases have exactly 1 row; 3 diseases have 2 rows.")
-    print("  * RATIONALE & IMPLICATION: These 9 CSVs are clinical reference 'symptom matrices' (prototypes / binary knowledge bases),")
+    print(f"  * {exactly_1} diseases have exactly 1 row; {multi} diseases have multiple rows (overlapping presentations).")
+    print("  * RATIONALE & IMPLICATION: These 15 CSVs are clinical reference 'symptom matrices' (prototypes / binary knowledge bases),")
     print("    not individual patient observational records. Direct supervised multi-class classifiers (e.g. Random Forest, Logistic")
     print("    Regression, MLP) require training samples per class. Options going forward:")
     print("      a) Knowledge-Based Probabilistic Inference (Cosine/Jaccard similarity, Naive Bayes with Dirichlet prior)")
@@ -88,8 +90,8 @@ def merge_all_datasets(
 
     # Flag: Category-level representation
     print(f"\n[FLAG 2: CATEGORY-LEVEL BALANCE]")
-    print(f"  * Row counts per category are balanced (range: 13 to 15 rows per category, ~10.2% - 11.7% each).")
-    print(f"  * Feature density is heterogeneous: 3 categories share 10 core general symptoms, while 6 categories have organ-specific features.")
+    print(f"  * Row counts per category are balanced (range: {cat_counts.min()} to {cat_counts.max()} rows per category, {cat_counts.min()/len(combined_df)*100:.1f}% - {cat_counts.max()/len(combined_df)*100:.1f}% each).")
+    print(f"  * Feature density is heterogeneous across the 15 organ-system matrices.")
 
     return combined_df
 

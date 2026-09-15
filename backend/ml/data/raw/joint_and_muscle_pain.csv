@@ -1,0 +1,16 @@
+Disease,Joint_Pain,Muscle_Pain,Swelling,Stiffness,Redness,Warmth,Fatigue,Fever,Reduced_Range_of_Motion,Muscle_Weakness,Cramping,Tenderness,Numbness,Morning_Stiffness,Weight_Loss
+Rheumatoid Arthritis,1,1,1,1,1,1,1,0,1,0,0,1,0,1,1
+Osteoarthritis,1,0,1,1,0,0,0,0,1,0,0,1,0,1,0
+Gout,1,0,1,0,1,1,0,1,1,0,0,1,0,0,0
+Fibromyalgia,1,1,0,1,0,0,1,0,0,0,1,1,1,1,0
+Lupus (SLE),1,1,1,1,0,0,1,1,0,1,0,0,0,0,1
+Ankylosing Spondylitis,1,0,1,1,0,0,1,0,1,0,0,0,0,1,0
+Psoriatic Arthritis,1,0,1,1,1,1,1,0,1,0,0,1,0,1,0
+Polymyalgia Rheumatica,1,1,0,1,0,0,1,1,0,1,0,1,0,1,1
+Bursitis,1,0,1,0,1,1,0,0,1,0,0,1,0,0,0
+Tendinitis,1,1,1,0,0,1,0,0,1,0,0,1,0,0,0
+Muscular Dystrophy,0,1,0,0,0,0,1,0,1,1,1,0,0,0,0
+Myositis,0,1,1,0,0,0,1,1,1,1,0,1,0,0,0
+Lyme Disease,1,1,1,0,0,0,1,1,0,0,0,0,1,0,0
+Dengue Fever,1,1,0,0,0,0,1,1,0,0,0,0,0,0,0
+Chikungunya,1,1,1,1,0,0,1,1,1,0,0,0,0,0,0

@@ -22,24 +22,63 @@ ALIAS_MAP = {
     'nausea': 'nausea',
     'Nausea': 'nausea',
 
+    # Vomiting
+    'Vomiting': 'vomiting',
+
+    # Cough variants
+    'cough': 'cough',
+    'Cough': 'cough',
+
+    # Sore Throat variants
+    'sore_throat': 'sore_throat',
+    'Sore_Throat': 'sore_throat',
+
+    # Joint Pain variants
+    'joint_pain': 'joint_pain',
+    'Joint_Pain': 'joint_pain',
+
     # Respiratory shortness of breath
     'shortness_of_breath': 'shortness_of_breath',
     'Shortness of Breath': 'shortness_of_breath',
+    'Shortness_of_Breath': 'shortness_of_breath',
 
     # Cutaneous rash
     'rash': 'skin_rash',
     'Skin_Rash': 'skin_rash',
+    'Rash': 'skin_rash',
 
     # Chest discomfort
     'chest_pain': 'chest_pain',
     'Chest Pain / Pressure': 'chest_pain',
+    'Chest_Pain': 'chest_pain',
 
     # Equilibrium & Balance
     'Balance_Problems': 'balance_problems_ataxia',
     'Ataxia / Loss of Balance': 'balance_problems_ataxia',
+
+    # Body Ache / Muscle Pain (Myalgia)
+    'Body_Ache': 'muscle_pain',
+    'Muscle_Pain': 'muscle_pain',
+
+    # Weakness (Asthenia / Muscle Weakness)
+    'Weakness': 'muscle_weakness',
+    'Muscle_Weakness': 'muscle_weakness',
+
+    # Numbness / Paresthesia
+    'Numbness / Paresthesia': 'numbness_paresthesia',
+    'Numbness': 'numbness_paresthesia',
+
+    # Nasal Congestion
+    'Nasal_Congestion': 'nasal_congestion',
+
+    # Runny Nose (Rhinorrhea)
+    'Runny_Nose': 'runny_nose',
+
+    # Joint Swelling
+    'Swollen_Joints': 'swollen_joints',
 }
 
-# Raw File to Category Mapping
+# Raw File to Category Mapping across all 15 source matrices
 FILE_CATEGORY_MAP = {
     'cardiac_diseases_symptoms_matrix.csv': 'cardiac',
     'ear_nose_throat_dizziness_hearing.csv': 'ENT',
@@ -50,6 +89,12 @@ FILE_CATEGORY_MAP = {
     'neurological_diseases1.csv': 'neurological',
     'skin_rash_dermatological.csv': 'dermatological',
     'sore_throat_fever_upper_respiratory.csv': 'sore-throat/fever/URI',
+    'endocrine_metabolic.csv': 'endocrine/metabolic',
+    'gastrointestinal.csv': 'gastrointestinal',
+    'joint_and_muscle_pain.csv': 'musculoskeletal',
+    'respiratory.csv': 'respiratory',
+    'urinary_renal.csv': 'urinary/renal',
+    'viral_flu_like.csv': 'viral/systemic',
 }
 
 # Target column name per file
@@ -63,6 +108,12 @@ FILE_TARGET_MAP = {
     'neurological_diseases1.csv': 'Condition',
     'skin_rash_dermatological.csv': 'disease',
     'sore_throat_fever_upper_respiratory.csv': 'disease',
+    'endocrine_metabolic.csv': 'Disease',
+    'gastrointestinal.csv': 'Disease',
+    'joint_and_muscle_pain.csv': 'Disease',
+    'respiratory.csv': 'Disease',
+    'urinary_renal.csv': 'Disease',
+    'viral_flu_like.csv': 'Disease',
 }
 
 def clean_disease_name(name: str) -> str:
@@ -151,6 +202,30 @@ def load_sore_throat_uri(raw_dir: str = 'backend/ml/data/raw') -> pd.DataFrame:
     fname = 'sore_throat_fever_upper_respiratory.csv'
     return standardize_file(os.path.join(raw_dir, fname), fname)
 
+def load_endocrine(raw_dir: str = 'backend/ml/data/raw') -> pd.DataFrame:
+    fname = 'endocrine_metabolic.csv'
+    return standardize_file(os.path.join(raw_dir, fname), fname)
+
+def load_gastrointestinal(raw_dir: str = 'backend/ml/data/raw') -> pd.DataFrame:
+    fname = 'gastrointestinal.csv'
+    return standardize_file(os.path.join(raw_dir, fname), fname)
+
+def load_joint_muscle(raw_dir: str = 'backend/ml/data/raw') -> pd.DataFrame:
+    fname = 'joint_and_muscle_pain.csv'
+    return standardize_file(os.path.join(raw_dir, fname), fname)
+
+def load_respiratory(raw_dir: str = 'backend/ml/data/raw') -> pd.DataFrame:
+    fname = 'respiratory.csv'
+    return standardize_file(os.path.join(raw_dir, fname), fname)
+
+def load_urinary_renal(raw_dir: str = 'backend/ml/data/raw') -> pd.DataFrame:
+    fname = 'urinary_renal.csv'
+    return standardize_file(os.path.join(raw_dir, fname), fname)
+
+def load_viral_flu_like(raw_dir: str = 'backend/ml/data/raw') -> pd.DataFrame:
+    fname = 'viral_flu_like.csv'
+    return standardize_file(os.path.join(raw_dir, fname), fname)
+
 LOADERS = {
     'cardiac_diseases_symptoms_matrix.csv': load_cardiac,
     'ear_nose_throat_dizziness_hearing.csv': load_ent,
@@ -161,6 +236,12 @@ LOADERS = {
     'neurological_diseases1.csv': load_neurological,
     'skin_rash_dermatological.csv': load_dermatological,
     'sore_throat_fever_upper_respiratory.csv': load_sore_throat_uri,
+    'endocrine_metabolic.csv': load_endocrine,
+    'gastrointestinal.csv': load_gastrointestinal,
+    'joint_and_muscle_pain.csv': load_joint_muscle,
+    'respiratory.csv': load_respiratory,
+    'urinary_renal.csv': load_urinary_renal,
+    'viral_flu_like.csv': load_viral_flu_like,
 }
 
 def generate_data_prep_log(log_path: str = 'backend/ml/logs/data_prep_log.md') -> None:
@@ -168,7 +249,7 @@ def generate_data_prep_log(log_path: str = 'backend/ml/logs/data_prep_log.md') -
     os.makedirs(os.path.dirname(log_path), exist_ok=True)
     with open(log_path, 'w', encoding='utf-8') as f:
         f.write("# Data Preparation & Vocabulary Standardization Log\n\n")
-        f.write("Generated during Phase 1: Data Preprocessing & Unification.\n\n")
+        f.write("Generated during Phase 1: Data Preprocessing & Unification (15 Clinical Sources).\n\n")
         f.write("## 1. Category Mapping\n\n")
         f.write("| Raw File | Target Column | Mapped Category |\n")
         f.write("|---|---|---|\n")
@@ -184,10 +265,12 @@ def generate_data_prep_log(log_path: str = 'backend/ml/logs/data_prep_log.md') -
 
         f.write("\n## 3. Preservation Decisions (Kept Distinct)\n\n")
         f.write("- **`sharp_pleuritic_pain`** vs. **`chest_pain`**: Kept distinct because pleuritic chest pain specifically discriminates pericarditis.\n")
+        f.write("- **`chest_tightness`** vs. **`chest_pain`**: Kept distinct as both co-occur in `respiratory.csv` (asthma/bronchitis vs pleuritic/anginal).\n")
         f.write("- **`vertigo`** vs. **`dizziness`**: Kept distinct as separate columns present within ENT diagnosis.\n")
         f.write("- **`joint_pain`** vs. **`swollen_joints`** vs. **`joint_bleeding`**: Kept distinct to differentiate arthralgia, inflammatory effusion, and hemarthrosis.\n")
         f.write("- **`blurred_vision`** vs. **`vision_loss`** vs. **`visual_impairment_optic_neuritis`**: Maintained distinct ophthalmic and neuro-ophthalmic severity distinctions.\n")
         f.write("- **`tremor_resting_or_action`** vs. **`acute_panic_attacks_trembling`**: Kept distinct to separate neurological extrapyramidal tremors from autonomic anxiety tremors.\n")
+        f.write("- **`stiffness`** vs. **`morning_stiffness`**: Maintained distinct because morning stiffness >30-60 min discriminates inflammatory rheumatoid disease from degenerative osteoarthritis.\n")
 
 if __name__ == '__main__':
     generate_data_prep_log()

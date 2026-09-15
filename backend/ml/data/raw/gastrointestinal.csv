@@ -1,0 +1,16 @@
+Disease,Abdominal_Pain,Nausea,Vomiting,Diarrhea,Constipation,Bloating,Fever,Loss_of_Appetite,Blood_in_Stool,Heartburn,Cramping,Dehydration,Weight_Loss,Gas,Fatigue
+Gastroenteritis,1,1,1,1,0,1,1,1,0,0,1,1,0,1,1
+Food Poisoning,1,1,1,1,0,0,1,1,0,0,1,1,0,0,1
+Irritable Bowel Syndrome,1,0,0,1,1,1,0,0,0,0,1,0,0,1,0
+Peptic Ulcer,1,1,0,0,0,1,0,1,1,1,0,0,1,0,0
+Gastritis,1,1,1,0,0,1,0,1,0,1,0,0,0,0,0
+Appendicitis,1,1,1,0,0,0,1,1,0,0,1,0,0,0,0
+Crohn's Disease,1,1,0,1,0,1,1,1,1,0,1,0,1,0,1
+Ulcerative Colitis,1,0,0,1,0,0,1,1,1,0,1,0,1,0,1
+GERD,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0
+Celiac Disease,1,1,0,1,0,1,0,0,0,0,1,0,1,1,1
+Diverticulitis,1,1,1,0,1,1,1,1,1,0,1,0,0,0,0
+Cholecystitis (Gallstones),1,1,1,0,0,1,1,1,0,0,0,0,0,0,0
+Pancreatitis,1,1,1,0,0,1,1,1,0,0,0,0,1,0,1
+Lactose Intolerance,1,1,0,1,0,1,0,0,0,0,1,0,0,1,0
+Traveler's Diarrhea,1,1,1,1,0,1,1,1,0,0,1,1,0,1,1

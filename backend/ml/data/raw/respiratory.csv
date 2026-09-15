@@ -1,0 +1,16 @@
+Disease,Cough,Shortness_of_Breath,Wheezing,Chest_Pain,Sore_Throat,Nasal_Congestion,Runny_Nose,Sneezing,Fever,Fatigue,Sputum_Production,Chest_Tightness,Hoarseness,Rapid_Breathing,Cyanosis
+Common Cold,1,0,0,0,1,1,1,1,0,1,0,0,0,0,0
+Influenza,1,0,0,0,1,1,0,0,1,1,0,0,0,0,0
+COVID-19,1,1,0,1,1,1,1,0,1,1,0,1,0,1,0
+Pneumonia,1,1,0,1,0,0,0,0,1,1,1,0,0,1,1
+Bronchitis,1,1,1,1,1,0,0,0,0,1,1,1,0,0,0
+Asthma,1,1,1,0,0,0,0,0,0,0,0,1,0,1,0
+COPD,1,1,1,0,0,0,0,0,0,1,1,1,0,1,1
+Tuberculosis,1,1,0,1,0,0,0,0,1,1,1,0,0,0,0
+Sinusitis,1,0,0,0,1,1,1,0,1,1,0,0,0,0,0
+Pharyngitis,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0
+Laryngitis,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0
+Pleurisy,1,1,0,1,0,0,0,0,1,0,0,0,0,1,0
+Pulmonary Embolism,1,1,0,1,0,0,0,0,0,0,0,0,0,1,1
+Whooping Cough (Pertussis),1,0,0,0,0,1,1,1,0,1,0,0,0,0,0
+Croup,1,1,0,0,0,1,1,0,1,0,0,0,1,1,0
