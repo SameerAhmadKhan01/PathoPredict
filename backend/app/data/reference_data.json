@@ -1,0 +1,1813 @@
+{
+  "Acoustic Neuroma": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Acute Angle-Closure Glaucoma": {
+    "pathophysiology_summary": "Ophthalmic emergency caused by pupillary block and mechanical closure of the trabecular meshwork by the peripheral iris, resulting in rapid spikes in intraocular pressure, corneal edema, and optic neuropathy.",
+    "recommended_lab_tests": [
+      "Tonometry (Intraocular Pressure measurement)",
+      "Gonioscopy (Anterior chamber angle visualization)",
+      "Slit Lamp Examination"
+    ],
+    "reference_data_complete": true
+  },
+  "Acute Sinusitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Addison's Disease": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Adenovirus Infection": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Alzheimer's Disease": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Amyotrophic Lateral Sclerosis (ALS)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Ankylosing Spondylitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Anorexia Nervosa": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Aortic Dissection": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Aortic Stenosis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Aplastic Anemia": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Appendicitis": {
+    "pathophysiology_summary": "Acute luminal obstruction of the vermiform appendix (fecalith, lymphoid hyperplasia) leading to distension, bacterial invasion, ischemia, and right lower quadrant peritoneal signs.",
+    "recommended_lab_tests": [
+      "Abdominal Ultrasound / Contrast-Enhanced Abdominal CT",
+      "Complete Blood Count (CBC with Leukocytosis)",
+      "Serum C-Reactive Protein (CRP)"
+    ],
+    "reference_data_complete": true
+  },
+  "Asthma": {
+    "pathophysiology_summary": "Chronic inflammatory airway disorder characterized by episodic bronchial hyperresponsiveness, smooth muscle bronchospasm, mucous hypersecretion, and reversible airflow obstruction.",
+    "recommended_lab_tests": [
+      "Spirometry / Pulmonary Function Testing (pre- and post-bronchodilator)",
+      "Peak Expiratory Flow Rate (PEFR)",
+      "Fractional Exhaled Nitric Oxide (FeNO)"
+    ],
+    "reference_data_complete": true
+  },
+  "Attention-Deficit/Hyperactivity Disorder (ADHD)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Bacterial Meningitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Bell's Palsy": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Benign Paroxysmal Positional Vertigo": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Benign Prostatic Hyperplasia (BPH)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Bipolar I Disorder (Manic Episode)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Bladder Cancer": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Blepharitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Borderline Personality Disorder (BPD)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Brain Tumor (Early Symptoms)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Bronchitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Brugada Syndrome": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Bursitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "COPD": {
+    "pathophysiology_summary": "Progressive, incompletely reversible airflow limitation caused by chronic bronchitis (airway inflammation) and emphysema (alveolar destruction), typically secondary to noxious particulate exposure.",
+    "recommended_lab_tests": [
+      "Post-Bronchodilator Spirometry (FEV1/FVC < 0.70)",
+      "Chest CT / Radiography",
+      "Arterial Blood Gas (ABG) Analysis"
+    ],
+    "reference_data_complete": true
+  },
+  "COVID-19": {
+    "pathophysiology_summary": "Acute viral respiratory illness caused by SARS-CoV-2, binding ACE2 receptors in the pulmonary epithelium and endothelium, presenting with fever, cough, anosmia/ageusia, and systemic inflammatory response.",
+    "recommended_lab_tests": [
+      "SARS-CoV-2 RT-PCR Nasopharyngeal Swab",
+      "Rapid Antigen Diagnostic Assay",
+      "Inflammatory Markers (CRP, Ferritin, D-Dimer if severe)"
+    ],
+    "reference_data_complete": true
+  },
+  "Carbon Monoxide Poisoning": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Cardiac Arrhythmia (e.g., AFib, SVT)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Cardiac Tamponade": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Cataract": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Celiac Disease": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Cellulitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Cervicogenic Headache": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Chickenpox": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Chikungunya": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Cholecystitis (Gallstones)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Cholesteatoma": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Chronic Fatigue Syndrome": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Chronic Kidney Disease": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Chronic Tinnitus": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Cluster Headache": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Common Cold": {
+    "pathophysiology_summary": "Mild, self-limiting viral rhinosinusitis primarily caused by rhinoviruses, presenting with rhinorrhea, sneezing, nasal congestion, and mild sore throat.",
+    "recommended_lab_tests": [
+      "Clinical evaluation (Laboratory testing generally not indicated)",
+      "Rapid Strep / Throat Swab (if severe pharyngitis to rule out Group A Strep)"
+    ],
+    "reference_data_complete": true
+  },
+  "Conjunctivitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Contact Dermatitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Corneal Abrasion": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Crohn's Disease": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Croup": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Cushing's Syndrome": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Cystitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Dengue Fever": {
+    "pathophysiology_summary": "Acute arboviral infection transmitted by Aedes mosquitoes, characterized by sudden high fever, retro-orbital headache, diffuse myalgia/arthralgia ('breakbone fever'), and potential progression to plasma leakage, thrombocytopenia, and dengue shock syndrome.",
+    "recommended_lab_tests": [
+      "Dengue NS1 Antigen (Days 1-5)",
+      "Complete Blood Count (CBC) with Platelet Count & Hematocrit",
+      "Dengue IgM/IgG ELISA (Day 5+)"
+    ],
+    "reference_data_complete": true
+  },
+  "Diabetes Insipidus": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Diphtheria": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Disseminated Intravascular Coagulation": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Dissociative Identity Disorder (DID)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Diverticulitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Dry Eye Syndrome": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Ear Wax Impaction": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Ebola": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Eczema (Atopic Dermatitis)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Epiglottitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Epilepsy": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Essential Tremor": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Eustachian Tube Dysfunction": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Factor V Deficiency": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Fibromyalgia": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Food Poisoning": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "GERD": {
+    "pathophysiology_summary": "Gastroesophageal reflux disease caused by transient lower esophageal sphincter (LES) relaxations, resulting in retrograde gastric acid flow, mucosal injury, heartburn, and regurgitation.",
+    "recommended_lab_tests": [
+      "Upper Gastrointestinal Endoscopy (EGD) if alarm features present",
+      "24-Hour Ambulatory Esophageal pH Monitoring"
+    ],
+    "reference_data_complete": true
+  },
+  "Gastritis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Gastroenteritis": {
+    "pathophysiology_summary": "Acute mucosal inflammation of the stomach and intestines caused by viral (norovirus, rotavirus) or bacterial pathogens, resulting in watery diarrhea, nausea, vomiting, and abdominal cramping.",
+    "recommended_lab_tests": [
+      "Serum Electrolytes, BUN, and Creatinine (Hydration status)",
+      "Stool Multiplex PCR / Bacterial Culture (if severe or bloody)"
+    ],
+    "reference_data_complete": true
+  },
+  "Generalized Anxiety Disorder (GAD)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Glomerulonephritis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Gout": {
+    "pathophysiology_summary": "Metabolic inflammatory crystal arthropathy caused by monosodium urate crystal deposition in joint tissues following chronic hyperuricemia, classically causing acute podagra (1st MTP joint).",
+    "recommended_lab_tests": [
+      "Arthrocentesis with Polarized Light Microscopy (Negatively Birefringent Needle Crystals)",
+      "Serum Uric Acid Level"
+    ],
+    "reference_data_complete": true
+  },
+  "Graves' Disease": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Guillain-Barr\u00e9 Syndrome (GBS)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Hand, Foot, and Mouth Disease": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Hashimoto's Thyroiditis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Heart Failure": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Hemophilia A": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Hemophilia B": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Henoch-Schonlein Purpura": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Hereditary Hemorrhagic Telangiectasia": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Huntington's Disease": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Hypertension (Severe)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Hyperthyroidism": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Hypoglycemia": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Hypothyroidism": {
+    "pathophysiology_summary": "Deficiency in circulating thyroid hormones (free T4/T3) typically secondary to autoimmune thyroiditis (Hashimoto's), leading to generalized metabolic slowing, fatigue, weight gain, and cold intolerance.",
+    "recommended_lab_tests": [
+      "Serum Thyroid Stimulating Hormone (TSH)",
+      "Free Thyroxine (Free T4)",
+      "Anti-Thyroid Peroxidase Antibodies (Anti-TPO)"
+    ],
+    "reference_data_complete": true
+  },
+  "Immune Thrombocytopenic Purpura": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Impetigo": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Infectious Mononucleosis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Infective Endocarditis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Influenza": {
+    "pathophysiology_summary": "Acute orthomyxovirus infection causing respiratory epithelial necrosis, presenting with abrupt onset of high fevers, severe diffuse myalgias, headache, prostration, and dry cough.",
+    "recommended_lab_tests": [
+      "Rapid Influenza Diagnostic Test (RIDT - Flu A & B)",
+      "Respiratory Viral Panel Multiplex RT-PCR",
+      "Pulse Oximetry"
+    ],
+    "reference_data_complete": true
+  },
+  "Interstitial Cystitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Irritable Bowel Syndrome": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Ischemic Stroke": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Keratitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Kidney Infection": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Kidney Stones": {
+    "pathophysiology_summary": "Nephrolithiasis / urolithiasis resulting from supersaturation of urine with crystalline compounds (calcium oxalate, uric acid), causing acute ureteral obstruction and severe spasmodic flank pain.",
+    "recommended_lab_tests": [
+      "Non-Contrast Helical Abdominal/Pelvic CT",
+      "Urinalysis for Microscopic Hematuria",
+      "Serum Electrolytes, BUN, and Creatinine"
+    ],
+    "reference_data_complete": true
+  },
+  "Labyrinthitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Lactose Intolerance": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Laryngitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Leptospirosis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Leukemia": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Liver Disease Coagulopathy": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Lupus (SLE)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Lyme Disease": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Macular Degeneration": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Major Depressive Disorder (MDD)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Malaria": {
+    "pathophysiology_summary": "Intraerythrocytic protozoan infection caused by Plasmodium species (P. falciparum, P. vivax), characterized by cyclical fevers, rigors, diaphoresis, hemolytic anemia, and splenomegaly.",
+    "recommended_lab_tests": [
+      "Thick and Thin Peripheral Blood Smear (Giemsa stain)",
+      "Rapid Diagnostic Test (RDT for Pf-HRP2 / Pan-pLDH)",
+      "Complete Blood Count (CBC) and Reticulocyte Count"
+    ],
+    "reference_data_complete": true
+  },
+  "Measles": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Medication-Overuse Headache": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Meniere's Disease": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Meningitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Menopause": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Metabolic Syndrome": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Migraine": {
+    "pathophysiology_summary": "Neurovascular disorder involving trigeminovascular activation, cortical spreading depression, and release of vasoactive neuropeptides (CGRP), manifesting as unilateral throbbing cephalalgia, photophobia, and nausea.",
+    "recommended_lab_tests": [
+      "Clinical diagnosis (ICHD-3 criteria)",
+      "Brain MRI/CT (indicated if atypical features, focal deficits, or red flags)"
+    ],
+    "reference_data_complete": true
+  },
+  "Mitral Valve Prolapse (MVP)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Mononucleosis (EBV)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Multiple Sclerosis (MS)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Muscular Dystrophy": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Myasthenia Gravis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Myocardial Infarction (Heart Attack)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Myocarditis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Myositis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Normal Pressure Hydrocephalus (NPH)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Obesity": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Obsessive-Compulsive Disorder (OCD)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Occipital Neuralgia": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Optic Neuritis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Osteoarthritis": {
+    "pathophysiology_summary": "Non-inflammatory degenerative joint disease involving progressive breakdown of articular cartilage, subchondral bone remodeling, and osteophyte formation, exacerbated by joint loading.",
+    "recommended_lab_tests": [
+      "Weight-bearing Plain Radiography (Joint Space Narrowing, Osteophytes)",
+      "Synovial Fluid Analysis (to rule out crystal or septic arthritis)"
+    ],
+    "reference_data_complete": true
+  },
+  "Otitis Externa (Swimmer's Ear)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Otitis Media": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Otosclerosis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Overactive Bladder": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Pancreatitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Panic Disorder": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Parkinson's Disease": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Peptic Ulcer": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Pericarditis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Persistent Depressive Disorder (Dysthymia)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Pertussis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Pharyngitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Pleurisy": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Pneumonia": {
+    "pathophysiology_summary": "Acute infection of pulmonary parenchymal tissue (alveoli and bronchioles) resulting in inflammatory exudate, consolidation, impaired gas exchange, productive cough, fever, and tachypnea.",
+    "recommended_lab_tests": [
+      "Chest Radiography (PA and Lateral CXR)",
+      "Sputum Gram Stain and Culture",
+      "Complete Blood Count (CBC) with Differential and CRP"
+    ],
+    "reference_data_complete": true
+  },
+  "Polycystic Kidney Disease": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Polycystic Ovary Syndrome (PCOS)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Polymyalgia Rheumatica": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Post-Traumatic Headache": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Post-Traumatic Stress Disorder (PTSD)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Presbycusis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Prostatitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Psoriasis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Psoriatic Arthritis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Pulmonary Embolism": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Pyelonephritis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Respiratory Syncytial Virus Infection": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Retinal Detachment": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Rheumatoid Arthritis": {
+    "pathophysiology_summary": "Systemic autoimmune inflammatory disorder targeting synovial membranes, causing symmetric polyarthritis, persistent morning stiffness (>60 min), synovial pannus formation, and progressive articular erosion.",
+    "recommended_lab_tests": [
+      "Rheumatoid Factor (RF) & Anti-CCP Antibodies",
+      "Erythrocyte Sedimentation Rate (ESR) and CRP",
+      "Plain Radiographs of Hands and Wrists"
+    ],
+    "reference_data_complete": true
+  },
+  "Ringworm (Tinea)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Rocky Mountain Spotted Fever": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Roseola": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Scabies": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Scarlet Fever": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Schizoaffective Disorder": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Schizophrenia": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Scleritis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Scurvy": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Sexually Transmitted Infection (Gonorrhea/Chlamydia)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Shingles (Herpes Zoster)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Sinus Headache": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Sinusitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Social Anxiety Disorder": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Stable Angina": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Strep Throat": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Stye": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Subconjunctival Hemorrhage": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Takotsubo Cardiomyopathy": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Temporal Arteritis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Tendinitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Tension Headache": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Thrombotic Thrombocytopenic Purpura": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Tonsillitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Traveler's Diarrhea": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Tuberculosis": {
+    "pathophysiology_summary": "Chronic granulomatous infection caused by Mycobacterium tuberculosis, presenting with persistent cough, hemoptysis, night sweats, weight loss, and apical cavitary lesions.",
+    "recommended_lab_tests": [
+      "Sputum Acid-Fast Bacilli (AFB) Smear & Culture",
+      "GeneXpert MTB/RIF Nucleic Acid Amplification",
+      "Chest Radiograph"
+    ],
+    "reference_data_complete": true
+  },
+  "Type 1 Diabetes": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Type 2 Diabetes": {
+    "pathophysiology_summary": "Metabolic disorder characterized by peripheral insulin resistance paired with progressive pancreatic beta-cell secretory defect, leading to chronic hyperglycemia, polyuria, polydipsia, and micro/macrovascular sequelae.",
+    "recommended_lab_tests": [
+      "Glycated Hemoglobin (HbA1c >= 6.5%)",
+      "Fasting Plasma Glucose (FPG >= 126 mg/dL)",
+      "Lipid Profile and Urine Albumin-to-Creatinine Ratio (UACR)"
+    ],
+    "reference_data_complete": true
+  },
+  "Typhoid Fever": {
+    "pathophysiology_summary": "Systemic bacterial infection caused by Salmonella enterica serovar Typhi, invading Peyer's patches with stepwise escalations in fever, relative bradycardia (Faget sign), abdominal tenderness, and potential intestinal perforation.",
+    "recommended_lab_tests": [
+      "Blood Culture (Gold standard in Week 1)",
+      "Widal Agglutination Test / Typhidot IgM",
+      "Stool & Urine Cultures (Weeks 2-3)"
+    ],
+    "reference_data_complete": true
+  },
+  "Ulcerative Colitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Urethritis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Urinary Tract Infection (UTI)": {
+    "pathophysiology_summary": "Bacterial colonization and inflammation of the urothelium (typically E. coli), presenting with dysuria, urinary frequency, urgency, and suprapubic discomfort.",
+    "recommended_lab_tests": [
+      "Urinalysis (Leukocyte Esterase & Nitrites, Microscopic Pyuria)",
+      "Urine Culture and Antimicrobial Sensitivity (CFU/mL)"
+    ],
+    "reference_data_complete": true
+  },
+  "Urticaria (Hives)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Uveitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Vestibular Neuritis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Viral Encephalitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Viral Hepatitis": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Vitamin K Deficiency": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Von Willebrand Disease": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Whooping Cough (Pertussis)": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Yellow Fever": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  },
+  "Zika Virus": {
+    "pathophysiology_summary": "Reference data pending clinical review.",
+    "recommended_lab_tests": [
+      "Clinical laboratory workup pending physician evaluation.",
+      "Complete Blood Count (CBC) with Differential",
+      "Targeted diagnostic panel recommended upon medical review"
+    ],
+    "reference_data_complete": false
+  }
+}
