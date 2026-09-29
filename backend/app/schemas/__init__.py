@@ -1,3 +1,13 @@
-from .prediction import PredictionRequest, DiseasePrediction, PredictionResult
+from .prediction import (
+    SymptomCheckRequest,
+    TopMatch,
+    DifferentialItem,
+    SymptomCheckResponse,
+)
 
-__all__ = ["PredictionRequest", "DiseasePrediction", "PredictionResult"]
+__all__ = [
+    "SymptomCheckRequest",
+    "TopMatch",
+    "DifferentialItem",
+    "SymptomCheckResponse",
+]

@@ -1,38 +1,60 @@
-from typing import List, Literal, Any
-from pydantic import BaseModel, Field
+from typing import List, Optional
+from pydantic import BaseModel, Field, model_validator
 
-class PredictionRequest(BaseModel):
-    symptom_ids: List[str] = Field(
-        ...,
-        min_length=1,
-        description="List of selected or recognized symptom identifiers/names",
-        example=["fever", "headache", "joint_pain", "skin_rash"]
-    )
-
-class DiseasePrediction(BaseModel):
-    disease: str = Field(..., description="Predicted condition or pathology name")
-    probability: int = Field(..., ge=0, le=100, description="Differential probability percentage (0-100)")
-    riskLevel: Literal['High', 'Moderate', 'Low'] = Field(..., description="Clinical urgency / triage risk badge")
-    keyIndicators: List[str] = Field(..., description="Patient input symptoms contributing to this hypothesis")
-    recommendedTests: List[str] = Field(..., description="Suggested diagnostic or laboratory assays")
-    clinicalNotes: str = Field(..., description="Pathophysiology summary or clinical manifestation notes")
-    reference_data_complete: bool = Field(
-        default=False,
-        description="True if clinical reference data has been reviewed and finalized, false if scaffold placeholder"
-    )
-
-class PredictionResult(BaseModel):
-    topMatch: DiseasePrediction = Field(..., description="Primary differential diagnosis")
-    predictions: List[DiseasePrediction] = Field(
-        ...,
-        description="Top-3 differential disease hypotheses ordered by likelihood"
-    )
-    criticalFlags: List[str] = Field(
+class SymptomCheckRequest(BaseModel):
+    symptom_keys: List[str] = Field(
         default_factory=list,
-        description="Urgent red-flag alerts requiring acute clinical triage or emergency care"
+        description="List of symptom keys to evaluate (must match vocabulary in symptom_columns.joblib)",
+        example=["fever", "headache", "joint_pain"]
     )
-    inputSymptoms: List[str] = Field(
+    symptom_ids: Optional[List[str]] = Field(
+        default=None,
+        description="Alias for symptom_keys for backward compatibility with frontend clients"
+    )
+
+    @model_validator(mode="before")
+    @classmethod
+    def populate_symptom_keys(cls, data):
+        if isinstance(data, dict):
+            keys = data.get("symptom_keys")
+            ids = data.get("symptom_ids")
+            if (not keys or len(keys) == 0) and ids:
+                data["symptom_keys"] = ids
+        return data
+
+class TopMatch(BaseModel):
+    disease: str = Field(..., description="Predicted primary disease name")
+    probability: float = Field(..., ge=0.0, description="Confidence score / probability")
+    risk_badge: str = Field(..., description="Triage urgency risk badge ('High', 'Moderate', 'Low')")
+    pathophysiology_summary: str = Field(
+        default="",
+        description="Clinical pathophysiological summary (stubbed as empty string in Step 4)"
+    )
+    key_symptoms: List[str] = Field(
         default_factory=list,
-        description="List of recognized canonical input symptoms submitted for evaluation"
+        description="Patient input symptoms directly associated with this disease"
     )
-    evaluatedAt: str = Field(..., description="ISO 8601 evaluation timestamp")
+
+class DifferentialItem(BaseModel):
+    disease: str = Field(..., description="Candidate disease name in differential")
+    probability: float = Field(..., ge=0.0, description="Confidence score / probability")
+    risk_badge: str = Field(..., description="Triage urgency risk badge ('High', 'Moderate', 'Low')")
+    key_symptoms: List[str] = Field(
+        default_factory=list,
+        description="Patient input symptoms associated with this candidate"
+    )
+
+class SymptomCheckResponse(BaseModel):
+    top_match: TopMatch = Field(..., description="Primary candidate prediction")
+    differential: List[DifferentialItem] = Field(
+        ...,
+        description="Top-3 ranked differential diagnoses"
+    )
+    critical_alert: Optional[str] = Field(
+        default=None,
+        description="Critical red-flag warning alert (stubbed as null in Step 4)"
+    )
+    recommended_lab_tests: List[str] = Field(
+        default_factory=list,
+        description="Recommended confirmatory laboratory tests (stubbed as empty in Step 4)"
+    )
