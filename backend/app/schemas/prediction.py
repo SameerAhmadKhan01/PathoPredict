@@ -27,12 +27,20 @@ class TopMatch(BaseModel):
     probability: float = Field(..., ge=0.0, description="Confidence score / probability")
     risk_badge: str = Field(..., description="Triage urgency risk badge ('High', 'Moderate', 'Low')")
     pathophysiology_summary: str = Field(
-        default="",
-        description="Clinical pathophysiological summary (stubbed as empty string in Step 4)"
+        default="Reference data pending clinical review",
+        description="Clinical pathophysiological summary"
     )
     key_symptoms: List[str] = Field(
         default_factory=list,
         description="Patient input symptoms directly associated with this disease"
+    )
+    recommended_lab_tests: List[str] = Field(
+        default_factory=list,
+        description="Recommended confirmatory laboratory tests"
+    )
+    reference_data_complete: bool = Field(
+        default=False,
+        description="True if clinical reference data has been filled and reviewed, false if placeholder"
     )
 
 class DifferentialItem(BaseModel):
@@ -52,9 +60,13 @@ class SymptomCheckResponse(BaseModel):
     )
     critical_alert: Optional[str] = Field(
         default=None,
-        description="Critical red-flag warning alert (stubbed as null in Step 4)"
+        description="Critical red-flag warning alert independent of model confidence"
     )
     recommended_lab_tests: List[str] = Field(
         default_factory=list,
-        description="Recommended confirmatory laboratory tests (stubbed as empty in Step 4)"
+        description="Recommended confirmatory laboratory tests from reference data"
+    )
+    reference_data_complete: bool = Field(
+        default=False,
+        description="True if reference data for top_match is complete, false if placeholder"
     )

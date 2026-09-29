@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routers.predict import router as predict_router
 from app.services.ml_model import get_ml_service
 from app.services.feature_vector import log_symptom_columns_sanity_check
+from app.services.reference_data import generate_reference_data_json, load_reference_data
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 logger = logging.getLogger("PathoPredict")
@@ -18,10 +19,17 @@ async def lifespan(app: FastAPI):
     # 1. Sanity-check and log symptom columns length and sample entries
     log_symptom_columns_sanity_check(logger)
     
-    # 2. Load ML model, label encoder, and symptom columns ONCE
+    # 2. Load and verify reference data scaffold covering all 202 diseases
+    ref_count = generate_reference_data_json()
+    load_reference_data()
+    print(f"Generated reference_data.json disease count: {ref_count}")
+    logger.info(f"Loaded reference_data.json disease count: {ref_count}")
+    assert ref_count == 202, f"Expected 202 diseases in reference_data.json, got {ref_count}"
+    
+    # 3. Load ML model, label encoder, and symptom columns ONCE
     ml_service = get_ml_service()
     
-    # 3. Assert artifacts are correctly loaded
+    # 4. Assert artifacts are correctly loaded
     assert len(ml_service.symptom_columns) == 122, (
         f"Startup Sanity Check Failed: Expected 122 symptom features, got {len(ml_service.symptom_columns)}"
     )
@@ -29,15 +37,16 @@ async def lifespan(app: FastAPI):
         f"Startup Sanity Check Failed: Expected 202 disease classes, got {len(ml_service.classes)}"
     )
     
-    # 4. Perform a smoke prediction
+    # 5. Perform a smoke prediction
     smoke_res = ml_service.predict(["fever", "headache", "joint_pain"])
     assert smoke_res.top_match is not None, "Smoke test failed: top_match is None"
     assert len(smoke_res.differential) == 3, f"Expected 3 differential items, got {len(smoke_res.differential)}"
     
     logger.info("=" * 70)
     logger.info("PATHOPREDICT CLINICAL INFERENCE SERVICE READY")
-    logger.info("  * Total Canonical Symptom Features : 122")
-    logger.info("  * Total Diagnosable Disease Classes : 202")
+    logger.info(f"  * Total Canonical Symptom Features : {len(ml_service.symptom_columns)}")
+    logger.info(f"  * Total Diagnosable Disease Classes : {len(ml_service.classes)}")
+    logger.info(f"  * Total Reference Disease Scaffold  : {ref_count}")
     logger.info(f"  * Smoke Test Lead Hypothesis        : {smoke_res.top_match.disease} ({smoke_res.top_match.probability}%)")
     logger.info("=" * 70)
     

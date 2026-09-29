@@ -14,6 +14,7 @@ from app.services.feature_vector import (
     build_feature_vector,
     get_symptom_columns,
 )
+from app.services.reference_data import get_reference_data
 
 logger = logging.getLogger("PathoPredict.MLModel")
 
@@ -110,19 +111,24 @@ class MLModelService:
             )
 
         lead = differential[0]
+        ref_data = get_reference_data(lead.disease)
+        
         top_match = TopMatch(
             disease=lead.disease,
             probability=lead.probability,
             risk_badge=lead.risk_badge,
-            pathophysiology_summary="",  # Stubbed per Step 4 instructions
-            key_symptoms=lead.key_symptoms
+            pathophysiology_summary=ref_data.get("pathophysiology_summary", "Reference data pending clinical review"),
+            key_symptoms=lead.key_symptoms,
+            recommended_lab_tests=ref_data.get("recommended_lab_tests", []),
+            reference_data_complete=ref_data.get("reference_data_complete", False)
         )
 
         return SymptomCheckResponse(
             top_match=top_match,
             differential=differential,
-            critical_alert=None,          # Stubbed as null per Step 4 instructions
-            recommended_lab_tests=[]      # Stubbed as empty per Step 4 instructions
+            critical_alert=None,
+            recommended_lab_tests=top_match.recommended_lab_tests,
+            reference_data_complete=top_match.reference_data_complete
         )
 
 def get_ml_service() -> MLModelService:

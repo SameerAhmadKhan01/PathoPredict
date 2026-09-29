@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException, Depends
 from app.schemas.prediction import SymptomCheckRequest, SymptomCheckResponse
 from app.services.feature_vector import validate_symptom_keys
 from app.services.ml_model import MLModelService, get_ml_service
+from app.services.risk_rules import check_critical_alert
 
 router = APIRouter()
 
@@ -9,7 +10,7 @@ router = APIRouter()
     "/api/predict",
     response_model=SymptomCheckResponse,
     summary="Predict differential diagnoses from validated symptom keys",
-    description="Validates that all submitted symptom keys exist in symptom_columns.joblib (returning 422 if invalid), generates the model's feature vector, runs predict_proba, and returns top-3 hypotheses."
+    description="Validates that all submitted symptom keys exist in symptom_columns.joblib (returning 422 if invalid), generates the model's feature vector, runs predict_proba, evaluates rule-based red flags, and returns top-3 hypotheses."
 )
 @router.post(
     "/predict",
@@ -42,6 +43,13 @@ async def predict_symptoms(
     # 3. Predict differential
     try:
         response = ml_service.predict(request.symptom_keys)
+        
+        # 4. Rule-based critical_alert evaluation independent of model confidence
+        critical_alert = check_critical_alert(request.symptom_keys)
+        response.critical_alert = critical_alert
+        if critical_alert:
+            response.top_match.risk_badge = "High"
+
         return response
     except Exception as e:
         raise HTTPException(
