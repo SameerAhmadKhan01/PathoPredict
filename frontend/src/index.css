@@ -1,3 +1,115 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Plus+Jakarta+Sans:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* ─── Light Theme (Calm Linen) ─── */
+  :root {
+    --c-bg: 250 249 247;
+    --c-surface: 255 255 255;
+    --c-soft-shell: 243 241 238;
+
+    --c-text: 26 29 35;
+    --c-text-muted: 85 91 103;
+    --c-text-faint: 139 145 157;
+    --c-text-whisper: 181 186 196;
+
+    --c-accent: 74 111 165;
+    --c-accent-hover: 61 94 142;
+    --c-accent-light: 235 240 247;
+
+    --c-amber: 196 125 26;
+    --c-amber-light: 254 246 232;
+    --c-critical: 192 57 43;
+    --c-critical-light: 253 240 238;
+
+    --c-hairline: 229 226 221;
+    --c-hairline-strong: 209 206 200;
+
+    --shadow-card: 0 1px 3px rgba(26,29,35,0.04), 0 1px 2px rgba(26,29,35,0.02);
+    --shadow-card-hover: 0 4px 12px rgba(26,29,35,0.06), 0 1px 3px rgba(26,29,35,0.04);
+    --shadow-card-elevated: 0 4px 12px rgba(26,29,35,0.06), 0 1px 3px rgba(26,29,35,0.04);
+
+    /* SVG-specific hex values (CSS vars work in style attrs) */
+    --svg-surface: #FFFFFF;
+    --svg-bg: #FAF9F7;
+    --svg-text: #1A1D23;
+    --svg-text-muted: #555B67;
+    --svg-accent: #4A6FA5;
+    --svg-accent-hover: #3D5E8E;
+    --svg-hairline: #E5E2DD;
+    --svg-accent-halo: rgba(74, 111, 165, 0.2);
+    --svg-accent-08: rgba(74, 111, 165, 0.08);
+    --svg-trail-opacity: 0.5;
+  }
+
+  /* ─── Dark Theme (Arterial Red & Venous Blue on Deep Black) ─── */
+  .dark {
+    /* Deep Black Surfaces */
+    --c-bg: 9 11 16;
+    --c-surface: 15 18 25;
+    --c-soft-shell: 22 27 38;
+
+    /* High-contrast crisp typography */
+    --c-text: 248 250 252;
+    --c-text-muted: 148 163 184;
+    --c-text-faint: 100 116 139;
+    --c-text-whisper: 71 85 105;
+
+    /* Venous Blue primary accent */
+    --c-accent: 37 99 235;
+    --c-accent-hover: 59 130 246;
+    --c-accent-light: 24 37 68;
+
+    /* Arterial Red critical / cardiac */
+    --c-critical: 225 29 72;
+    --c-critical-light: 59 13 28;
+
+    /* Cardiac Amber warning */
+    --c-amber: 245 158 11;
+    --c-amber-light: 60 30 8;
+
+    /* Structural Hairline (subtle blue-slate on black) */
+    --c-hairline: 28 35 48;
+    --c-hairline-strong: 45 56 77;
+
+    /* Luminous shadows with subtle arterial/venous edge presence */
+    --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(37, 99, 235, 0.08);
+    --shadow-card-hover: 0 6px 20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(37, 99, 235, 0.22);
+    --shadow-card-elevated: 0 8px 30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(225, 29, 72, 0.25);
+
+    /* SVG variables for dark mode */
+    --svg-surface: #0F1219;
+    --svg-bg: #090B10;
+    --svg-text: #F8FAFC;
+    --svg-text-muted: #94A3B8;
+    --svg-accent: #2563EB;
+    --svg-accent-hover: #3B82F6;
+    --svg-hairline: #1C2330;
+    --svg-accent-halo: rgba(37, 99, 235, 0.25);
+    --svg-accent-08: rgba(37, 99, 235, 0.1);
+    --svg-trail-opacity: 0.25;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg text-text font-sans;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  ::selection {
+    @apply bg-accent text-white;
+  }
+
+  .dark ::selection {
+    background-color: #E11D48;
+    color: #FFFFFF;
+  }
+}
