@@ -6,8 +6,12 @@
 @tailwind utilities;
 
 @layer base {
-  /* ─── Light Theme (Calm Linen) ─── */
-  :root {
+  /* ─── Light Theme (Calm Linen Canvas) ─── */
+  :root,
+  html[data-theme="light"],
+  body[data-theme="light"] {
+    color-scheme: light;
+
     --c-bg: 250 249 247;
     --c-surface: 255 255 255;
     --c-soft-shell: 243 241 238;
@@ -33,7 +37,6 @@
     --shadow-card-hover: 0 4px 12px rgba(26,29,35,0.06), 0 1px 3px rgba(26,29,35,0.04);
     --shadow-card-elevated: 0 4px 12px rgba(26,29,35,0.06), 0 1px 3px rgba(26,29,35,0.04);
 
-    /* SVG-specific hex values (CSS vars work in style attrs) */
     --svg-surface: #FFFFFF;
     --svg-bg: #FAF9F7;
     --svg-text: #1A1D23;
@@ -46,8 +49,13 @@
     --svg-trail-opacity: 0.5;
   }
 
-  /* ─── Dark Theme (Arterial Red & Venous Blue on Deep Black) ─── */
-  .dark {
+  /* ─── Dark Theme (Arterial Red, Venous Blue & Deep Black) ─── */
+  :root.dark,
+  html.dark,
+  body.dark,
+  [data-theme="dark"] {
+    color-scheme: dark;
+
     /* Deep Black Surfaces */
     --c-bg: 9 11 16;
     --c-surface: 15 18 25;
@@ -72,14 +80,14 @@
     --c-amber: 245 158 11;
     --c-amber-light: 60 30 8;
 
-    /* Structural Hairline (subtle blue-slate on black) */
+    /* Structural Hairline (dark slate-blue on pitch black) */
     --c-hairline: 28 35 48;
     --c-hairline-strong: 45 56 77;
 
-    /* Luminous shadows with subtle arterial/venous edge presence */
-    --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(37, 99, 235, 0.08);
-    --shadow-card-hover: 0 6px 20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(37, 99, 235, 0.22);
-    --shadow-card-elevated: 0 8px 30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(225, 29, 72, 0.25);
+    /* Luminous dark shadows */
+    --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(37, 99, 235, 0.12);
+    --shadow-card-hover: 0 6px 20px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(37, 99, 235, 0.25);
+    --shadow-card-elevated: 0 8px 30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(225, 29, 72, 0.28);
 
     /* SVG variables for dark mode */
     --svg-surface: #0F1219;
@@ -101,15 +109,66 @@
 
   body {
     @apply bg-bg text-text font-sans;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   ::selection {
     @apply bg-accent text-white;
   }
 
-  .dark ::selection {
+  html.dark ::selection,
+  body.dark ::selection {
     background-color: #E11D48;
     color: #FFFFFF;
   }
+}
+
+/* ─── Direct Dark Theme Overrides (guarantees 100% dark transformation) ─── */
+html.dark,
+body.dark {
+  background-color: #090B10 !important;
+  color: #F8FAFC !important;
+}
+
+html.dark body {
+  background-color: #090B10 !important;
+  color: #F8FAFC !important;
+}
+
+html.dark .bg-bg {
+  background-color: #090B10 !important;
+}
+
+html.dark .bg-surface {
+  background-color: #0F1219 !important;
+}
+
+html.dark .bg-soft-shell {
+  background-color: #161B26 !important;
+}
+
+html.dark .border-hairline {
+  border-color: #1C2330 !important;
+}
+
+html.dark .text-text {
+  color: #F8FAFC !important;
+}
+
+html.dark .text-text-muted {
+  color: #94A3B8 !important;
+}
+
+html.dark .text-text-faint {
+  color: #64748B !important;
+}
+
+html.dark input {
+  background-color: #161B26 !important;
+  color: #F8FAFC !important;
+  border-color: #1C2330 !important;
+}
+
+html.dark input::placeholder {
+  color: #475569 !important;
 }

@@ -1,28 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useTheme } from '../../contexts/ThemeContext';
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('pathopredict-theme');
-      if (stored === 'dark' || stored === 'light') return stored;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    return 'light';
-  });
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-    localStorage.setItem('pathopredict-theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
-  };
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <button
@@ -54,10 +33,10 @@ export function ThemeToggle() {
           <>
             {/* Arterial Red and Venous Blue Dual Heart Dot */}
             <span className="flex items-center -space-x-1" aria-hidden="true">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#E11D48] shadow-[0_0_8px_rgba(225,29,72,0.7)]" />
-              <span className="w-2.5 h-2.5 rounded-full bg-[#2563EB] shadow-[0_0_8px_rgba(37,99,235,0.7)]" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#E11D48] shadow-[0_0_8px_rgba(225,29,72,0.8)]" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#2563EB] shadow-[0_0_8px_rgba(37,99,235,0.8)]" />
             </span>
-            <span className="hidden sm:inline text-[11px] font-medium tracking-wide text-text">
+            <span className="hidden sm:inline text-[11px] font-medium tracking-wide text-text font-semibold">
               Dark
             </span>
           </>
