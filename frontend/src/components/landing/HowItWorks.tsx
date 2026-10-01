@@ -13,12 +13,12 @@ export function HowItWorks({ steps = defaultSteps }: HowItWorksProps) {
       <div className="max-w-[1120px] mx-auto px-[22px] min-[861px]:px-[32px]">
         {/* Section Header */}
         <div className="flex flex-col items-start text-left mb-12 min-[861px]:mb-16">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 mb-4 rounded-[3px] border border-hairline bg-panel text-xs text-text-muted font-sans">
-            <span className="w-1.5 h-1.5 rounded-full bg-red" />
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 mb-4 rounded-[3px] border border-hairline bg-soft-shell text-xs text-text-muted font-sans">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent" />
             <span>Workflow</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl min-[861px]:text-[44px] leading-[1.12] font-medium tracking-tight text-text mb-4">
+          <h2 className="font-display text-3xl sm:text-4xl min-[861px]:text-[44px] leading-[1.12] font-medium tracking-tight text-text mb-4">
             How it works
           </h2>
 
@@ -41,13 +41,13 @@ export function HowItWorks({ steps = defaultSteps }: HowItWorksProps) {
                     : 'min-[861px]:px-8'
               }`}
             >
-              {/* Number in muted Fraunces */}
-              <span className="font-serif text-3xl sm:text-4xl font-light text-text-faint/70 mb-5 select-none">
+              {/* Number in display font */}
+              <span className="font-display text-4xl font-light text-text-faint/40 mb-5 select-none">
                 {step.number}
               </span>
 
               {/* Step Heading */}
-              <h3 className="font-serif text-xl sm:text-2xl font-medium tracking-tight text-text mb-3">
+              <h3 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-text mb-3">
                 {step.title}
               </h3>
 

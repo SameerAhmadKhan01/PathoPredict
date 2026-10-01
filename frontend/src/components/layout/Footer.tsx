@@ -5,7 +5,7 @@ export function Footer() {
         {/* Logo Left */}
         <a href="/" className="flex items-center gap-2.5 text-text group flex-shrink-0">
           <svg
-            className="w-4 h-4 text-red transition-transform duration-200 group-hover:scale-105"
+            className="w-4 h-4 text-accent transition-transform duration-200 group-hover:scale-105"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -16,7 +16,7 @@ export function Footer() {
           >
             <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
           </svg>
-          <span className="font-serif text-lg tracking-tight font-medium text-text">
+          <span className="font-display text-lg tracking-tight font-medium text-text">
             PathoPredict
           </span>
         </a>

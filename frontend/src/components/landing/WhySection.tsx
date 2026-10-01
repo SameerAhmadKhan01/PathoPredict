@@ -9,14 +9,14 @@ export function WhySection() {
         <div className="grid grid-cols-1 min-[861px]:grid-cols-2 gap-12 min-[861px]:gap-16 items-center">
           {/* Column 1: Explanatory Copy */}
           <div className="flex flex-col items-start text-left order-1">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 mb-4 rounded-[3px] border border-hairline bg-panel text-xs text-text-muted font-sans">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue" />
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 mb-4 rounded-[3px] border border-hairline bg-soft-shell text-xs text-text-muted font-sans">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
               <span>Diagnostic Ambiguity</span>
             </div>
 
-            <h2 className="font-serif text-3xl sm:text-4xl min-[861px]:text-[44px] leading-[1.12] font-medium tracking-tight text-text mb-6">
+            <h2 className="font-display text-3xl sm:text-4xl min-[861px]:text-[44px] leading-[1.12] font-medium tracking-tight text-text mb-6">
               One common symptom. <br className="hidden sm:inline" />
-              <span className="italic text-red">Five divergent</span> clinical trajectories.
+              <span className="italic text-accent">Five divergent</span> clinical trajectories.
             </h2>
 
             <p className="font-sans text-base text-text-muted leading-relaxed mb-6">
@@ -34,16 +34,16 @@ export function WhySection() {
 
             {/* Micro comparison points */}
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              <div className="p-3.5 rounded-[3px] border border-hairline bg-panel text-left">
-                <div className="font-mono text-xs text-red uppercase tracking-wider mb-1">
+              <div className="p-3.5 rounded-lg border border-hairline bg-surface text-left">
+                <div className="font-mono text-xs text-text-faint uppercase tracking-wider mb-1">
                   Conventional
                 </div>
                 <div className="font-sans text-xs text-text-muted leading-normal">
                   Symptom-checking rules isolate fever in isolation, delaying differential testing.
                 </div>
               </div>
-              <div className="p-3.5 rounded-[3px] border border-hairline bg-panel text-left">
-                <div className="font-mono text-xs text-blue uppercase tracking-wider mb-1">
+              <div className="p-3.5 rounded-lg border border-hairline bg-surface text-left">
+                <div className="font-mono text-xs text-accent uppercase tracking-wider mb-1">
                   PathoPredict Calibrated
                 </div>
                 <div className="font-sans text-xs text-text-muted leading-normal">
@@ -55,48 +55,32 @@ export function WhySection() {
 
           {/* Column 2: Hub-and-Spoke SVG Diagram */}
           <div className="w-full order-2">
-            <div className="w-full bg-panel border border-hairline rounded-[3px] p-5 sm:p-7 relative">
+            <div className="w-full bg-surface border border-hairline rounded-lg p-5 sm:p-7 relative shadow-card">
               {/* Diagram Card Header */}
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-hairline text-xs font-sans">
                 <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-red" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
                   <span className="font-medium uppercase tracking-wider text-[11px] text-text">
                     Differential Mapping
                   </span>
                 </div>
                 <span className="font-mono text-[11px] text-text-faint">
-                  Topology // 1:5 Cluster
+                  Topology 1:5 Cluster
                 </span>
               </div>
 
               {/* Inline SVG Hub and Spoke Diagram */}
-              <div className="relative w-full aspect-[4/3] min-h-[300px] flex items-center justify-center bg-bg rounded-[3px] border border-hairline p-2 overflow-hidden">
+              <div className="relative w-full aspect-[4/3] min-h-[300px] flex items-center justify-center bg-surface rounded-lg border border-hairline p-2 overflow-hidden">
                 <svg
                   viewBox="0 0 540 400"
                   className="w-full h-full"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <defs>
-                    {/* Line gradients */}
-                    <linearGradient id="spoke-flu" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#c5313c" stopOpacity="0.8" />
-                      <stop offset="100%" stopColor="#3f74ad" stopOpacity="0.5" />
-                    </linearGradient>
-                    <linearGradient id="spoke-covid" x1="0%" y1="100%" x2="0%" y2="0%">
-                      <stop offset="0%" stopColor="#c5313c" stopOpacity="0.8" />
-                      <stop offset="100%" stopColor="#3f74ad" stopOpacity="0.5" />
-                    </linearGradient>
-                    <linearGradient id="spoke-dengue" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#c5313c" stopOpacity="0.8" />
-                      <stop offset="100%" stopColor="#c5313c" stopOpacity="0.6" />
-                    </linearGradient>
-                    <linearGradient id="spoke-typhoid" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#c5313c" stopOpacity="0.8" />
-                      <stop offset="100%" stopColor="#3f74ad" stopOpacity="0.5" />
-                    </linearGradient>
-                    <linearGradient id="spoke-malaria" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#c5313c" stopOpacity="0.8" />
-                      <stop offset="100%" stopColor="#c5313c" stopOpacity="0.6" />
+                    {/* Line gradients - using accent color */}
+                    <linearGradient id="spoke-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{ stopColor: 'var(--svg-accent)' }} stopOpacity="0.8" />
+                      <stop offset="100%" style={{ stopColor: 'var(--svg-accent)' }} stopOpacity="0.3" />
                     </linearGradient>
                   </defs>
 
@@ -107,7 +91,7 @@ export function WhySection() {
                     y1="185"
                     x2="115"
                     y2="105"
-                    stroke="url(#spoke-flu)"
+                    stroke="url(#spoke-accent)"
                     strokeWidth="1.2"
                     strokeDasharray="3 3"
                   />
@@ -117,7 +101,7 @@ export function WhySection() {
                     y1="175"
                     x2="270"
                     y2="90"
-                    stroke="url(#spoke-covid)"
+                    stroke="url(#spoke-accent)"
                     strokeWidth="1.2"
                     strokeDasharray="3 3"
                   />
@@ -127,7 +111,7 @@ export function WhySection() {
                     y1="185"
                     x2="425"
                     y2="105"
-                    stroke="url(#spoke-dengue)"
+                    stroke="url(#spoke-accent)"
                     strokeWidth="1.2"
                     strokeDasharray="3 3"
                   />
@@ -137,7 +121,7 @@ export function WhySection() {
                     y1="215"
                     x2="125"
                     y2="295"
-                    stroke="url(#spoke-typhoid)"
+                    stroke="url(#spoke-accent)"
                     strokeWidth="1.2"
                     strokeDasharray="3 3"
                   />
@@ -147,17 +131,17 @@ export function WhySection() {
                     y1="215"
                     x2="415"
                     y2="295"
-                    stroke="url(#spoke-malaria)"
+                    stroke="url(#spoke-accent)"
                     strokeWidth="1.2"
                     strokeDasharray="3 3"
                   />
 
                   {/* Spoke Marker Badges (differential probability indicator) */}
-                  <circle cx="167" cy="145" r="2.5" fill="#3f74ad" />
-                  <circle cx="270" cy="132" r="2.5" fill="#3f74ad" />
-                  <circle cx="372" cy="145" r="2.5" fill="#c5313c" />
-                  <circle cx="175" cy="255" r="2.5" fill="#3f74ad" />
-                  <circle cx="365" cy="255" r="2.5" fill="#c5313c" />
+                  <circle cx="167" cy="145" r="2.5" style={{ fill: 'var(--svg-accent)' }} />
+                  <circle cx="270" cy="132" r="2.5" style={{ fill: 'var(--svg-accent)' }} />
+                  <circle cx="372" cy="145" r="2.5" style={{ fill: 'var(--svg-accent)' }} />
+                  <circle cx="175" cy="255" r="2.5" style={{ fill: 'var(--svg-accent)' }} />
+                  <circle cx="365" cy="255" r="2.5" style={{ fill: 'var(--svg-accent)' }} />
 
                   {/* 1. Disease Node: Flu */}
                   <g transform="translate(30, 60)">
@@ -165,15 +149,14 @@ export function WhySection() {
                       width="120"
                       height="46"
                       rx="3"
-                      fill="#10151d"
-                      stroke="rgba(236, 234, 228, 0.18)"
+                      style={{ fill: 'var(--svg-surface)', stroke: 'var(--svg-hairline)' }}
                       strokeWidth="1"
                     />
-                    <circle cx="16" cy="23" r="3" fill="#3f74ad" />
+                    <circle cx="16" cy="23" r="3" style={{ fill: 'var(--svg-accent)' }} />
                     <text
                       x="28"
                       y="20"
-                      fill="#ece9e2"
+                      style={{ fill: 'var(--svg-text)' }}
                       fontSize="12.5"
                       fontWeight="500"
                       fontFamily="IBM Plex Sans, sans-serif"
@@ -183,7 +166,7 @@ export function WhySection() {
                     <text
                       x="28"
                       y="34"
-                      fill="#8c92a0"
+                      style={{ fill: 'var(--svg-text-muted)' }}
                       fontSize="9.5"
                       fontFamily="IBM Plex Sans, sans-serif"
                     >
@@ -197,15 +180,14 @@ export function WhySection() {
                       width="120"
                       height="46"
                       rx="3"
-                      fill="#10151d"
-                      stroke="rgba(236, 234, 228, 0.18)"
+                      style={{ fill: 'var(--svg-surface)', stroke: 'var(--svg-hairline)' }}
                       strokeWidth="1"
                     />
-                    <circle cx="16" cy="23" r="3" fill="#3f74ad" />
+                    <circle cx="16" cy="23" r="3" style={{ fill: 'var(--svg-accent)' }} />
                     <text
                       x="28"
                       y="20"
-                      fill="#ece9e2"
+                      style={{ fill: 'var(--svg-text)' }}
                       fontSize="12.5"
                       fontWeight="500"
                       fontFamily="IBM Plex Sans, sans-serif"
@@ -215,7 +197,7 @@ export function WhySection() {
                     <text
                       x="28"
                       y="34"
-                      fill="#8c92a0"
+                      style={{ fill: 'var(--svg-text-muted)' }}
                       fontSize="9.5"
                       fontFamily="IBM Plex Sans, sans-serif"
                     >
@@ -229,15 +211,14 @@ export function WhySection() {
                       width="120"
                       height="46"
                       rx="3"
-                      fill="#10151d"
-                      stroke="rgba(197, 49, 60, 0.5)"
+                      style={{ fill: 'var(--svg-surface)', stroke: 'var(--svg-hairline)' }}
                       strokeWidth="1"
                     />
-                    <circle cx="16" cy="23" r="3" fill="#c5313c" />
+                    <circle cx="16" cy="23" r="3" style={{ fill: 'var(--svg-accent)' }} />
                     <text
                       x="28"
                       y="20"
-                      fill="#ece9e2"
+                      style={{ fill: 'var(--svg-text)' }}
                       fontSize="12.5"
                       fontWeight="500"
                       fontFamily="IBM Plex Sans, sans-serif"
@@ -247,7 +228,7 @@ export function WhySection() {
                     <text
                       x="28"
                       y="34"
-                      fill="#8c92a0"
+                      style={{ fill: 'var(--svg-text-muted)' }}
                       fontSize="9.5"
                       fontFamily="IBM Plex Sans, sans-serif"
                     >
@@ -261,15 +242,14 @@ export function WhySection() {
                       width="120"
                       height="46"
                       rx="3"
-                      fill="#10151d"
-                      stroke="rgba(236, 234, 228, 0.18)"
+                      style={{ fill: 'var(--svg-surface)', stroke: 'var(--svg-hairline)' }}
                       strokeWidth="1"
                     />
-                    <circle cx="16" cy="23" r="3" fill="#3f74ad" />
+                    <circle cx="16" cy="23" r="3" style={{ fill: 'var(--svg-accent)' }} />
                     <text
                       x="28"
                       y="20"
-                      fill="#ece9e2"
+                      style={{ fill: 'var(--svg-text)' }}
                       fontSize="12.5"
                       fontWeight="500"
                       fontFamily="IBM Plex Sans, sans-serif"
@@ -279,7 +259,7 @@ export function WhySection() {
                     <text
                       x="28"
                       y="34"
-                      fill="#8c92a0"
+                      style={{ fill: 'var(--svg-text-muted)' }}
                       fontSize="9.5"
                       fontFamily="IBM Plex Sans, sans-serif"
                     >
@@ -293,15 +273,14 @@ export function WhySection() {
                       width="120"
                       height="46"
                       rx="3"
-                      fill="#10151d"
-                      stroke="rgba(197, 49, 60, 0.5)"
+                      style={{ fill: 'var(--svg-surface)', stroke: 'var(--svg-hairline)' }}
                       strokeWidth="1"
                     />
-                    <circle cx="16" cy="23" r="3" fill="#c5313c" />
+                    <circle cx="16" cy="23" r="3" style={{ fill: 'var(--svg-accent)' }} />
                     <text
                       x="28"
                       y="20"
-                      fill="#ece9e2"
+                      style={{ fill: 'var(--svg-text)' }}
                       fontSize="12.5"
                       fontWeight="500"
                       fontFamily="IBM Plex Sans, sans-serif"
@@ -311,7 +290,7 @@ export function WhySection() {
                     <text
                       x="28"
                       y="34"
-                      fill="#8c92a0"
+                      style={{ fill: 'var(--svg-text-muted)' }}
                       fontSize="9.5"
                       fontFamily="IBM Plex Sans, sans-serif"
                     >
@@ -329,7 +308,7 @@ export function WhySection() {
                       height="56"
                       rx="5"
                       fill="none"
-                      stroke="rgba(197, 49, 60, 0.2)"
+                      style={{ stroke: 'var(--svg-accent-halo)' }}
                       strokeWidth="1"
                     />
                     {/* Main box */}
@@ -337,20 +316,19 @@ export function WhySection() {
                       width="130"
                       height="44"
                       rx="3"
-                      fill="#141a23"
-                      stroke="#c5313c"
+                      style={{ fill: 'var(--svg-surface)', stroke: 'var(--svg-accent)' }}
                       strokeWidth="1.25"
                     />
                     {/* Indicator dot */}
-                    <circle cx="20" cy="22" r="4" fill="#c5313c" />
+                    <circle cx="20" cy="22" r="4" style={{ fill: 'var(--svg-accent)' }} />
                     {/* Label */}
                     <text
                       x="34"
                       y="24"
                       dominantBaseline="middle"
-                      fill="#ece9e2"
+                      style={{ fill: 'var(--svg-text)' }}
                       fontSize="14"
-                      fontFamily="Fraunces, serif"
+                      fontFamily="Satoshi, sans-serif"
                       fontWeight="500"
                     >
                       Fever ≥ 38°C
@@ -362,11 +340,11 @@ export function WhySection() {
               {/* Bottom annotation */}
               <div className="flex items-center justify-between pt-3 mt-3 border-t border-hairline text-xs font-sans text-text-faint">
                 <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-red" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
                   High critical divergence
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
                   Secondary biomarker verified
                 </span>
               </div>
