@@ -1,163 +1,189 @@
 import { SYMPTOMS_DATASET, type Symptom } from '../data/symptoms';
 
-export interface DiseasePrediction {
-  disease: 'Dengue' | 'Malaria' | 'Typhoid' | 'Flu' | 'COVID-19';
+export interface TopMatch {
+  disease: string;
   probability: number; // 0 - 100
-  riskLevel: 'High' | 'Moderate' | 'Low';
-  keyIndicators: string[];
-  recommendedTests: string[];
-  clinicalNotes: string;
+  risk_badge: 'High' | 'Moderate' | 'Low';
+  pathophysiology_summary: string;
+  key_symptoms: string[];
+  recommended_lab_tests: string[];
+  reference_data_complete: boolean;
+  // Backward compatibility aliases
+  riskLevel?: 'High' | 'Moderate' | 'Low';
+  clinicalNotes?: string;
+  keyIndicators?: string[];
+  recommendedTests?: string[];
+}
+
+export interface DifferentialItem {
+  disease: string;
+  probability: number;
+  risk_badge: 'High' | 'Moderate' | 'Low';
+  key_symptoms: string[];
+  // Backward compatibility aliases
+  riskLevel?: 'High' | 'Moderate' | 'Low';
+  keyIndicators?: string[];
 }
 
 export interface PredictionResult {
-  topMatch: DiseasePrediction;
-  predictions: DiseasePrediction[];
-  criticalFlags: string[];
+  top_match: TopMatch;
+  differential: DifferentialItem[];
+  critical_alert: string | null;
+  recommended_lab_tests: string[];
+  reference_data_complete: boolean;
   inputSymptoms: Symptom[];
   evaluatedAt: string;
+  // Aliases for legacy component consumption
+  topMatch: TopMatch;
+  predictions: DifferentialItem[];
+  criticalFlags: string[];
 }
 
-const DISEASE_CONFIG: Record<
-  DiseasePrediction['disease'],
-  {
-    tests: string[];
-    notes: string;
-    pathognomonic: string[]; // symptom IDs strongly indicative of this disease
-  }
-> = {
-  Dengue: {
-    tests: ['Dengue NS1 Antigen Test', 'Complete Blood Count (CBC) for Platelets & Hematocrit', 'Dengue IgM/IgG ELISA'],
-    notes: 'Marked by sudden high fever, retro-orbital pain, and steep thrombocytopenia (platelet drop). Immediate monitoring of fluid balance is critical.',
-    pathognomonic: ['retro_orbital_pain', 'severe_joint_pain', 'skin_rash', 'bleeding_gums_nose', 'backache'],
-  },
-  Malaria: {
-    tests: ['Peripheral Blood Smear (Giemsa stain)', 'Rapid Diagnostic Test (RDT for Pf/Pv)', 'Complete Blood Count (CBC)'],
-    notes: 'Characterized by paroxysms of shaking chills (rigors) followed by high fever spikes, often occurring cyclically every 24-48 hours.',
-    pathognomonic: ['cyclic_fever', 'chills_rigors', 'night_sweats', 'severe_headache'],
-  },
-  Typhoid: {
-    tests: ['Blood Culture (Sensitivity gold standard)', 'Widal Agglutination Test / Typhidot', 'Stool & Urine Culture'],
-    notes: 'Features a stepwise (step-ladder) increasing fever, relative bradycardia, abdominal tenderness, and toxic encephalopathic presentation.',
-    pathognomonic: ['stepladder_fever', 'constipation', 'abdominal_pain', 'loss_of_appetite', 'confusion_delirium'],
-  },
-  'COVID-19': {
-    tests: ['SARS-CoV-2 RT-PCR Swab', 'Rapid Antigen Test', 'Chest X-Ray / CT if respiratory distress present'],
-    notes: 'Respiratory viral presentation with high frequency of sudden taste/smell loss, systemic fatigue, and potential for rapid lower respiratory deterioration.',
-    pathognomonic: ['loss_of_smell_taste', 'dry_cough', 'shortness_of_breath', 'chest_pain', 'sore_throat'],
-  },
-  Flu: {
-    tests: ['Influenza A/B Rapid Antigen Test', 'Respiratory Viral Multiplex RT-PCR', 'Pulse Oximetry'],
-    notes: 'Abrupt onset of generalized constitutional symptoms, high fever, diffuse myalgia, headache, and upper respiratory congestion.',
-    pathognomonic: ['muscle_myalgia', 'runny_nose', 'sore_throat', 'dry_cough', 'severe_headache'],
-  },
-};
-
 /**
- * Predicts disease probability based on selected symptoms.
- * Attempts to query FastAPI ML backend (`/api/predict`) if available,
- * falling back to an calibrated clinical heuristic ensemble.
+ * Sends validated symptom keys to the FastAPI inference engine (/api/predict).
+ * Returns the exact backend prediction contract as-is, enriched with input symptom objects.
  */
-export async function predictDiseases(symptomIds: string[]): Promise<PredictionResult> {
-  const inputSymptoms = symptomIds
+export async function predictDiseases(symptomKeys: string[]): Promise<PredictionResult> {
+  const inputSymptoms = symptomKeys
     .map((id) => SYMPTOMS_DATASET.find((s) => s.id === id))
     .filter((s): s is Symptom => s !== undefined);
 
-  // Check critical flags
-  const criticalFlags = inputSymptoms
-    .filter((s) => s.severity === 'critical')
-    .map((s) => `${s.name}: Immediate clinical observation recommended.`);
-
-  // Attempt backend API call (FastAPI ML model)
   try {
     const response = await fetch('/api/predict', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ symptom_ids: symptomIds }),
-      signal: AbortSignal.timeout(1500), // quick timeout if backend not yet running
+      body: JSON.stringify({ symptom_keys: symptomKeys }),
     });
 
-    if (response.ok) {
-      const data = await response.json();
-      return data as PredictionResult;
+    if (!response.ok) {
+      const err = await response.json().catch(() => null);
+      throw new Error(err?.detail || `Inference error: HTTP ${response.status}`);
     }
-  } catch {
-    // Backend offline or not ready yet; gracefully fall through to calibrated engine
+
+    const data = await response.json();
+
+    // Map backend response and attach compatibility aliases
+    const topMatch: TopMatch = {
+      ...data.top_match,
+      riskLevel: data.top_match.risk_badge,
+      clinicalNotes: data.top_match.pathophysiology_summary,
+      keyIndicators: data.top_match.key_symptoms,
+      recommendedTests: data.top_match.recommended_lab_tests,
+    };
+
+    const differential: DifferentialItem[] = (data.differential || []).map(
+      (item: DifferentialItem) => ({
+        ...item,
+        riskLevel: item.risk_badge,
+        keyIndicators: item.key_symptoms,
+      })
+    );
+
+    const criticalFlags = data.critical_alert ? [data.critical_alert] : [];
+
+    return {
+      top_match: topMatch,
+      differential,
+      critical_alert: data.critical_alert,
+      recommended_lab_tests: data.recommended_lab_tests || [],
+      reference_data_complete: Boolean(data.reference_data_complete),
+      inputSymptoms,
+      evaluatedAt: new Date().toISOString(),
+      // Legacy aliases
+      topMatch,
+      predictions: differential,
+      criticalFlags,
+    };
+  } catch (error) {
+    console.warn(
+      '[PathoPredict] Primary inference API (/api/predict) unreachable; engaging fallback reference engine.',
+      error
+    );
+    return fallbackHeuristicPredict(symptomKeys, inputSymptoms);
   }
+}
 
-  // Fallback Calibrated ML Heuristic Engine
-  const diseaseScores: Record<DiseasePrediction['disease'], number> = {
-    Dengue: 8,
-    Malaria: 8,
-    Typhoid: 8,
-    'COVID-19': 8,
-    Flu: 8,
-  };
+/**
+ * ============================================================================
+ * FALLBACK-ONLY REFERENCE ENGINE (OFFLINE DEMO REFERENCE)
+ * ============================================================================
+ * Retained strictly as an offline emergency fallback in case the local API
+ * server is unreachable during demos. Production traffic routes directly to
+ * FastAPI /api/predict backed by the 202-class Random Forest ML classifier.
+ */
+function fallbackHeuristicPredict(
+  _symptomKeys: string[],
+  inputSymptoms: Symptom[]
+): PredictionResult {
+  // Critical red flags rule check
+  const criticalSymptoms = inputSymptoms.filter((s) => s.severity === 'critical');
+  const critical_alert =
+    criticalSymptoms.length > 0
+      ? `Critical Presentation: ${criticalSymptoms.map((s) => s.name).join(', ')} detected. Immediate clinical assessment recommended.`
+      : null;
 
-  inputSymptoms.forEach((symptom) => {
-    // Check which diseases this symptom is commonly found in
-    symptom.commonIn.forEach((dName) => {
-      Object.keys(diseaseScores).forEach((key) => {
-        const diseaseKey = key as DiseasePrediction['disease'];
-        if (dName.toLowerCase().includes(diseaseKey.toLowerCase())) {
-          diseaseScores[diseaseKey] += 18;
-        }
-      });
-    });
-
-    // Bonus for pathognomonic (signature) markers
-    Object.entries(DISEASE_CONFIG).forEach(([diseaseKey, config]) => {
-      if (config.pathognomonic.includes(symptom.id)) {
-        diseaseScores[diseaseKey as DiseasePrediction['disease']] += 28;
-      }
+  // Simple frequency overlap scoring across all diseases referenced in selected symptoms
+  const diseaseScores: Record<string, number> = {};
+  inputSymptoms.forEach((sym) => {
+    sym.commonIn.forEach((d) => {
+      diseaseScores[d] = (diseaseScores[d] || 0) + (sym.severity === 'critical' ? 30 : 15);
     });
   });
 
-  // Softmax normalization to percentages summing to 100%
-  const totalScore = Object.values(diseaseScores).reduce((a, b) => a + b, 0);
+  const sortedDiseases = Object.entries(diseaseScores).sort((a, b) => b[1] - a[1]);
+  const totalScore = sortedDiseases.reduce((acc, [, score]) => acc + score, 0) || 1;
 
-  const predictions: DiseasePrediction[] = (
-    Object.keys(diseaseScores) as DiseasePrediction['disease'][]
-  )
-    .map((disease) => {
-      const raw = diseaseScores[disease];
-      const probability = Math.round((raw / totalScore) * 100);
-      const config = DISEASE_CONFIG[disease];
-
-      // Find which input symptoms specifically pointed to this disease
-      const keyIndicators = inputSymptoms
-        .filter(
-          (s) =>
-            s.commonIn.some((d) => d.toLowerCase().includes(disease.toLowerCase())) ||
-            config.pathognomonic.includes(s.id)
-        )
-        .map((s) => s.name);
-
-      let riskLevel: DiseasePrediction['riskLevel'] = 'Low';
-      if (probability >= 40) riskLevel = 'High';
-      else if (probability >= 20) riskLevel = 'Moderate';
-
-      return {
-        disease,
-        probability,
-        riskLevel,
-        keyIndicators: keyIndicators.length > 0 ? keyIndicators : ['General febrile overlap'],
-        recommendedTests: config.tests,
-        clinicalNotes: config.notes,
-      };
-    })
-    .sort((a, b) => b.probability - a.probability);
-
-  // Normalize largest difference so top matches look realistic
-  if (predictions.length > 0 && predictions[0].probability < 35 && inputSymptoms.length >= 2) {
-    predictions[0].probability += 15;
-    predictions[1].probability = Math.max(5, predictions[1].probability - 10);
+  // Build top-3 differential
+  const topThree = sortedDiseases.slice(0, 3);
+  if (topThree.length === 0) {
+    topThree.push(['Clinical Evaluation Indicated', 100]);
   }
 
+  const differential: DifferentialItem[] = topThree.map(([disease, score]) => {
+    const probability = Math.min(95, Math.max(10, Math.round((score / totalScore) * 100)));
+    const risk_badge = critical_alert ? 'High' : probability > 50 ? 'Moderate' : 'Low';
+    const key_symptoms = inputSymptoms
+      .filter((s) => s.commonIn.includes(disease))
+      .map((s) => s.name);
+
+    return {
+      disease,
+      probability,
+      risk_badge,
+      key_symptoms: key_symptoms.length > 0 ? key_symptoms : [inputSymptoms[0]?.name || 'General Presentation'],
+      riskLevel: risk_badge,
+      keyIndicators: key_symptoms,
+    };
+  });
+
+  // Ensure probabilities are descending
+  differential.sort((a, b) => b.probability - a.probability);
+
+  const primary = differential[0];
+  const topMatch: TopMatch = {
+    disease: primary.disease,
+    probability: primary.probability,
+    risk_badge: primary.risk_badge,
+    pathophysiology_summary: 'Reference data pending clinical review',
+    key_symptoms: primary.key_symptoms,
+    recommended_lab_tests: [],
+    reference_data_complete: false,
+    riskLevel: primary.risk_badge,
+    clinicalNotes: 'Reference data pending clinical review',
+    keyIndicators: primary.key_symptoms,
+    recommendedTests: [],
+  };
+
   return {
-    topMatch: predictions[0],
-    predictions,
-    criticalFlags,
+    top_match: topMatch,
+    differential,
+    critical_alert,
+    recommended_lab_tests: [],
+    reference_data_complete: false,
     inputSymptoms,
     evaluatedAt: new Date().toISOString(),
+    topMatch,
+    predictions: differential,
+    criticalFlags: critical_alert ? [critical_alert] : [],
   };
 }

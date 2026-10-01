@@ -13,7 +13,7 @@ export function ResultsPage() {
   const [result, setResult] = useState<PredictionResult | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Retrieve symptom IDs passed via location state or localStorage
+  // Retrieve symptom IDs passed via location state or sessionStorage
   useEffect(() => {
     const symptomIds: string[] =
       (location.state as { symptomIds?: string[] })?.symptomIds ||
@@ -38,10 +38,10 @@ export function ResultsPage() {
         <main className="max-w-[1120px] mx-auto px-[22px] min-[861px]:px-[32px] py-[100px] flex flex-col items-center justify-center text-center">
           <div className="w-10 h-10 border-2 border-hairline border-t-red rounded-full animate-spin mb-6" />
           <h2 className="font-serif text-2xl text-text mb-2">
-            Evaluating multi-pathogen ML models...
+            Evaluating 202-disease differential model...
           </h2>
           <p className="font-sans text-sm text-text-muted">
-            Calibrating differential probabilities and clinical warning thresholds.
+            Calibrating probability distributions and evaluating clinical red-flag rules.
           </p>
         </main>
         <Footer />
@@ -50,7 +50,15 @@ export function ResultsPage() {
   }
 
   const { topMatch, predictions, criticalFlags, inputSymptoms } = result;
-  const isHighRisk = topMatch.riskLevel === 'High';
+  const isHighRisk = (topMatch.risk_badge || topMatch.riskLevel) === 'High';
+  const riskBadge = topMatch.risk_badge || topMatch.riskLevel || 'Moderate';
+  const isReferenceComplete = Boolean(topMatch.reference_data_complete ?? result.reference_data_complete);
+  const criticalWarning = result.critical_alert || (criticalFlags && criticalFlags.length > 0 ? criticalFlags[0] : null);
+
+  const labTests =
+    topMatch.recommended_lab_tests && topMatch.recommended_lab_tests.length > 0
+      ? topMatch.recommended_lab_tests
+      : topMatch.recommendedTests || [];
 
   return (
     <div className="min-h-screen bg-bg text-text font-sans selection:bg-red selection:text-white flex flex-col justify-between">
@@ -72,12 +80,12 @@ export function ResultsPage() {
 
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-[3px] border border-hairline bg-panel text-[11px] font-mono text-text-faint">
               <span className="w-1.5 h-1.5 rounded-full bg-blue animate-pulse" />
-              <span>ENSEMBLE-V1.4 // CALIBRATED INFERENCE</span>
+              <span>ENSEMBLE-V2.1 // 202-DISEASE RANDOM FOREST</span>
             </div>
           </div>
 
           {/* Critical Warning Alert Banner (if applicable) */}
-          {criticalFlags.length > 0 && (
+          {criticalWarning && (
             <aside
               aria-label="Critical Warning Signs"
               className="mb-8 p-5 bg-red-deep/20 border border-red/40 rounded-[3px] text-left"
@@ -85,17 +93,14 @@ export function ResultsPage() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-2 h-2 rounded-full bg-red animate-ping" />
                 <span className="font-mono text-xs font-semibold text-red uppercase tracking-wider">
-                  Critical Warning Indicators Detected
+                  Critical Red-Flag Warning Detected
                 </span>
               </div>
-              <ul className="list-disc list-inside text-xs sm:text-sm text-text font-sans space-y-1">
-                {criticalFlags.map((flag, idx) => (
-                  <li key={idx}>{flag}</li>
-                ))}
-              </ul>
+              <p className="text-xs sm:text-sm text-text font-sans font-medium leading-relaxed">
+                {criticalWarning}
+              </p>
               <div className="mt-3 text-[11px] font-sans text-text-muted">
-                Please prioritize acute clinical evaluation or visit an emergency department
-                promptly.
+                Please prioritize acute clinical evaluation or visit an emergency department promptly.
               </div>
             </aside>
           )}
@@ -130,15 +135,27 @@ export function ResultsPage() {
                       : 'bg-blue/15 border border-blue/30 text-blue'
                   }`}
                 >
-                  {topMatch.riskLevel} Probability
+                  {riskBadge} Probability
                 </span>
               </div>
             </div>
 
             {/* Clinical explanation */}
-            <p className="font-sans text-base text-text-muted leading-relaxed mb-6">
-              {topMatch.clinicalNotes}
-            </p>
+            {isReferenceComplete ? (
+              <p className="font-sans text-base text-text-muted leading-relaxed mb-6">
+                {topMatch.pathophysiology_summary || topMatch.clinicalNotes}
+              </p>
+            ) : (
+              <div className="mb-6 p-4 rounded-[3px] bg-panel-raised border border-hairline text-left">
+                <div className="flex items-center gap-2 mb-1.5 text-xs font-mono uppercase text-blue">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue" />
+                  <span>Clinical Reference Under Review</span>
+                </div>
+                <p className="font-sans text-sm text-text-muted leading-relaxed">
+                  Detailed clinical reference for this condition is still being reviewed. The differential probability is generated from validated multi-vector symptom correlations across 202 diagnosable pathologies.
+                </p>
+              </div>
+            )}
 
             {/* Driving Key Symptoms */}
             <div className="pt-4 border-t border-hairline">
@@ -146,7 +163,7 @@ export function ResultsPage() {
                 Key Contributing Markers Observed
               </div>
               <div className="flex flex-wrap gap-2">
-                {topMatch.keyIndicators.map((item, idx) => (
+                {(topMatch.key_symptoms || topMatch.keyIndicators || []).map((item, idx) => (
                   <span
                     key={idx}
                     className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[3px] bg-panel-raised border border-hairline text-xs text-text font-sans"
@@ -165,21 +182,22 @@ export function ResultsPage() {
               <div className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue" />
                 <h2 className="font-serif text-2xl font-medium tracking-tight text-text">
-                  Complete Differential Rankings
+                  Complete Differential Rankings (Top 3)
                 </h2>
               </div>
               <span className="text-xs font-sans text-text-faint">
-                Normalized softmax distribution
+                Calibrated Random Forest probability distribution
               </span>
             </div>
 
             <div className="bg-panel border border-hairline rounded-[3px] divide-y divide-hairline">
               {predictions.map((p, idx) => {
                 const isFirst = idx === 0;
+                const keys = p.key_symptoms || p.keyIndicators || [];
 
                 return (
                   <div
-                    key={p.disease}
+                    key={`${p.disease}-${idx}`}
                     className="p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-panel-raised transition-colors duration-150"
                   >
                     <div className="w-full sm:w-1/3">
@@ -194,8 +212,8 @@ export function ResultsPage() {
                         )}
                       </div>
                       <div className="text-xs font-sans text-text-faint mt-1">
-                        {p.keyIndicators.length} matching signature
-                        {p.keyIndicators.length > 1 ? 's' : ''}
+                        {keys.length} matching signature
+                        {keys.length !== 1 ? 's' : ''}
                       </div>
                     </div>
 
@@ -206,7 +224,7 @@ export function ResultsPage() {
                           className={`h-full rounded-[1px] transition-all duration-500 ${
                             isFirst ? 'bg-red' : 'bg-blue'
                           }`}
-                          style={{ width: `${p.probability}%` }}
+                          style={{ width: `${Math.min(100, Math.max(2, p.probability))}%` }}
                         />
                       </div>
                       <div className="font-mono text-sm font-medium text-text w-12 text-right">
@@ -227,25 +245,38 @@ export function ResultsPage() {
                 Recommended Laboratory Confirmation
               </h3>
             </div>
-            <p className="font-sans text-sm text-text-muted mb-5 leading-relaxed">
-              To definitively differentiate between {topMatch.disease} and secondary febrile
-              hypotheses, discuss these validated laboratory assays with your physician:
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {topMatch.recommendedTests.map((test, idx) => (
-                <div
-                  key={idx}
-                  className="p-3.5 rounded-[3px] bg-panel-raised border border-hairline text-left flex flex-col justify-between"
-                >
-                  <span className="font-mono text-[10px] text-blue uppercase tracking-wider mb-2">
-                    Test 0{idx + 1}
-                  </span>
-                  <span className="font-sans text-xs font-medium text-text">
-                    {test}
-                  </span>
+            {isReferenceComplete && labTests.length > 0 ? (
+              <>
+                <p className="font-sans text-sm text-text-muted mb-5 leading-relaxed">
+                  To definitively differentiate between {topMatch.disease} and secondary hypotheses, discuss these validated laboratory assays with your physician:
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {labTests.map((test, idx) => (
+                    <div
+                      key={idx}
+                      className="p-3.5 rounded-[3px] bg-panel-raised border border-hairline text-left flex flex-col justify-between"
+                    >
+                      <span className="font-mono text-[10px] text-blue uppercase tracking-wider mb-2">
+                        Test 0{idx + 1}
+                      </span>
+                      <span className="font-sans text-xs font-medium text-text">
+                        {test}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </>
+            ) : (
+              <div className="p-4 rounded-[3px] bg-panel-raised border border-hairline text-left">
+                <div className="flex items-center gap-2 mb-1.5 text-xs font-mono uppercase text-blue">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue" />
+                  <span>Assay Protocols Pending Review</span>
+                </div>
+                <p className="font-sans text-xs text-text-muted leading-relaxed">
+                  Detailed clinical reference for this condition is still being reviewed. Confirmatory laboratory testing and diagnostic imaging protocols will be published following specialist panel review.
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Action Footer */}

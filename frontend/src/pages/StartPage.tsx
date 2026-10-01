@@ -5,24 +5,29 @@ import { Footer } from '../components/layout/Footer';
 import { SYMPTOMS_DATASET, type Symptom } from '../data/symptoms';
 
 const QUICK_SUGGESTIONS = [
-  'fever_high',
-  'chills_rigors',
-  'retro_orbital_pain',
-  'severe_headache',
-  'loss_of_smell_taste',
-  'severe_joint_pain',
-  'dry_cough',
-  'nausea_vomiting',
+  'fever',
+  'cough',
+  'chest_pain',
+  'headache',
+  'shortness_of_breath',
+  'joint_pain',
+  'fatigue',
+  'nausea',
 ];
 
 const CATEGORIES = [
   'All',
   'Constitutional',
-  'Neurological',
-  'Musculoskeletal',
   'Respiratory',
+  'Cardiac',
   'Gastrointestinal',
+  'Musculoskeletal',
+  'Neurological',
   'Dermatological',
+  'ENT',
+  'Ophthalmological',
+  'Psychiatric',
+  'Urological/Renal',
 ] as const;
 
 export function StartPage() {
