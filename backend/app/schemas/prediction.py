@@ -5,7 +5,7 @@ class SymptomCheckRequest(BaseModel):
     symptom_keys: List[str] = Field(
         default_factory=list,
         description="List of symptom keys to evaluate (must match vocabulary in symptom_columns.joblib)",
-        example=["fever", "headache", "joint_pain"]
+        examples=[["fever", "headache", "joint_pain"]]
     )
     symptom_ids: Optional[List[str]] = Field(
         default=None,
