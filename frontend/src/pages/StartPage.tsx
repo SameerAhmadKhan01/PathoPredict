@@ -4,15 +4,23 @@ import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { SYMPTOMS_DATASET, type Symptom } from '../data/symptoms';
 
-const QUICK_SUGGESTIONS = [
-  'fever',
-  'cough',
-  'chest_pain',
-  'headache',
-  'shortness_of_breath',
-  'joint_pain',
-  'fatigue',
-  'nausea',
+interface QuickSuggestionItem {
+  id: string;
+  label: string;
+  icon?: string;
+}
+
+const QUICK_SUGGESTIONS: QuickSuggestionItem[] = [
+  { id: 'fever', label: 'Fever' },
+  { id: 'cough', label: 'Persistent cough' },
+  { id: 'headache', label: 'Headache' },
+  { id: 'chest_pain', label: 'Chest pain / pressure' },
+  { id: 'shortness_of_breath', label: 'Shortness of breath' },
+  { id: 'fatigue', label: 'Fatigue & exhaustion' },
+  { id: 'joint_pain', label: 'Joint pain' },
+  { id: 'nausea', label: 'Nausea' },
+  { id: 'chills', label: 'Chills & shivering' },
+  { id: 'sore_throat', label: 'Sore throat' },
 ];
 
 const CATEGORIES = [
@@ -151,48 +159,48 @@ export function StartPage() {
       <div>
         <Header />
 
-        <main className="max-w-[1120px] mx-auto px-6 md:px-8 py-14 md:py-20">
+        <main className="max-w-[1120px] mx-auto px-6 md:px-8 py-10 md:py-16">
           {/* Back link */}
           <div className="mb-6">
             <Link
               to="/"
-              className="inline-flex items-center gap-1.5 text-sm text-text-muted hover:text-text transition-colors duration-200 group"
+              className="inline-flex items-center gap-2 text-sm sm:text-base font-medium text-text-muted hover:text-text transition-colors duration-200 group"
             >
-              <span className="transition-transform duration-200 group-hover:-translate-x-0.5">
+              <span className="transition-transform duration-200 group-hover:-translate-x-1">
                 ←
               </span>
               <span>Back to overview</span>
             </Link>
           </div>
 
-          {/* Section Header */}
-          <div className="flex flex-col items-start text-left mb-8 md:mb-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-4 rounded-lg bg-accent-light text-xs text-accent font-sans font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-              <span>Step 1 of 3 — Symptom intake</span>
+          {/* Section Header with Big Fonts */}
+          <div className="flex flex-col items-start text-left mb-8 md:mb-12">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-4 rounded-full bg-accent/15 border border-accent/25 text-xs sm:text-sm text-accent font-sans font-medium">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              <span>Step 1 of 3 · Clinical Intake</span>
             </div>
 
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-text mb-4">
+            <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-text mb-4 leading-[1.12]">
               Enter presenting symptoms.
             </h1>
 
-            <p className="font-sans text-base text-text-muted leading-relaxed max-w-2xl">
-              Search our verified clinical symptom dataset. Select multiple symptoms,
-              observations, or warning indicators to build a comprehensive differential profile.
+            <p className="font-sans text-base sm:text-lg text-text-muted leading-relaxed max-w-2xl">
+              Search our verified clinical symptom dataset or tap common signs below.
+              Add all observations and warning signs to calculate a calibrated differential diagnostic profile.
             </p>
           </div>
 
-          {/* Search Bar & Auto-Suggestions Dropdown */}
-          <div ref={containerRef} className="relative w-full max-w-3xl mb-6">
-            <div className="relative flex items-center bg-surface border border-hairline rounded-lg shadow-card transition-all duration-200 focus-within:border-hairline-strong focus-within:shadow-card-hover">
+          {/* Prominent, High-Contrast Search Bar */}
+          <div ref={containerRef} className="relative w-full max-w-3xl mb-8">
+            <div className="relative flex items-center bg-surface border-2 border-hairline hover:border-hairline-strong rounded-2xl shadow-card transition-all duration-200 focus-within:border-accent focus-within:ring-4 focus-within:ring-accent/20 focus-within:shadow-card-hover h-14 sm:h-16">
               {/* Search Icon */}
-              <div className="pl-4 pr-2 text-text-faint pointer-events-none">
+              <div className="pl-5 pr-3 text-text-faint pointer-events-none">
                 <svg
-                  className="w-5 h-5"
+                  className="w-6 h-6"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="2"
+                  strokeWidth="2.2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   aria-hidden="true"
@@ -213,8 +221,8 @@ export function StartPage() {
                 }}
                 onFocus={() => setIsDropdownOpen(true)}
                 onKeyDown={handleKeyDown}
-                placeholder="Search symptoms (e.g. high fever, retro-orbital pain, chills)..."
-                className="w-full bg-transparent py-3.5 pr-10 text-sm sm:text-base text-text placeholder:text-text-whisper placeholder:italic focus:outline-none font-sans"
+                placeholder="Search symptoms (e.g. fever, headache, chest pain, cough, nausea)..."
+                className="w-full bg-transparent py-4 pr-12 text-base sm:text-lg text-text placeholder:text-text-whisper focus:outline-none font-sans"
                 aria-autocomplete="list"
                 aria-expanded={isDropdownOpen}
               />
@@ -227,10 +235,10 @@ export function StartPage() {
                     setQuery('');
                     inputRef.current?.focus();
                   }}
-                  className="absolute right-3 p-1 text-text-faint hover:text-text transition-colors"
+                  className="absolute right-4 p-1.5 text-text-faint hover:text-text rounded-full hover:bg-soft-shell transition-colors"
                   aria-label="Clear search input"
                 >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
                   </svg>
@@ -240,7 +248,7 @@ export function StartPage() {
 
             {/* Suggestions Dropdown Popover */}
             {isDropdownOpen && (
-              <div className="absolute left-0 right-0 top-full mt-1.5 z-40 bg-surface border border-hairline rounded-lg shadow-card-hover overflow-hidden max-h-[340px] overflow-y-auto">
+              <div className="absolute left-0 right-0 top-full mt-2 z-40 bg-surface border-2 border-hairline rounded-2xl shadow-card-elevated overflow-hidden max-h-[380px] overflow-y-auto">
                 {filteredSuggestions.length > 0 ? (
                   <ul className="divide-y divide-hairline">
                     {filteredSuggestions.map((symptom, index) => {
@@ -253,34 +261,36 @@ export function StartPage() {
                             type="button"
                             onClick={() => handleSelect(symptom)}
                             onMouseEnter={() => setHighlightedIndex(index)}
-                            className={`w-full text-left px-4 py-3 flex items-center justify-between transition-colors duration-100 ${
+                            className={`w-full text-left px-5 py-4 flex items-center justify-between transition-colors duration-100 ${
                               isHighlighted ? 'bg-soft-shell' : 'hover:bg-soft-shell'
                             }`}
                           >
                             <div className="flex flex-col pr-4">
-                              <div className="flex items-center gap-2">
-                                <span className="font-sans text-sm font-medium text-text">
+                              <div className="flex items-center gap-2.5">
+                                <span className="font-sans text-base sm:text-lg font-semibold text-text">
                                   {symptom.name}
                                 </span>
                                 {isCritical && (
-                                  <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-critical-light border border-critical/20 text-[10px] text-critical font-mono uppercase tracking-wider">
-                                    <span className="w-1 h-1 rounded-full bg-critical" />
-                                    Warning sign
+                                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-critical/15 border border-critical/30 text-xs text-critical font-mono uppercase tracking-wider font-semibold">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-critical" />
+                                    Critical flag
                                   </span>
                                 )}
                               </div>
                               {symptom.description && (
-                                <span className="font-sans text-xs text-text-muted mt-0.5">
+                                <span className="font-sans text-sm text-text-muted mt-1 leading-snug">
                                   {symptom.description}
                                 </span>
                               )}
                             </div>
 
-                            <div className="flex items-center gap-3 flex-shrink-0">
-                              <span className="hidden sm:inline-block font-sans text-[11px] text-text-faint">
+                            <div className="flex items-center gap-3.5 flex-shrink-0">
+                              <span className="hidden sm:inline-block font-sans text-xs px-2.5 py-1 rounded-md bg-soft-shell text-text-faint border border-hairline">
                                 {symptom.category}
                               </span>
-                              <span className="text-xs text-accent font-medium">+ Add</span>
+                              <span className="inline-flex items-center px-3 py-1.5 rounded-lg bg-accent text-white text-sm font-semibold hover:bg-accent-hover transition-colors shadow-sm">
+                                + Add
+                              </span>
                             </div>
                           </button>
                         </li>
@@ -288,44 +298,50 @@ export function StartPage() {
                     })}
                   </ul>
                 ) : (
-                  <div className="px-4 py-6 text-center text-text-muted text-sm font-sans">
-                    No matching clinical symptoms found. Try another term or browse categories below.
+                  <div className="px-6 py-8 text-center text-text-muted text-base font-sans">
+                    No matching clinical symptoms found for <span className="font-semibold text-text">"{query}"</span>.
+                    <p className="text-sm text-text-faint mt-1">Try another everyday term or select from frequently reported signs below.</p>
                   </div>
                 )}
               </div>
             )}
           </div>
 
-          {/* Quick-Pick Frequently Reported Symptoms */}
-          <div className="max-w-3xl mb-8">
-            <div className="text-xs font-sans text-text-faint uppercase tracking-wider mb-2.5">
-              Frequently reported clinical signs
+          {/* Quick-Pick Frequently Reported Symptoms (Big & Clear) */}
+          <div className="max-w-3xl mb-10">
+            <div className="flex items-center justify-between mb-3.5">
+              <span className="text-xs sm:text-sm font-sans text-text-faint uppercase tracking-wider font-semibold">
+                Frequently reported symptoms
+              </span>
+              <span className="text-xs font-sans text-text-faint">
+                Tap to quickly add
+              </span>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {QUICK_SUGGESTIONS.map((id) => {
-                const symptom = SYMPTOMS_DATASET.find((s) => s.id === id);
+            <div className="flex flex-wrap gap-2.5">
+              {QUICK_SUGGESTIONS.map((item) => {
+                const symptom = SYMPTOMS_DATASET.find((s) => s.id === item.id);
                 if (!symptom) return null;
-                const isSelected = selectedIds.includes(id);
+                const isSelected = selectedIds.includes(item.id);
 
                 return (
                   <button
-                    key={id}
+                    key={item.id}
                     type="button"
                     onClick={() => {
                       if (isSelected) {
-                        handleRemove(id);
+                        handleRemove(item.id);
                       } else {
                         handleSelect(symptom);
                       }
                     }}
-                    className={`inline-flex items-center gap-1.5 text-xs font-sans px-3 py-1.5 rounded-lg border transition-all duration-200 ${
+                    className={`inline-flex items-center gap-2 text-sm sm:text-base font-medium px-4 py-2.5 rounded-xl border transition-all duration-200 shadow-sm ${
                       isSelected
-                        ? 'bg-accent-light border-accent/30 text-accent font-medium'
-                        : 'bg-surface border-hairline text-text-muted hover:text-text hover:border-hairline-strong hover:shadow-card'
+                        ? 'bg-accent text-white border-accent shadow-card hover:bg-accent-hover'
+                        : 'bg-surface border-hairline text-text hover:border-accent hover:text-accent hover:shadow-card hover:-translate-y-px'
                     }`}
                   >
-                    <span>{isSelected ? '✓' : '+'}</span>
-                    <span>{symptom.name.split(' (')[0]}</span>
+                    <span className="font-bold">{isSelected ? '✓' : '+'}</span>
+                    <span>{item.label}</span>
                   </button>
                 );
               })}
@@ -333,11 +349,11 @@ export function StartPage() {
           </div>
 
           {/* Category Filter Pills */}
-          <div className="max-w-3xl mb-8">
-            <div className="text-xs font-sans text-text-faint uppercase tracking-wider mb-2.5">
-              Browse by system domain
+          <div className="max-w-3xl mb-10">
+            <div className="text-xs sm:text-sm font-sans text-text-faint uppercase tracking-wider font-semibold mb-3.5">
+              Browse by body system
             </div>
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-2">
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat}
@@ -346,10 +362,10 @@ export function StartPage() {
                     setActiveCategory(cat);
                     setIsDropdownOpen(true);
                   }}
-                  className={`text-xs font-sans px-2.5 py-1.5 rounded-lg border transition-all duration-200 ${
+                  className={`text-xs sm:text-sm font-medium px-3.5 py-2 rounded-xl border transition-all duration-200 ${
                     activeCategory === cat
-                      ? 'bg-accent-light border-accent/30 text-accent font-medium'
-                      : 'bg-surface border-hairline text-text-faint hover:text-text hover:border-hairline-strong'
+                      ? 'bg-accent text-white border-accent shadow-sm'
+                      : 'bg-surface border-hairline text-text-muted hover:text-text hover:border-hairline-strong'
                   }`}
                 >
                   {cat}
@@ -358,21 +374,21 @@ export function StartPage() {
             </div>
           </div>
 
-          {/* Selected Symptoms Roster */}
-          <div className="max-w-3xl bg-surface border border-hairline rounded-lg shadow-card p-5 sm:p-7 mb-8">
-            <div className="flex items-center justify-between pb-4 mb-4 border-b border-hairline">
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                <span className="font-display text-lg font-medium text-text">
+          {/* Selected Symptoms Roster (Big & Clear) */}
+          <div className="max-w-3xl bg-surface border-2 border-hairline rounded-2xl shadow-card p-6 sm:p-8 mb-10">
+            <div className="flex items-center justify-between pb-5 mb-5 border-b border-hairline">
+              <div className="flex items-center gap-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse" />
+                <h2 className="font-display text-xl sm:text-2xl font-semibold text-text">
                   Selected symptoms ({selectedSymptoms.length})
-                </span>
+                </h2>
               </div>
 
               {selectedSymptoms.length > 0 && (
                 <button
                   type="button"
                   onClick={handleClearAll}
-                  className="text-xs font-sans text-text-faint hover:text-critical transition-colors"
+                  className="text-xs sm:text-sm font-sans font-semibold text-text-faint hover:text-critical transition-colors px-2 py-1 rounded hover:bg-soft-shell"
                 >
                   Clear all
                 </button>
@@ -380,29 +396,29 @@ export function StartPage() {
             </div>
 
             {selectedSymptoms.length > 0 ? (
-              <div className="flex flex-wrap gap-2.5">
+              <div className="flex flex-wrap gap-3">
                 {selectedSymptoms.map((symptom) => {
                   const isCritical = symptom.severity === 'critical';
 
                   return (
                     <div
                       key={symptom.id}
-                      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-sans transition-colors ${
+                      className={`inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl border text-sm sm:text-base font-medium transition-all shadow-sm ${
                         isCritical
-                          ? 'bg-critical-light border-critical/20 text-text'
+                          ? 'bg-critical/15 border-critical/40 text-critical shadow-[0_0_8px_rgba(225,29,72,0.15)]'
                           : 'bg-soft-shell border-hairline text-text'
                       }`}
                     >
                       <span
-                        className={`w-1.5 h-1.5 rounded-full ${
-                          isCritical ? 'bg-critical' : 'bg-accent'
+                        className={`w-2 h-2 rounded-full ${
+                          isCritical ? 'bg-critical animate-pulse' : 'bg-accent'
                         }`}
                       />
                       <span>{symptom.name}</span>
                       <button
                         type="button"
                         onClick={() => handleRemove(symptom.id)}
-                        className="text-text-faint hover:text-critical transition-colors pl-1"
+                        className="w-5 h-5 flex items-center justify-center rounded-full text-text-faint hover:text-critical hover:bg-critical/20 transition-colors ml-1 font-bold text-base"
                         aria-label={`Remove ${symptom.name}`}
                       >
                         ×
@@ -412,27 +428,32 @@ export function StartPage() {
                 })}
               </div>
             ) : (
-              <div className="py-6 text-center text-text-muted text-xs sm:text-sm font-sans">
-                No symptoms selected yet. Use the search bar above or click quick tags to start
-                your intake profile.
+              <div className="py-8 text-center text-text-muted text-sm sm:text-base font-sans flex flex-col items-center justify-center gap-2">
+                <svg className="w-10 h-10 text-text-faint/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M9 12h6M12 9v6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
+                </svg>
+                <p className="font-medium text-text">No symptoms selected yet.</p>
+                <p className="text-xs sm:text-sm text-text-faint max-w-md">
+                  Type in the search box above or tap any frequently reported sign to start your intake profile.
+                </p>
               </div>
             )}
           </div>
 
-          {/* Action CTA Panel */}
-          <div className="max-w-3xl flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-5 bg-surface border border-hairline rounded-lg shadow-card">
+          {/* Action CTA Panel with Big CTA Button */}
+          <div className="max-w-3xl flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-5 p-6 sm:p-8 bg-surface border-2 border-hairline rounded-2xl shadow-card-elevated">
             <div>
-              <div className="font-sans text-sm font-medium text-text">
+              <div className="font-sans text-base sm:text-lg font-bold text-text">
                 {selectedSymptoms.length === 0
                   ? 'Intake pending'
-                  : `${selectedSymptoms.length} marker${
+                  : `${selectedSymptoms.length} symptom${
                       selectedSymptoms.length > 1 ? 's' : ''
                     } documented`}
               </div>
-              <div className="font-sans text-xs text-text-muted mt-0.5">
+              <div className="font-sans text-sm text-text-muted mt-1 leading-snug">
                 {selectedSymptoms.length === 0
                   ? 'Add at least one symptom to calculate differential disease probabilities.'
-                  : 'Ready for differential evaluation.'}
+                  : 'Ready for full differential diagnosis evaluation across 202 conditions.'}
               </div>
             </div>
 
@@ -440,16 +461,16 @@ export function StartPage() {
               type="button"
               onClick={handleAnalyze}
               disabled={selectedSymptoms.length === 0 || isAnalyzing}
-              className={`inline-flex items-center justify-center font-sans text-sm font-medium px-5 py-2.5 rounded-lg border transition-all duration-200 min-h-[44px] ${
+              className={`inline-flex items-center justify-center font-sans text-base sm:text-lg font-semibold px-7 py-3.5 rounded-xl border transition-all duration-200 min-h-[52px] ${
                 selectedSymptoms.length > 0 && !isAnalyzing
-                  ? 'bg-accent hover:bg-accent-hover text-white border-transparent cursor-pointer hover:-translate-y-px hover:shadow-card'
-                  : 'bg-soft-shell text-text-whisper border-hairline cursor-not-allowed'
+                  ? 'bg-accent hover:bg-accent-hover text-white border-transparent cursor-pointer hover:-translate-y-0.5 shadow-card hover:shadow-card-elevated'
+                  : 'bg-soft-shell text-text-whisper border-hairline cursor-not-allowed opacity-50'
               }`}
             >
               {isAnalyzing ? (
-                <span className="flex items-center gap-2">
-                  <span className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  Analyzing...
+                <span className="flex items-center gap-2.5">
+                  <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  Calculating differential risk...
                 </span>
               ) : (
                 'Analyze differential risk →'

@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { ThemeToggle } from './ThemeToggle';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const isStartPage = location.pathname === '/start';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,13 +18,13 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-colors duration-200 ${
+      className={`sticky top-0 z-50 w-full transition-colors duration-200 border-b ${
         isScrolled
-          ? 'bg-bg/90 backdrop-blur-md border-b border-hairline'
-          : 'bg-transparent border-b border-transparent'
+          ? 'bg-bg/95 backdrop-blur-md border-hairline shadow-sm'
+          : 'bg-bg/80 backdrop-blur-sm border-transparent'
       }`}
     >
-      <div className="max-w-[1120px] mx-auto px-[22px] min-[861px]:px-[32px] h-16 min-[861px]:h-20 flex items-center justify-between">
+      <div className="max-w-[1120px] mx-auto px-6 md:px-8 h-16 md:h-20 flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2.5 text-text group">
           <svg
@@ -36,20 +39,22 @@ export function Header() {
           >
             <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
           </svg>
-          <span className="font-display text-xl tracking-tight font-medium text-text">
+          <span className="font-display text-xl sm:text-2xl tracking-tight font-medium text-text">
             PathoPredict
           </span>
         </a>
 
         {/* Actions & Theme Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-3">
           <ThemeToggle />
-          <a
-            href="/start"
-            className="inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white text-sm font-medium px-4 py-2 rounded-lg shadow-card hover:shadow-card-hover transition-all duration-150 font-sans"
-          >
-            Start a check
-          </a>
+          {!isStartPage && (
+            <a
+              href="/start"
+              className="inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white text-sm font-medium px-4 py-2 rounded-lg shadow-card hover:shadow-card-hover transition-all duration-150 font-sans"
+            >
+              Start a check
+            </a>
+          )}
         </div>
       </div>
     </header>

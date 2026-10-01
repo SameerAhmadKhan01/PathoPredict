@@ -172,3 +172,12 @@ html.dark input {
 html.dark input::placeholder {
   color: #475569 !important;
 }
+
+html.dark header {
+  background-color: rgba(9, 11, 16, 0.95) !important;
+  border-color: #1C2330 !important;
+}
+
+html.dark header .text-text {
+  color: #F8FAFC !important;
+}
