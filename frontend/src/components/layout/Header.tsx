@@ -45,12 +45,6 @@ export function Header() {
         <div className="flex items-center gap-2 sm:gap-3">
           <ThemeToggle />
           <a
-            href="/sign-in"
-            className="inline-flex items-center text-sm text-text-muted hover:text-text px-2.5 py-1.5 transition-colors duration-150 font-sans"
-          >
-            Sign in
-          </a>
-          <a
             href="/start"
             className="inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white text-sm font-medium px-4 py-2 rounded-lg shadow-card hover:shadow-card-hover transition-all duration-150 font-sans"
           >
