@@ -147,47 +147,46 @@ export function StartPage() {
   };
 
   return (
-    <div className="min-h-screen bg-bg text-text font-sans selection:bg-red selection:text-white flex flex-col justify-between">
+    <div className="min-h-screen bg-bg text-text font-sans flex flex-col justify-between">
       <div>
         <Header />
 
-        <main className="max-w-[1120px] mx-auto px-[22px] min-[861px]:px-[32px] py-[56px] min-[861px]:py-[80px]">
-          {/* Back link & breadcrumb */}
+        <main className="max-w-[1120px] mx-auto px-6 md:px-8 py-14 md:py-20">
+          {/* Back link */}
           <div className="mb-6">
             <Link
               to="/"
-              className="inline-flex items-center gap-1.5 text-xs text-text-muted hover:text-text transition-colors duration-150 group"
+              className="inline-flex items-center gap-1.5 text-sm text-text-muted hover:text-text transition-colors duration-200 group"
             >
-              <span className="transition-transform duration-150 group-hover:-translate-x-0.5">
+              <span className="transition-transform duration-200 group-hover:-translate-x-0.5">
                 ←
               </span>
-              <span>Back to Overview</span>
+              <span>Back to overview</span>
             </Link>
           </div>
 
           {/* Section Header */}
-          <div className="flex flex-col items-start text-left mb-8 min-[861px]:mb-10">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 mb-4 rounded-[3px] border border-hairline bg-panel text-xs text-text-muted">
-              <span className="w-1.5 h-1.5 rounded-full bg-red" />
-              <span>Step 01 of 03 // Symptom Intake</span>
+          <div className="flex flex-col items-start text-left mb-8 md:mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-4 rounded-lg bg-accent-light text-xs text-accent font-sans font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+              <span>Step 1 of 3 — Symptom intake</span>
             </div>
 
-            <h1 className="font-serif text-3xl sm:text-4xl min-[861px]:text-5xl font-medium tracking-tight text-text mb-4">
-              Enter presenting symptoms & vitals.
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-text mb-4">
+              Enter presenting symptoms.
             </h1>
 
             <p className="font-sans text-base text-text-muted leading-relaxed max-w-2xl">
-              Type to search our verified clinical symptom dataset. You can select multiple
-              symptoms, observations, or warning indicators to construct a comprehensive
-              differential profile.
+              Search our verified clinical symptom dataset. Select multiple symptoms,
+              observations, or warning indicators to build a comprehensive differential profile.
             </p>
           </div>
 
           {/* Search Bar & Auto-Suggestions Dropdown */}
           <div ref={containerRef} className="relative w-full max-w-3xl mb-6">
-            <div className="relative flex items-center bg-panel border border-hairline rounded-[3px] transition-colors duration-150 focus-within:border-hairline-strong">
+            <div className="relative flex items-center bg-surface border border-hairline rounded-lg shadow-card transition-all duration-200 focus-within:border-hairline-strong focus-within:shadow-card-hover">
               {/* Search Icon */}
-              <div className="pl-4 pr-2 text-text-muted pointer-events-none">
+              <div className="pl-4 pr-2 text-text-faint pointer-events-none">
                 <svg
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
@@ -215,7 +214,7 @@ export function StartPage() {
                 onFocus={() => setIsDropdownOpen(true)}
                 onKeyDown={handleKeyDown}
                 placeholder="Search symptoms (e.g. high fever, retro-orbital pain, chills)..."
-                className="w-full bg-transparent py-3.5 pr-10 text-sm sm:text-base text-text placeholder:text-text-faint focus:outline-none font-sans"
+                className="w-full bg-transparent py-3.5 pr-10 text-sm sm:text-base text-text placeholder:text-text-whisper placeholder:italic focus:outline-none font-sans"
                 aria-autocomplete="list"
                 aria-expanded={isDropdownOpen}
               />
@@ -241,7 +240,7 @@ export function StartPage() {
 
             {/* Suggestions Dropdown Popover */}
             {isDropdownOpen && (
-              <div className="absolute left-0 right-0 top-full mt-1.5 z-40 bg-panel-raised border border-hairline rounded-[3px] overflow-hidden max-h-[340px] overflow-y-auto">
+              <div className="absolute left-0 right-0 top-full mt-1.5 z-40 bg-surface border border-hairline rounded-lg shadow-card-hover overflow-hidden max-h-[340px] overflow-y-auto">
                 {filteredSuggestions.length > 0 ? (
                   <ul className="divide-y divide-hairline">
                     {filteredSuggestions.map((symptom, index) => {
@@ -255,7 +254,7 @@ export function StartPage() {
                             onClick={() => handleSelect(symptom)}
                             onMouseEnter={() => setHighlightedIndex(index)}
                             className={`w-full text-left px-4 py-3 flex items-center justify-between transition-colors duration-100 ${
-                              isHighlighted ? 'bg-panel' : 'hover:bg-panel'
+                              isHighlighted ? 'bg-soft-shell' : 'hover:bg-soft-shell'
                             }`}
                           >
                             <div className="flex flex-col pr-4">
@@ -264,9 +263,9 @@ export function StartPage() {
                                   {symptom.name}
                                 </span>
                                 {isCritical && (
-                                  <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-[2px] bg-red/10 border border-red/30 text-[10px] text-red font-mono uppercase tracking-wider">
-                                    <span className="w-1 h-1 rounded-full bg-red" />
-                                    Warning Sign
+                                  <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-critical-light border border-critical/20 text-[10px] text-critical font-mono uppercase tracking-wider">
+                                    <span className="w-1 h-1 rounded-full bg-critical" />
+                                    Warning sign
                                   </span>
                                 )}
                               </div>
@@ -281,7 +280,7 @@ export function StartPage() {
                               <span className="hidden sm:inline-block font-sans text-[11px] text-text-faint">
                                 {symptom.category}
                               </span>
-                              <span className="text-xs text-red font-medium">+ Add</span>
+                              <span className="text-xs text-accent font-medium">+ Add</span>
                             </div>
                           </button>
                         </li>
@@ -290,7 +289,7 @@ export function StartPage() {
                   </ul>
                 ) : (
                   <div className="px-4 py-6 text-center text-text-muted text-sm font-sans">
-                    No matching clinical symptoms found. Try typing another term or select from categories below.
+                    No matching clinical symptoms found. Try another term or browse categories below.
                   </div>
                 )}
               </div>
@@ -300,7 +299,7 @@ export function StartPage() {
           {/* Quick-Pick Frequently Reported Symptoms */}
           <div className="max-w-3xl mb-8">
             <div className="text-xs font-sans text-text-faint uppercase tracking-wider mb-2.5">
-              Frequently Reported Clinical Signs
+              Frequently reported clinical signs
             </div>
             <div className="flex flex-wrap gap-2">
               {QUICK_SUGGESTIONS.map((id) => {
@@ -319,10 +318,10 @@ export function StartPage() {
                         handleSelect(symptom);
                       }
                     }}
-                    className={`inline-flex items-center gap-1.5 text-xs font-sans px-3 py-1.5 rounded-[3px] border transition-colors duration-150 ${
+                    className={`inline-flex items-center gap-1.5 text-xs font-sans px-3 py-1.5 rounded-lg border transition-all duration-200 ${
                       isSelected
-                        ? 'bg-red-deep/40 border-red/50 text-text'
-                        : 'bg-panel border-hairline text-text-muted hover:text-text hover:border-hairline-strong'
+                        ? 'bg-accent-light border-accent/30 text-accent font-medium'
+                        : 'bg-surface border-hairline text-text-muted hover:text-text hover:border-hairline-strong hover:shadow-card'
                     }`}
                   >
                     <span>{isSelected ? '✓' : '+'}</span>
@@ -333,10 +332,10 @@ export function StartPage() {
             </div>
           </div>
 
-          {/* Category Filter Pills (when not actively searching) */}
+          {/* Category Filter Pills */}
           <div className="max-w-3xl mb-8">
             <div className="text-xs font-sans text-text-faint uppercase tracking-wider mb-2.5">
-              Browse by Anatomical / System Domain
+              Browse by system domain
             </div>
             <div className="flex flex-wrap gap-1.5">
               {CATEGORIES.map((cat) => (
@@ -347,10 +346,10 @@ export function StartPage() {
                     setActiveCategory(cat);
                     setIsDropdownOpen(true);
                   }}
-                  className={`text-xs font-sans px-2.5 py-1 rounded-[3px] border transition-colors duration-150 ${
+                  className={`text-xs font-sans px-2.5 py-1.5 rounded-lg border transition-all duration-200 ${
                     activeCategory === cat
-                      ? 'bg-panel-raised border-blue/50 text-blue'
-                      : 'bg-panel border-hairline text-text-faint hover:text-text'
+                      ? 'bg-accent-light border-accent/30 text-accent font-medium'
+                      : 'bg-surface border-hairline text-text-faint hover:text-text hover:border-hairline-strong'
                   }`}
                 >
                   {cat}
@@ -360,12 +359,12 @@ export function StartPage() {
           </div>
 
           {/* Selected Symptoms Roster */}
-          <div className="max-w-3xl bg-panel border border-hairline rounded-[3px] p-5 sm:p-7 mb-8">
+          <div className="max-w-3xl bg-surface border border-hairline rounded-lg shadow-card p-5 sm:p-7 mb-8">
             <div className="flex items-center justify-between pb-4 mb-4 border-b border-hairline">
               <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue" />
-                <span className="font-serif text-lg font-medium text-text">
-                  Selected Symptoms ({selectedSymptoms.length})
+                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                <span className="font-display text-lg font-medium text-text">
+                  Selected symptoms ({selectedSymptoms.length})
                 </span>
               </div>
 
@@ -373,7 +372,7 @@ export function StartPage() {
                 <button
                   type="button"
                   onClick={handleClearAll}
-                  className="text-xs font-sans text-text-faint hover:text-red transition-colors"
+                  className="text-xs font-sans text-text-faint hover:text-critical transition-colors"
                 >
                   Clear all
                 </button>
@@ -388,22 +387,22 @@ export function StartPage() {
                   return (
                     <div
                       key={symptom.id}
-                      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-[3px] border text-xs font-sans transition-colors ${
+                      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-sans transition-colors ${
                         isCritical
-                          ? 'bg-red-deep/25 border-red/40 text-text'
-                          : 'bg-panel-raised border-hairline text-text'
+                          ? 'bg-critical-light border-critical/20 text-text'
+                          : 'bg-soft-shell border-hairline text-text'
                       }`}
                     >
                       <span
                         className={`w-1.5 h-1.5 rounded-full ${
-                          isCritical ? 'bg-red' : 'bg-blue'
+                          isCritical ? 'bg-critical' : 'bg-accent'
                         }`}
                       />
                       <span>{symptom.name}</span>
                       <button
                         type="button"
                         onClick={() => handleRemove(symptom.id)}
-                        className="text-text-muted hover:text-red transition-colors pl-1"
+                        className="text-text-faint hover:text-critical transition-colors pl-1"
                         aria-label={`Remove ${symptom.name}`}
                       >
                         ×
@@ -414,26 +413,26 @@ export function StartPage() {
               </div>
             ) : (
               <div className="py-6 text-center text-text-muted text-xs sm:text-sm font-sans">
-                No symptoms selected yet. Use the search bar above or click quick tags to populate
+                No symptoms selected yet. Use the search bar above or click quick tags to start
                 your intake profile.
               </div>
             )}
           </div>
 
           {/* Action CTA Panel */}
-          <div className="max-w-3xl flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-5 bg-panel border border-hairline rounded-[3px]">
+          <div className="max-w-3xl flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-5 bg-surface border border-hairline rounded-lg shadow-card">
             <div>
               <div className="font-sans text-sm font-medium text-text">
                 {selectedSymptoms.length === 0
-                  ? 'Intake Pending'
-                  : `${selectedSymptoms.length} Marker${
+                  ? 'Intake pending'
+                  : `${selectedSymptoms.length} marker${
                       selectedSymptoms.length > 1 ? 's' : ''
-                    } Documented`}
+                    } documented`}
               </div>
               <div className="font-sans text-xs text-text-muted mt-0.5">
                 {selectedSymptoms.length === 0
                   ? 'Add at least one symptom to calculate differential disease probabilities.'
-                  : 'Ready for multi-pathogen ML evaluation.'}
+                  : 'Ready for differential evaluation.'}
               </div>
             </div>
 
@@ -441,19 +440,19 @@ export function StartPage() {
               type="button"
               onClick={handleAnalyze}
               disabled={selectedSymptoms.length === 0 || isAnalyzing}
-              className={`inline-flex items-center justify-center font-sans text-sm font-medium px-5 py-2.5 rounded-[3px] border transition-colors duration-150 ${
+              className={`inline-flex items-center justify-center font-sans text-sm font-medium px-5 py-2.5 rounded-lg border transition-all duration-200 min-h-[44px] ${
                 selectedSymptoms.length > 0 && !isAnalyzing
-                  ? 'bg-red hover:bg-red-dim text-text border-transparent cursor-pointer'
-                  : 'bg-panel-raised text-text-faint border-hairline cursor-not-allowed opacity-60'
+                  ? 'bg-accent hover:bg-accent-hover text-white border-transparent cursor-pointer hover:-translate-y-px hover:shadow-card'
+                  : 'bg-soft-shell text-text-whisper border-hairline cursor-not-allowed'
               }`}
             >
               {isAnalyzing ? (
                 <span className="flex items-center gap-2">
-                  <span className="w-3.5 h-3.5 border-2 border-text-muted border-t-text rounded-full animate-spin" />
-                  Running ML Inference...
+                  <span className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  Analyzing...
                 </span>
               ) : (
-                'Analyze Differential Risk →'
+                'Analyze differential risk →'
               )}
             </button>
           </div>
