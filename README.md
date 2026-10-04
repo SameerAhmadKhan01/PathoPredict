@@ -1,6 +1,6 @@
 ## PathoPredict
 
-> > <strong><em>contributions done by :</em></strong>
+> <strong><em>contributions done by :</em></strong>
 
 <ul>
 <li><strong>SAMEER AHMAD KHAN</strong</li>
@@ -10,7 +10,7 @@
 <li><strong></strong</li>
 </ul>
 
-> > Team List :
+> Team List :
 
 <ol>
 <li><strong>SAMEER AHMAD KHAN</strong</li>
