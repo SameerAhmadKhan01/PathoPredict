@@ -41,6 +41,9 @@ Given a validated set of symptom inputs, the application computes:
   <img src="docs/screenshots/start.png" alt="PathoPredict Symptom Intake Dashboard" width="800" />
 </p>
 <p align="center">
+  <img src="docs/screenshots/scan.png" alt="selecting disease page" width="800" />
+</p>
+<p align="center">
   <img src="docs/screenshots/results.png" alt="PathoPredict Diagnostic Results and Differential Diagnosis" width="800" />
 </p>
 
