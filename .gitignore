@@ -41,3 +41,8 @@ wheels/
 .DS_Store
 *.swp
 *.swo
+
+# Agent skills
+.agents/
+skills-lock.json
+

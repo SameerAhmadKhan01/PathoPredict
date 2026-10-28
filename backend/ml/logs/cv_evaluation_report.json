@@ -1,0 +1,136 @@
+{
+  "cv_summary": {
+    "Decision Tree": {
+      "accuracy_mean": 0.6066841415465267,
+      "accuracy_std": 0.013977582812995973,
+      "precision_macro_mean": 0.6291996041200167,
+      "precision_macro_std": 0.016711174291815872,
+      "recall_macro_mean": 0.6068599717114568,
+      "recall_macro_std": 0.014716085751927838,
+      "f1_macro_mean": 0.6025437576742225,
+      "f1_macro_std": 0.0156677206727364
+    },
+    "Random Forest": {
+      "accuracy_mean": 0.7830930537352555,
+      "accuracy_std": 0.013066782260146296,
+      "precision_macro_mean": 0.7882311330512304,
+      "precision_macro_std": 0.012733258536240013,
+      "recall_macro_mean": 0.7838048090523337,
+      "recall_macro_std": 0.013841526633055308,
+      "f1_macro_mean": 0.7762781918203758,
+      "f1_macro_std": 0.01416193183110068
+    },
+    "Naive Bayes (Bernoulli)": {
+      "accuracy_mean": 0.7536041939711664,
+      "accuracy_std": 0.009013760872371901,
+      "precision_macro_mean": 0.777069422925764,
+      "precision_macro_std": 0.009002009497412615,
+      "recall_macro_mean": 0.7659830268741159,
+      "recall_macro_std": 0.009758123741676328,
+      "f1_macro_mean": 0.7617924472185601,
+      "f1_macro_std": 0.009723964345269825
+    }
+  },
+  "top_features": [
+    [
+      "fatigue",
+      0.03669247666772558
+    ],
+    [
+      "fever",
+      0.03048842202637876
+    ],
+    [
+      "headache",
+      0.0266604041217817
+    ],
+    [
+      "nausea",
+      0.024985954291861907
+    ],
+    [
+      "skin_rash",
+      0.021401403835803703
+    ],
+    [
+      "joint_pain",
+      0.020889265755947475
+    ],
+    [
+      "sore_throat",
+      0.018913667943107802
+    ],
+    [
+      "weight_loss",
+      0.01642762072390883
+    ],
+    [
+      "muscle_weakness",
+      0.015842831109421734
+    ],
+    [
+      "cough",
+      0.014637240320208552
+    ],
+    [
+      "shortness_of_breath",
+      0.014313088524267801
+    ],
+    [
+      "chest_pain",
+      0.013872666316615889
+    ],
+    [
+      "blood_in_urine",
+      0.013780054631688387
+    ],
+    [
+      "muscle_pain",
+      0.012807497494819135
+    ],
+    [
+      "blood_in_stool",
+      0.012172159598453386
+    ],
+    [
+      "vomiting",
+      0.011962640314978661
+    ],
+    [
+      "balance_problems_ataxia",
+      0.011712778752715123
+    ],
+    [
+      "loss_of_appetite",
+      0.011162978909673663
+    ],
+    [
+      "sweating",
+      0.010617774828977477
+    ],
+    [
+      "cramping",
+      0.01045521986028763
+    ],
+    [
+      "abdominal_pain",
+      0.010432681614287821
+    ],
+    [
+      "numbness_paresthesia",
+      0.010102400904314354
+    ],
+    [
+      "dizziness",
+      0.00939394024821842
+    ],
+    [
+      "bloating",
+      0.00939333702079099
+    ],
+    [
+      "increased_appetite",
+      0.009302492012621314
+    ]
+  ]
+}

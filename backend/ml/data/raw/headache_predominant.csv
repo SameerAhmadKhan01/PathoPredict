@@ -1,0 +1,16 @@
+fever,cough,headache,fatigue,chest_pain,joint_pain,sore_throat,shortness_of_breath,nausea,rash,disease
+0,0,1,1,0,0,0,0,1,0,Migraine
+0,0,1,0,0,0,0,0,0,0,Tension Headache
+0,0,1,1,0,0,0,0,1,0,Cluster Headache
+1,1,1,1,0,0,1,0,0,0,Sinus Headache
+1,0,1,1,0,1,1,0,1,0,Meningitis
+0,0,1,0,1,0,0,1,0,0,Hypertension (Severe)
+0,0,1,1,0,0,0,0,1,0,Brain Tumor (Early Symptoms)
+0,0,1,1,0,1,0,0,0,0,Cervicogenic Headache
+1,0,1,1,0,1,0,0,0,0,Temporal Arteritis
+0,0,1,0,0,1,0,0,0,0,Occipital Neuralgia
+0,0,1,1,0,0,0,0,1,0,Medication-Overuse Headache
+0,0,1,1,0,0,0,0,0,0,Post-Traumatic Headache
+0,0,1,1,1,0,0,0,1,0,Acute Angle-Closure Glaucoma
+0,0,1,1,0,0,0,1,1,0,Carbon Monoxide Poisoning
+1,0,1,1,0,1,0,0,1,0,Viral Encephalitis

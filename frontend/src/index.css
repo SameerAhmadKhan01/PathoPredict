@@ -1,3 +1,183 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Plus+Jakarta+Sans:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* ─── Light Theme (Calm Linen Canvas) ─── */
+  :root,
+  html[data-theme="light"],
+  body[data-theme="light"] {
+    color-scheme: light;
+
+    --c-bg: 250 249 247;
+    --c-surface: 255 255 255;
+    --c-soft-shell: 243 241 238;
+
+    --c-text: 26 29 35;
+    --c-text-muted: 85 91 103;
+    --c-text-faint: 139 145 157;
+    --c-text-whisper: 181 186 196;
+
+    --c-accent: 74 111 165;
+    --c-accent-hover: 61 94 142;
+    --c-accent-light: 235 240 247;
+
+    --c-amber: 196 125 26;
+    --c-amber-light: 254 246 232;
+    --c-critical: 192 57 43;
+    --c-critical-light: 253 240 238;
+
+    --c-hairline: 229 226 221;
+    --c-hairline-strong: 209 206 200;
+
+    --shadow-card: 0 1px 3px rgba(26,29,35,0.04), 0 1px 2px rgba(26,29,35,0.02);
+    --shadow-card-hover: 0 4px 12px rgba(26,29,35,0.06), 0 1px 3px rgba(26,29,35,0.04);
+    --shadow-card-elevated: 0 4px 12px rgba(26,29,35,0.06), 0 1px 3px rgba(26,29,35,0.04);
+
+    --svg-surface: #FFFFFF;
+    --svg-bg: #FAF9F7;
+    --svg-text: #1A1D23;
+    --svg-text-muted: #555B67;
+    --svg-accent: #4A6FA5;
+    --svg-accent-hover: #3D5E8E;
+    --svg-hairline: #E5E2DD;
+    --svg-accent-halo: rgba(74, 111, 165, 0.2);
+    --svg-accent-08: rgba(74, 111, 165, 0.08);
+    --svg-trail-opacity: 0.5;
+  }
+
+  /* ─── Dark Theme (Arterial Red, Venous Blue & Deep Black) ─── */
+  :root.dark,
+  html.dark,
+  body.dark,
+  [data-theme="dark"] {
+    color-scheme: dark;
+
+    /* Deep Black Surfaces */
+    --c-bg: 9 11 16;
+    --c-surface: 15 18 25;
+    --c-soft-shell: 22 27 38;
+
+    /* High-contrast crisp typography */
+    --c-text: 248 250 252;
+    --c-text-muted: 148 163 184;
+    --c-text-faint: 100 116 139;
+    --c-text-whisper: 71 85 105;
+
+    /* Venous Blue primary accent */
+    --c-accent: 37 99 235;
+    --c-accent-hover: 59 130 246;
+    --c-accent-light: 24 37 68;
+
+    /* Arterial Red critical / cardiac */
+    --c-critical: 225 29 72;
+    --c-critical-light: 59 13 28;
+
+    /* Cardiac Amber warning */
+    --c-amber: 245 158 11;
+    --c-amber-light: 60 30 8;
+
+    /* Structural Hairline (dark slate-blue on pitch black) */
+    --c-hairline: 28 35 48;
+    --c-hairline-strong: 45 56 77;
+
+    /* Luminous dark shadows */
+    --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(37, 99, 235, 0.12);
+    --shadow-card-hover: 0 6px 20px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(37, 99, 235, 0.25);
+    --shadow-card-elevated: 0 8px 30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(225, 29, 72, 0.28);
+
+    /* SVG variables for dark mode */
+    --svg-surface: #0F1219;
+    --svg-bg: #090B10;
+    --svg-text: #F8FAFC;
+    --svg-text-muted: #94A3B8;
+    --svg-accent: #2563EB;
+    --svg-accent-hover: #3B82F6;
+    --svg-hairline: #1C2330;
+    --svg-accent-halo: rgba(37, 99, 235, 0.25);
+    --svg-accent-08: rgba(37, 99, 235, 0.1);
+    --svg-trail-opacity: 0.25;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg text-text font-sans;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  ::selection {
+    @apply bg-accent text-white;
+  }
+
+  html.dark ::selection,
+  body.dark ::selection {
+    background-color: #E11D48;
+    color: #FFFFFF;
+  }
+}
+
+/* ─── Direct Dark Theme Overrides (guarantees 100% dark transformation) ─── */
+html.dark,
+body.dark {
+  background-color: #090B10 !important;
+  color: #F8FAFC !important;
+}
+
+html.dark body {
+  background-color: #090B10 !important;
+  color: #F8FAFC !important;
+}
+
+html.dark .bg-bg {
+  background-color: #090B10 !important;
+}
+
+html.dark .bg-surface {
+  background-color: #0F1219 !important;
+}
+
+html.dark .bg-soft-shell {
+  background-color: #161B26 !important;
+}
+
+html.dark .border-hairline {
+  border-color: #1C2330 !important;
+}
+
+html.dark .text-text {
+  color: #F8FAFC !important;
+}
+
+html.dark .text-text-muted {
+  color: #94A3B8 !important;
+}
+
+html.dark .text-text-faint {
+  color: #64748B !important;
+}
+
+html.dark input {
+  background-color: #161B26 !important;
+  color: #F8FAFC !important;
+  border-color: #1C2330 !important;
+}
+
+html.dark input::placeholder {
+  color: #475569 !important;
+}
+
+html.dark header {
+  background-color: rgba(9, 11, 16, 0.95) !important;
+  border-color: #1C2330 !important;
+}
+
+html.dark header .text-text {
+  color: #F8FAFC !important;
+}

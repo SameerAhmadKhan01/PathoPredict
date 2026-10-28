@@ -1,0 +1,15 @@
+Condition,Depressed Mood / Persistent Sadness,Loss of Interest / Anhedonia,Excessive Worry / Apprehension,Acute Panic Attacks / Trembling,Sleep Disturbance (Insomnia/Hypersomnia),Fatigue / Low Energy,Mania / Grandiosity,Hallucinations / Delusions,Intrusive Flashbacks / Re-experiencing,Compulsions / Repetitive Rituals,Dissociation / Detachment,Severe Weight / Appetite Shift,Psychomotor Agitation or Retardation,Suicidal Ideation / Thoughts of Death
+Major Depressive Disorder (MDD),1,1,0,0,1,1,0,0,0,0,0,1,1,1
+Persistent Depressive Disorder (Dysthymia),1,1,0,0,1,1,0,0,0,0,0,1,0,0
+Bipolar I Disorder (Manic Episode),0,0,0,0,1,0,1,1,0,0,0,0,1,0
+Generalized Anxiety Disorder (GAD),0,0,1,0,1,1,0,0,0,0,0,0,0,0
+Panic Disorder,0,0,1,1,0,0,0,0,0,0,0,0,1,0
+Social Anxiety Disorder,0,0,1,1,0,0,0,0,0,0,0,0,0,0
+Obsessive-Compulsive Disorder (OCD),0,0,1,0,0,0,0,0,0,1,0,0,0,0
+Post-Traumatic Stress Disorder (PTSD),1,1,1,1,1,0,0,0,1,0,1,0,1,1
+Schizophrenia,0,1,0,0,1,1,0,1,0,0,0,0,1,1
+Schizoaffective Disorder,1,1,0,0,1,1,1,1,0,0,0,1,1,1
+Borderline Personality Disorder (BPD),1,0,1,0,0,0,0,0,0,0,1,0,0,1
+Anorexia Nervosa,0,0,1,0,0,1,0,0,0,1,0,1,0,0
+Dissociative Identity Disorder (DID),0,0,0,0,0,0,0,0,1,0,1,0,0,1
+Attention-Deficit/Hyperactivity Disorder (ADHD),0,0,0,0,1,0,0,0,0,0,0,0,1,0

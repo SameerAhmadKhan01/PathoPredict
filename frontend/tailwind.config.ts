@@ -5,45 +5,86 @@ export default {
     './index.html',
     './src/**/*.{js,ts,jsx,tsx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        bg: '#0a0d12',
-        'bg-panel': '#10151d',
-        'bg-panel-raised': '#141a23',
-        panel: '#10151d',
-        'panel-raised': '#141a23',
-        hairline: 'rgba(236, 234, 228, 0.12)',
-        'hairline-strong': 'rgba(236, 234, 228, 0.22)',
-        text: '#ece9e2',
-        'text-muted': '#8c92a0',
-        'text-faint': '#5c6270',
-        muted: '#8c92a0',
-        faint: '#5c6270',
-        red: {
-          DEFAULT: '#c5313c',
-          deep: '#7a1b22',
-          dim: '#8f2a30',
+        // Light surfaces (auto-switch via CSS variables)
+        bg: 'rgb(var(--c-bg) / <alpha-value>)',
+        surface: 'rgb(var(--c-surface) / <alpha-value>)',
+        'soft-shell': 'rgb(var(--c-soft-shell) / <alpha-value>)',
+        panel: 'rgb(var(--c-surface) / <alpha-value>)',
+        'panel-raised': 'rgb(var(--c-soft-shell) / <alpha-value>)',
+
+        // Text hierarchy
+        text: {
+          DEFAULT: 'rgb(var(--c-text) / <alpha-value>)',
+          muted: 'rgb(var(--c-text-muted) / <alpha-value>)',
+          faint: 'rgb(var(--c-text-faint) / <alpha-value>)',
+          whisper: 'rgb(var(--c-text-whisper) / <alpha-value>)',
         },
-        'red-deep': '#7a1b22',
-        'red-dim': '#8f2a30',
-        blue: {
-          DEFAULT: '#3f74ad',
-          deep: '#1f3b5c',
-          dim: '#335f8c',
+
+        // Primary accent
+        accent: {
+          DEFAULT: 'rgb(var(--c-accent) / <alpha-value>)',
+          hover: 'rgb(var(--c-accent-hover) / <alpha-value>)',
+          light: 'rgb(var(--c-accent-light) / <alpha-value>)',
         },
-        'blue-deep': '#1f3b5c',
-        'blue-dim': '#335f8c',
+
+        // Severity colors (clinical meaning ONLY)
+        amber: {
+          DEFAULT: 'rgb(var(--c-amber) / <alpha-value>)',
+          light: 'rgb(var(--c-amber-light) / <alpha-value>)',
+        },
+        critical: {
+          DEFAULT: 'rgb(var(--c-critical) / <alpha-value>)',
+          light: 'rgb(var(--c-critical-light) / <alpha-value>)',
+        },
+
+        // Structural
+        hairline: {
+          DEFAULT: 'rgb(var(--c-hairline) / <alpha-value>)',
+          strong: 'rgb(var(--c-hairline-strong) / <alpha-value>)',
+        },
       },
       fontFamily: {
-        serif: ['Fraunces', 'serif'],
-        sans: ['"IBM Plex Sans"', 'sans-serif'],
+        serif: ['Fraunces', 'Georgia', 'serif'],
+        display: ['Satoshi', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', '"IBM Plex Sans"', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
       },
       borderRadius: {
-        DEFAULT: '3px',
+        DEFAULT: '8px',
+        lg: '12px',
+        xl: '16px',
       },
       maxWidth: {
         content: '1120px',
+      },
+      boxShadow: {
+        card: 'var(--shadow-card)',
+        'card-hover': 'var(--shadow-card-hover)',
+        'card-elevated': 'var(--shadow-card-elevated)',
+      },
+      keyframes: {
+        'shimmer': {
+          '0%': { opacity: '0.4' },
+          '50%': { opacity: '0.7' },
+          '100%': { opacity: '0.4' },
+        },
+        'fade-up': {
+          '0%': { opacity: '0', transform: 'translateY(12px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'progress-fill': {
+          '0%': { transform: 'scaleX(0)' },
+          '100%': { transform: 'scaleX(1)' },
+        },
+      },
+      animation: {
+        'shimmer': 'shimmer 1.8s ease-in-out infinite',
+        'fade-up': 'fade-up 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+        'progress-fill': 'progress-fill 0.6s ease-out forwards',
       },
     },
   },

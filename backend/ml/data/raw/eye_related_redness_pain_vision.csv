@@ -1,0 +1,15 @@
+Disease,Eye_Redness,Eye_Pain,Blurred_Vision,Vision_Loss,Photophobia,Eye_Discharge,Itching,Excessive_Tearing,Eye_Swelling,Halos_Around_Lights,Floaters,Flashes_of_Light,Headache,Foreign_Body_Sensation
+Conjunctivitis,1,0,0,0,0,1,1,1,0,0,0,0,0,1
+Acute Angle-Closure Glaucoma,1,1,1,1,0,0,0,0,0,1,0,0,1,0
+Uveitis,1,1,1,0,1,0,0,0,0,0,1,0,0,0
+Corneal Abrasion,1,1,0,0,1,0,0,1,0,0,0,0,0,1
+Keratitis,1,1,1,0,1,1,0,1,0,0,0,0,0,0
+Blepharitis,1,0,0,0,0,0,1,1,1,0,0,0,0,1
+Dry Eye Syndrome,1,0,1,0,0,0,1,0,0,0,0,0,0,1
+Cataract,0,0,1,1,0,0,0,0,0,1,0,0,0,0
+Retinal Detachment,0,0,1,1,0,0,0,0,0,0,1,1,0,0
+Stye,1,1,0,0,0,0,0,1,1,0,0,0,0,0
+Subconjunctival Hemorrhage,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+Optic Neuritis,0,1,1,1,0,0,0,0,0,0,0,0,1,0
+Macular Degeneration,0,0,1,1,0,0,0,0,0,0,0,0,0,0
+Scleritis,1,1,1,0,1,0,0,1,0,0,0,0,0,0

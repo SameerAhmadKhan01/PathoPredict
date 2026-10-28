@@ -1,0 +1,15 @@
+Disease,Easy_Bruising,Prolonged_Bleeding,Petechiae,Joint_Bleeding,Nosebleeds,Gum_Bleeding,Blood_in_Urine,Blood_in_Stool,Heavy_Menstrual_Bleeding,Fatigue,Pale_Skin,Frequent_Infections,Skin_Rash,Swollen_Joints
+Hemophilia A,1,1,0,1,0,0,1,0,0,0,0,0,0,1
+Hemophilia B,1,1,0,1,0,0,0,0,0,0,0,0,0,1
+Von Willebrand Disease,1,1,0,0,1,1,0,0,1,0,0,0,0,0
+Immune Thrombocytopenic Purpura,1,0,1,0,1,1,0,0,1,0,0,0,0,0
+Disseminated Intravascular Coagulation,1,1,1,0,0,0,1,1,0,1,0,0,0,0
+Thrombotic Thrombocytopenic Purpura,1,0,1,0,0,0,1,0,0,1,1,0,0,0
+Leukemia,1,0,1,0,1,1,0,0,0,1,1,1,0,0
+Aplastic Anemia,1,0,1,0,0,0,0,0,0,1,1,1,0,0
+Vitamin K Deficiency,1,1,0,0,1,1,0,1,0,0,0,0,0,0
+Liver Disease Coagulopathy,1,1,0,0,0,1,0,1,0,1,0,0,0,0
+Hereditary Hemorrhagic Telangiectasia,0,0,0,0,1,0,0,1,0,1,1,0,1,0
+Henoch-Schonlein Purpura,0,0,1,0,0,0,1,1,0,0,0,0,1,1
+Factor V Deficiency,1,1,0,0,1,1,0,0,1,0,0,0,0,0
+Scurvy,1,0,1,0,0,1,0,0,0,1,0,0,1,0
