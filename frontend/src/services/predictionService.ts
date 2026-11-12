@@ -26,12 +26,19 @@ export interface DifferentialItem {
   keyIndicators?: string[];
 }
 
+export interface SymptomInfluenceItem {
+  key: string;
+  label: string;
+  influence: number; // 0 - 100
+}
+
 export interface PredictionResult {
   top_match: TopMatch;
   differential: DifferentialItem[];
   critical_alert: string | null;
   recommended_lab_tests: string[];
   reference_data_complete: boolean;
+  symptom_influence?: SymptomInfluenceItem[];
   inputSymptoms: Symptom[];
   evaluatedAt: string;
   // Aliases for legacy component consumption
@@ -197,6 +204,7 @@ export async function predictDiseases(symptomKeys: string[]): Promise<Prediction
       critical_alert: data.critical_alert,
       recommended_lab_tests: topMatch.recommended_lab_tests,
       reference_data_complete: true,
+      symptom_influence: data.symptom_influence,
       inputSymptoms,
       evaluatedAt: new Date().toISOString(),
       topMatch,
@@ -287,12 +295,34 @@ function fallbackHeuristicPredict(
     recommendedTests: refData.recommended_lab_tests,
   };
 
+  let fallbackInfluence: SymptomInfluenceItem[] | undefined = undefined;
+  if (inputSymptoms.length >= 2) {
+    const rawMatches = inputSymptoms.map((sym) => {
+      const isMatch = primary.key_symptoms.includes(sym.name) || primary.key_symptoms.includes(sym.id);
+      const idfWeight = Math.log(202 / Math.max(1, sym.commonIn.length));
+      const mult = sym.severity === 'critical' ? 2.4 : sym.severity === 'moderate' ? 1.5 : 1.0;
+      const val = isMatch ? idfWeight * mult : 0;
+      return { key: sym.id, label: sym.name, val };
+    });
+    const maxVal = Math.max(...rawMatches.map((m) => m.val), 0);
+    if (maxVal > 0) {
+      fallbackInfluence = rawMatches
+        .map((m) => ({
+          key: m.key,
+          label: m.label,
+          influence: Math.round((m.val / maxVal) * 100),
+        }))
+        .sort((a, b) => b.influence - a.influence);
+    }
+  }
+
   return {
     top_match: topMatch,
     differential,
     critical_alert,
     recommended_lab_tests: refData.recommended_lab_tests,
     reference_data_complete: true,
+    symptom_influence: fallbackInfluence,
     inputSymptoms,
     evaluatedAt: new Date().toISOString(),
     topMatch,

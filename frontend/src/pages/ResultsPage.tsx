@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
+import { ConfidenceByConditionCard } from '../components/results/ConfidenceByConditionCard';
+import { SymptomInfluenceCard } from '../components/results/SymptomInfluenceCard';
 import {
   predictDiseases,
   type PredictionResult,
@@ -43,6 +45,35 @@ function ResultsSkeleton() {
               <div key={i} className={`h-7 w-28 ${bar}`} />
             ))}
           </div>
+        </div>
+      </div>
+      {/* Analysis cards skeleton */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 mb-10">
+        <div className="bg-surface border border-hairline rounded-lg p-6 sm:p-8 space-y-4">
+          <div className={`h-6 w-48 ${bar}`} />
+          <div className={`h-3 w-64 ${bar}`} />
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="space-y-1.5 pt-2">
+              <div className="flex justify-between">
+                <div className={`h-4 w-32 ${bar}`} />
+                <div className={`h-4 w-12 ${bar}`} />
+              </div>
+              <div className={`h-2.5 w-full ${bar}`} />
+            </div>
+          ))}
+        </div>
+        <div className="bg-surface border border-hairline rounded-lg p-6 sm:p-8 space-y-4">
+          <div className={`h-6 w-48 ${bar}`} />
+          <div className={`h-3 w-64 ${bar}`} />
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="space-y-1.5 pt-2">
+              <div className="flex justify-between">
+                <div className={`h-4 w-32 ${bar}`} />
+                <div className={`h-4 w-12 ${bar}`} />
+              </div>
+              <div className={`h-2 w-full ${bar}`} />
+            </div>
+          ))}
         </div>
       </div>
       {/* Differential skeleton */}
@@ -258,15 +289,36 @@ export function ResultsPage() {
             </div>
           </FadeIn>
 
-          {/* Differential Probability Breakdown */}
+          {/* Two-Column Analysis Cards */}
           <FadeIn delay={criticalWarning ? 240 : 160}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 mb-10">
+              {/* Left Column: Confidence by condition */}
+              <div>
+                <ConfidenceByConditionCard
+                  predictions={predictions}
+                  lowConfidence={Boolean((result as any)?.low_confidence)}
+                />
+              </div>
+
+              {/* Right Column: What influenced this result */}
+              <div>
+                <SymptomInfluenceCard
+                  symptomInfluence={result.symptom_influence}
+                  topCondition={topMatch.disease}
+                />
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Differential Probability Breakdown */}
+          <FadeIn delay={criticalWarning ? 320 : 240}>
             <div className="mb-10">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="font-display text-2xl font-medium tracking-tight text-text">
                   Differential rankings
                 </h2>
                 <span className="text-xs font-sans text-text-faint hidden sm:inline">
-                  Calibrated probability distribution
+                  Probability distribution
                 </span>
               </div>
 
@@ -320,7 +372,7 @@ export function ResultsPage() {
           </FadeIn>
 
           {/* Recommended Laboratory Confirmation */}
-          <FadeIn delay={criticalWarning ? 320 : 240}>
+          <FadeIn delay={criticalWarning ? 400 : 320}>
             <div className="bg-surface border border-hairline rounded-lg shadow-card p-6 sm:p-8 mb-10">
               <h3 className="font-display text-xl font-medium tracking-tight text-text mb-4">
                 Recommended laboratory confirmation
@@ -362,7 +414,7 @@ export function ResultsPage() {
           </FadeIn>
 
           {/* Action Footer */}
-          <FadeIn delay={criticalWarning ? 400 : 320}>
+          <FadeIn delay={criticalWarning ? 480 : 400}>
             <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-hairline">
               <Link
                 to="/start"
