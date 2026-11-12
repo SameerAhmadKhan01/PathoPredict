@@ -166,9 +166,10 @@ def test_predict_benign_symptoms_return_null_critical_alert(client: TestClient):
 def test_symptom_influence_four_symptoms(client: TestClient):
     """
     Test that symptom_influence is present for a 4-symptom request:
-    - sorted descending
-    - max is 100
+    - points are not scaled (the top value is clearly below 100)
+    - sorted descending by points
     - only selected keys are present
+    - each item contains plain-language label and valid points
     """
     keys = ["cough", "fever", "sore_throat", "fatigue"]
     response = client.post("/api/predict", json={"symptom_keys": keys})
@@ -184,17 +185,18 @@ def test_symptom_influence_four_symptoms(client: TestClient):
     returned_keys = [item["key"] for item in influences]
     assert set(returned_keys) == set(keys)
 
-    # Max influence must be 100
-    assert influences[0]["influence"] == 100
+    # Top value is unscaled and clearly below 100
+    assert influences[0]["points"] < 100.0
+    assert influences[0]["points"] > 0.0
 
     # Must be sorted descending
     for i in range(len(influences) - 1):
-        assert influences[i]["influence"] >= influences[i + 1]["influence"]
+        assert influences[i]["points"] >= influences[i + 1]["points"]
 
     # Each item must contain plain-language label and valid score range
     for item in influences:
         assert isinstance(item["label"], str) and len(item["label"]) > 0
-        assert 0 <= item["influence"] <= 100
+        assert 0.0 <= item["points"] <= 100.0
 
 
 def test_symptom_influence_one_symptom(client: TestClient):
@@ -207,6 +209,38 @@ def test_symptom_influence_one_symptom(client: TestClient):
 
     assert "symptom_influence" in data
     assert data["symptom_influence"] == []
+
+
+def test_symptom_influence_empty_when_all_under_one_point():
+    """
+    Test that compute_symptom_influence returns an empty list when all score drops are under 1 point.
+    """
+    from app.services.explain import compute_symptom_influence
+
+    class MockMLService:
+        def __init__(self):
+            self.symptom_columns = ["headache", "fatigue"]
+            class MockModel:
+                def predict_proba(self, X):
+                    import numpy as np
+                    return np.array([[0.5, 0.5]] * len(X))
+            self.model = MockModel()
+
+        def compute_differential(self, subset, proba):
+            class Item:
+                disease = "Tension Headache"
+                probability = 50.0
+            return [Item()]
+
+    service = MockMLService()
+    # s_full is 50.4, s_without is 50.0 -> drop is 0.4 < 1.0 point
+    result = compute_symptom_influence(
+        symptom_keys=["headache", "fatigue"],
+        top_condition="Tension Headache",
+        s_full=50.4,
+        ml_service=service,
+    )
+    assert result == []
 
 
 def test_response_fields_identical_to_snapshot(client: TestClient):

@@ -1,4 +1,4 @@
-"""Relative influence of each selected symptom on the top condition's score, found by removing one symptom at a time. It describes this model's behaviour, not medical causation."""
+"""Score points the top condition loses when each selected symptom is removed. Describes this model's behaviour, not medical causation."""
 
 from typing import List, Dict, Any, TYPE_CHECKING
 import numpy as np
@@ -146,9 +146,7 @@ def compute_symptom_influence(
     s_full: float,
     ml_service: "MLModelService",
 ) -> List[Dict[str, Any]]:
-    """
-    Relative influence of each selected symptom on the top condition's score, found by removing one symptom at a time. It describes this model's behaviour, not medical causation.
-    """
+    """Score points the top condition loses when each selected symptom is removed. Describes this model's behaviour, not medical causation."""
     if len(symptom_keys) < 2:
         return []
 
@@ -169,7 +167,7 @@ def compute_symptom_influence(
     matrix = np.array(variant_vectors)
     batch_raw_proba = ml_service.model.predict_proba(matrix)
 
-    raw_scores: List[float] = []
+    influence_items = []
     for i, s in enumerate(symptom_keys):
         subset = [k for k in symptom_keys if k != s]
         diff_without = ml_service.compute_differential(subset, batch_raw_proba[i])
@@ -180,22 +178,17 @@ def compute_symptom_influence(
                 s_without = item.probability
                 break
 
-        raw_influence = max(0.0, s_full - s_without)
-        raw_scores.append(raw_influence)
-
-    max_raw = max(raw_scores) if raw_scores else 0.0
-    if max_raw == 0.0:
-        return []
-
-    influence_items = []
-    for s, raw_val in zip(symptom_keys, raw_scores):
-        scaled = int(round((raw_val / max_raw) * 100))
+        pts = round(max(0.0, s_full - s_without), 1)
         influence_items.append({
             "key": s,
             "label": get_symptom_label(s),
-            "influence": scaled,
+            "points": pts,
         })
 
-    # Sort descending by influence
-    influence_items.sort(key=lambda x: x["influence"], reverse=True)
+    # If every value is under 1 point, return an empty list
+    if not influence_items or all(item["points"] < 1.0 for item in influence_items):
+        return []
+
+    # Sort descending by points
+    influence_items.sort(key=lambda x: x["points"], reverse=True)
     return influence_items

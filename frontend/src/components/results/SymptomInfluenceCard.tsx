@@ -5,25 +5,6 @@ interface SymptomInfluenceCardProps {
   topCondition: string;
 }
 
-function getInfluenceLevel(value: number): { label: 'High' | 'Medium' | 'Low'; style: string } {
-  if (value >= 66) {
-    return {
-      label: 'High',
-      style: 'text-accent bg-accent/10 border-accent/20',
-    };
-  }
-  if (value >= 33) {
-    return {
-      label: 'Medium',
-      style: 'text-text-muted bg-soft-shell border-hairline',
-    };
-  }
-  return {
-    label: 'Low',
-    style: 'text-text-faint bg-soft-shell/60 border-hairline',
-  };
-}
-
 export function SymptomInfluenceCard({
   symptomInfluence,
   topCondition,
@@ -42,51 +23,40 @@ export function SymptomInfluenceCard({
           What influenced this result
         </h2>
         <p className="font-sans text-xs sm:text-sm text-text-muted mt-1 leading-relaxed">
-          Your symptoms, by how strongly they point to {topCondition}
+          How much each symptom adds to the score for {topCondition}
         </p>
       </div>
 
       <div className="space-y-4">
-        {items.map((item, index) => {
-          const { label: levelLabel, style: levelStyle } = getInfluenceLevel(item.influence);
-
-          return (
-            <div key={`${item.key}-${index}`} className="space-y-1.5">
-              <div className="flex items-center justify-between text-xs sm:text-sm font-sans gap-2">
-                <span className="truncate text-text font-normal" title={item.label}>
-                  {item.label}
-                </span>
-                <div className="flex items-center gap-2 shrink-0">
-                  <span
-                    className={`inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-mono border ${levelStyle}`}
-                  >
-                    {levelLabel}
-                  </span>
-                  <span className="font-mono text-xs text-text-faint tabular-nums w-8 text-right">
-                    {item.influence}%
-                  </span>
-                </div>
-              </div>
-              <div
-                className="w-full bg-soft-shell h-2 rounded-full overflow-hidden relative"
-                role="progressbar"
-                aria-valuenow={item.influence}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                aria-label={`${item.label}: ${item.influence}% influence (${levelLabel})`}
-              >
-                <div
-                  className="h-full rounded-full bg-accent transition-all duration-500"
-                  style={{ width: `${Math.min(100, Math.max(0, item.influence))}%` }}
-                />
-              </div>
+        {items.map((item, index) => (
+          <div key={`${item.key}-${index}`} className="space-y-1.5">
+            <div className="flex items-center justify-between text-xs sm:text-sm font-sans gap-2">
+              <span className="truncate text-text font-normal" title={item.label}>
+                {item.label}
+              </span>
+              <span className="font-mono text-xs text-text-faint tabular-nums shrink-0">
+                -{item.points} pts
+              </span>
             </div>
-          );
-        })}
+            <div
+              className="w-full bg-soft-shell h-2 rounded-full overflow-hidden relative"
+              role="progressbar"
+              aria-valuenow={item.points}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label={`${item.label}: -${item.points} pts`}
+            >
+              <div
+                className="h-full rounded-full bg-accent transition-all duration-500"
+                style={{ width: `${item.points > 0 ? Math.max(4, Math.min(100, item.points)) : 0}%` }}
+              />
+            </div>
+          </div>
+        ))}
       </div>
 
       <p className="text-xs font-sans text-text-faint mt-5 pt-4 border-t border-hairline">
-        Shows how much each symptom shifts the model's score for this condition. It is not a cause or a diagnosis.
+        Score points lost if that symptom is removed. Not a cause or a diagnosis.
       </p>
     </div>
   );

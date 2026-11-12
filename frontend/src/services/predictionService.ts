@@ -29,7 +29,7 @@ export interface DifferentialItem {
 export interface SymptomInfluenceItem {
   key: string;
   label: string;
-  influence: number; // 0 - 100
+  points: number;
 }
 
 export interface PredictionResult {
@@ -306,13 +306,17 @@ function fallbackHeuristicPredict(
     });
     const maxVal = Math.max(...rawMatches.map((m) => m.val), 0);
     if (maxVal > 0) {
-      fallbackInfluence = rawMatches
+      const candidateInfluence = rawMatches
         .map((m) => ({
           key: m.key,
           label: m.label,
-          influence: Math.round((m.val / maxVal) * 100),
+          points: Math.round((m.val / maxVal) * 25 * 10) / 10,
         }))
-        .sort((a, b) => b.influence - a.influence);
+        .filter((m) => m.points >= 1.0)
+        .sort((a, b) => b.points - a.points);
+      if (candidateInfluence.length > 0) {
+        fallbackInfluence = candidateInfluence;
+      }
     }
   }
 

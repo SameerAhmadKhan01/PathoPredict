@@ -55,7 +55,7 @@ class DifferentialItem(BaseModel):
 class SymptomInfluenceItem(BaseModel):
     key: str = Field(..., description="Symptom key/identifier")
     label: str = Field(..., description="Plain-language symptom label")
-    influence: int = Field(..., ge=0, le=100, description="Relative influence score scaled 0 to 100")
+    points: float = Field(..., ge=0.0, le=100.0, description="Score points lost when symptom is removed")
 
 class SymptomCheckResponse(BaseModel):
     top_match: TopMatch = Field(..., description="Primary candidate prediction")
