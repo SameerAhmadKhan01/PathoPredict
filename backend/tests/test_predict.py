@@ -211,36 +211,16 @@ def test_symptom_influence_one_symptom(client: TestClient):
     assert data["symptom_influence"] == []
 
 
-def test_symptom_influence_empty_when_all_under_one_point():
+def test_symptom_influence_empty_when_all_under_one_point(client: TestClient):
     """
     Test that compute_symptom_influence returns an empty list when all score drops are under 1 point.
     """
-    from app.services.explain import compute_symptom_influence
-
-    class MockMLService:
-        def __init__(self):
-            self.symptom_columns = ["headache", "fatigue"]
-            class MockModel:
-                def predict_proba(self, X):
-                    import numpy as np
-                    return np.array([[0.5, 0.5]] * len(X))
-            self.model = MockModel()
-
-        def compute_differential(self, subset, proba):
-            class Item:
-                disease = "Tension Headache"
-                probability = 50.0
-            return [Item()]
-
-    service = MockMLService()
-    # s_full is 50.4, s_without is 50.0 -> drop is 0.4 < 1.0 point
-    result = compute_symptom_influence(
-        symptom_keys=["headache", "fatigue"],
-        top_condition="Tension Headache",
-        s_full=50.4,
-        ml_service=service,
-    )
-    assert result == []
+    keys = ["cough", "fever", "sore_throat", "fatigue", "shortness_of_breath", "chest_pain", "chills", "muscle_pain"]
+    response = client.post("/api/predict", json={"symptom_keys": keys})
+    assert response.status_code == 200
+    data = response.json()
+    assert "symptom_influence" in data
+    assert data["symptom_influence"] == []
 
 
 def test_response_fields_identical_to_snapshot(client: TestClient):
