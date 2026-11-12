@@ -285,57 +285,99 @@ Health check and model status endpoint.
 
 ### Prerequisites
 
-- Python 3.10+ (tested on Python 3.13)
+- Python 3.10+ (tested on Python 3.13 / 3.15)
 - Node.js 18+ and npm
 - Git
 
-### Backend Setup
+---
+
+### Quick Start: Running the Complete Application
+
+PathoPredict requires running the **FastAPI Backend** and **React Frontend** in two separate terminals.
+
+#### Terminal 1: Backend Server (Port 8000)
+
+From the project root:
 
 ```bash
-# 1. Navigate to the backend directory
-cd backend
+# 1. Activate the Python virtual environment
+source backend/venv/bin/activate
+# On Windows (PowerShell):
+# .\backend\venv\Scripts\Activate.ps1
 
-# 2. Create and activate a Python virtual environment
-python -m venv venv
+# 2. (First-time setup only) Install dependencies
+pip install -r backend/requirements.txt pytest
 
-# Windows (PowerShell):
-.\venv\Scripts\Activate.ps1
-# Linux/macOS:
-source venv/bin/activate
-
-# 3. Install required Python packages
-pip install -r requirements.txt
-
-# 4. Environment Variables
-# TODO: No .env.example exists in the backend. Currently no external environment variables are required for local inference.
-
-# 5. Model Artifacts Verification (optional retraining if artifacts are absent)
-python ml/merge_datasets.py
-python ml/train_flat_eval.py
-
-# 6. Run the FastAPI development server
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+# 3. Start the FastAPI Uvicorn server on port 8000
+uvicorn app.main:app --app-dir backend --port 8000 --reload
 ```
 
-### Frontend Setup
+> **Verification**: Look for `[INFO] PathoPredict: PATHOPREDICT CLINICAL INFERENCE SERVICE READY` and `Uvicorn running on http://127.0.0.1:8000`.
+
+#### Terminal 2: Frontend Client (Port 5173)
+
+Open a second terminal window/tab:
 
 ```bash
 # 1. Navigate to the frontend directory
 cd frontend
 
-# 2. Install npm dependencies
+# 2. (First-time setup only) Install npm dependencies
 npm install
 
-# 3. Environment Variables
-# TODO: No .env.example exists in the frontend. Vite proxies /api directly to http://localhost:8000 via vite.config.ts.
-
-# 4. Start Vite development server
+# 3. Start the Vite development server
 npm run dev
 ```
 
-### Running Both Together
+> **Verification**: Look for `➜ Local: http://localhost:5173/`.
 
-Run the backend on port `8000` (`http://localhost:8000`) and the frontend on port `5173` (`http://localhost:5173`). Vite is configured to automatically proxy `/api` calls to `http://localhost:8000`. Open `http://localhost:5173` in a browser.
+#### Open in Browser
+Open **`http://localhost:5173`** in your browser. Vite automatically proxies all `/api/*` prediction requests to `http://localhost:8000`.
+
+---
+
+### Switching Models (Optional)
+
+By default, the backend loads the baseline Random Forest model from `backend/ml/models/`. You can switch to the improved soft-voting ensemble (`models_v2`) at runtime using the `MODEL_DIR` environment variable:
+
+```bash
+# Run with models_v2
+MODEL_DIR=backend/ml/models_v2 uvicorn app.main:app --app-dir backend --port 8000 --reload
+```
+
+---
+
+### Syncing a Forked Repository
+
+If you or a collaborator have forked this repository, follow these steps to keep your fork up to date with the latest changes:
+
+```bash
+# 1. Ensure you are on the main branch
+git checkout main
+
+# 2. Add the upstream original repository (first-time only)
+git remote add upstream https://github.com/SameerAhmadKhan01/PathoPredict.git
+
+# 3. Fetch all updates from upstream
+git fetch upstream
+
+# 4. Merge the latest updates into your local main
+git merge upstream/main
+
+# 5. Push the updated main to your personal GitHub fork
+git push origin main
+```
+
+---
+
+### Troubleshooting Common Issues
+
+#### `[vite] http proxy error: /api/predict AggregateError [ECONNREFUSED]`
+- **Cause**: The Vite frontend is running, but the FastAPI backend on port `8000` is offline or stopped.
+- **Fix**: Open a terminal and start the backend: `source backend/venv/bin/activate && uvicorn app.main:app --app-dir backend --port 8000 --reload`.
+
+#### Unresolved Imports in VS Code (`Problems: reportMissingImports`)
+- **Fix**: Ensure your VS Code interpreter points to `backend/venv/bin/python`. Press `Cmd + Shift + P` (or `Ctrl + Shift + P`), select **Python: Select Interpreter**, and choose `./backend/venv/bin/python`.
 
 ---
 
