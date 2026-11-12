@@ -52,6 +52,11 @@ class DifferentialItem(BaseModel):
         description="Patient input symptoms associated with this candidate"
     )
 
+class SymptomInfluenceItem(BaseModel):
+    key: str = Field(..., description="Symptom key/identifier")
+    label: str = Field(..., description="Plain-language symptom label")
+    influence: int = Field(..., ge=0, le=100, description="Relative influence score scaled 0 to 100")
+
 class SymptomCheckResponse(BaseModel):
     top_match: TopMatch = Field(..., description="Primary candidate prediction")
     differential: List[DifferentialItem] = Field(
@@ -69,4 +74,8 @@ class SymptomCheckResponse(BaseModel):
     reference_data_complete: bool = Field(
         default=False,
         description="True if reference data for top_match is complete, false if placeholder"
+    )
+    symptom_influence: Optional[List[SymptomInfluenceItem]] = Field(
+        default=None,
+        description="Relative influence of each selected symptom on the top condition score"
     )

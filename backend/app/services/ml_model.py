@@ -8,13 +8,16 @@ from typing import List, Optional
 from app.schemas.prediction import (
     TopMatch,
     DifferentialItem,
+    SymptomInfluenceItem,
     SymptomCheckResponse,
 )
 from app.services.feature_vector import (
     build_feature_vector,
     get_symptom_columns,
+    SYMPTOM_ALIASES,
 )
 from app.services.reference_data import get_reference_data
+from app.services.explain import compute_symptom_influence
 
 logger = logging.getLogger("PathoPredict.MLModel")
 
@@ -47,6 +50,17 @@ class MLModelService:
         else:
             self.proto_df = None
 
+        self._proto_cache = {}
+        if self.proto_df is not None:
+            symptom_cols = [c for c in self.proto_df.columns if c not in ['disease', 'category']]
+            for d in self.classes:
+                rows = self.proto_df[self.proto_df['disease'] == d]
+                active = []
+                for col in symptom_cols:
+                    if (rows[col] == 1).any():
+                        active.append(col)
+                self._proto_cache[d] = active
+
         logger.info(f"MLModelService initialized successfully: {len(self.classes)} classes, {len(self.symptom_columns)} features.")
 
     @classmethod
@@ -57,33 +71,23 @@ class MLModelService:
 
     def _get_prototype_symptoms(self, disease_name: str) -> List[str]:
         """Returns the active prototype symptoms for a given disease name."""
-        if self.proto_df is None:
-            return []
-        rows = self.proto_df[self.proto_df['disease'] == disease_name]
-        if rows.empty:
-            return []
-        symptom_cols = [c for c in self.proto_df.columns if c not in ['disease', 'category']]
-        active = []
-        for col in symptom_cols:
-            if (rows[col] == 1).any():
-                active.append(col)
-        return active
+        return self._proto_cache.get(disease_name, [])
 
-    def predict(self, symptom_keys: List[str]) -> SymptomCheckResponse:
+    def compute_differential(self, symptom_keys: List[str], raw_proba: np.ndarray) -> List[DifferentialItem]:
         """
-        Builds the feature vector, executes model prediction, integrates clinical symptom evidence,
-        and returns calibrated top-3 differential diagnoses with true matching markers.
+        Integrates clinical symptom evidence with model probabilities to return
+        the top-3 differential diagnoses with true matching markers.
         """
-        vec = build_feature_vector(symptom_keys)
-        raw_proba = self.model.predict_proba(vec.reshape(1, -1))[0]
         num_input_symptoms = len(symptom_keys)
-
         candidates = []
         for idx, p in enumerate(raw_proba):
             disease_name = str(self.classes[idx])
             proto_symptoms = set(self._get_prototype_symptoms(disease_name))
-            matching = [k for k in symptom_keys if k in proto_symptoms]
-            
+            matching = [
+                k for k in symptom_keys
+                if k in proto_symptoms or SYMPTOM_ALIASES.get(k, k) in proto_symptoms
+            ]
+
             # Clinical relevance rule: A candidate must explain at least one presenting symptom
             if not matching:
                 continue
@@ -91,7 +95,7 @@ class MLModelService:
             patient_coverage = len(matching) / max(1, num_input_symptoms)
             disease_coverage = len(matching) / max(1, len(proto_symptoms))
             match_count = len(matching)
-            
+
             combined_score = (
                 (float(p) * 0.40) +
                 (patient_coverage * 0.45) +
@@ -114,7 +118,10 @@ class MLModelService:
                 d_name = str(self.classes[idx])
                 if d_name not in used_diseases:
                     proto_syms = set(self._get_prototype_symptoms(d_name))
-                    matching = [k for k in symptom_keys if k in proto_syms]
+                    matching = [
+                        k for k in symptom_keys
+                        if k in proto_syms or SYMPTOM_ALIASES.get(k, k) in proto_syms
+                    ]
                     candidates.append({
                         "disease": d_name,
                         "raw_prob": float(raw_proba[idx]),
@@ -130,7 +137,7 @@ class MLModelService:
         candidates.sort(key=lambda x: (x["match_count"], x["score"]), reverse=True)
         top3 = candidates[:3]
 
-        # Calibrate probabilities across top-3 differential
+        # Compute normalized probabilities across top-3 differential
         weights = [c["score"] for c in top3]
         sum_weights = sum(weights) or 1.0
         normalized = [w / sum_weights for w in weights]
@@ -184,9 +191,20 @@ class MLModelService:
                 )
             )
 
+        return differential
+
+    def predict(self, symptom_keys: List[str]) -> SymptomCheckResponse:
+        """
+        Builds the feature vector, executes model prediction, integrates clinical symptom evidence,
+        and returns top-3 differential diagnoses with true matching markers.
+        """
+        vec = build_feature_vector(symptom_keys)
+        raw_proba = self.model.predict_proba(vec.reshape(1, -1))[0]
+        differential = self.compute_differential(symptom_keys, raw_proba)
+
         lead = differential[0]
         ref_data = get_reference_data(lead.disease)
-        
+
         top_match = TopMatch(
             disease=lead.disease,
             probability=lead.probability,
@@ -197,12 +215,23 @@ class MLModelService:
             reference_data_complete=ref_data.get("reference_data_complete", False)
         )
 
+        symptom_influence_list = compute_symptom_influence(
+            symptom_keys=symptom_keys,
+            top_condition=lead.disease,
+            s_full=lead.probability,
+            ml_service=self,
+        )
+        symptom_influence = [
+            SymptomInfluenceItem(**item) for item in symptom_influence_list
+        ]
+
         return SymptomCheckResponse(
             top_match=top_match,
             differential=differential,
             critical_alert=None,
             recommended_lab_tests=top_match.recommended_lab_tests,
-            reference_data_complete=top_match.reference_data_complete
+            reference_data_complete=top_match.reference_data_complete,
+            symptom_influence=symptom_influence,
         )
 
 def get_ml_service() -> MLModelService:

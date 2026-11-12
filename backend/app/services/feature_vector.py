@@ -9,6 +9,11 @@ logger = logging.getLogger("PathoPredict.FeatureVector")
 MODELS_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "ml", "models")
 SYMPTOM_COLUMNS_PATH = os.path.join(MODELS_DIR, "symptom_columns.joblib")
 
+SYMPTOM_ALIASES = {
+    "sensitivity_to_light": "photophobia",
+    "light_sensitivity": "photophobia",
+}
+
 _SYMPTOM_COLUMNS: Optional[List[str]] = None
 _COL_TO_INDEX: Optional[dict] = None
 
@@ -43,7 +48,7 @@ def validate_symptom_keys(symptom_keys: List[str]) -> List[str]:
     Returns a list of any invalid / unrecognized symptom keys.
     """
     col_map = get_column_index_map()
-    invalid_keys = [k for k in symptom_keys if k not in col_map]
+    invalid_keys = [k for k in symptom_keys if k not in col_map and k not in SYMPTOM_ALIASES]
     return invalid_keys
 
 def build_feature_vector(symptom_keys: List[str]) -> np.ndarray:
@@ -56,7 +61,8 @@ def build_feature_vector(symptom_keys: List[str]) -> np.ndarray:
     vector = np.zeros(len(cols), dtype=int)
     
     for key in symptom_keys:
-        if key in col_map:
-            vector[col_map[key]] = 1
+        mapped = SYMPTOM_ALIASES.get(key, key)
+        if mapped in col_map:
+            vector[col_map[mapped]] = 1
             
     return vector

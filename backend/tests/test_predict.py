@@ -161,3 +161,102 @@ def test_predict_benign_symptoms_return_null_critical_alert(client: TestClient):
     assert response.status_code == 200
     data = response.json()
     assert data.get("critical_alert") is None
+
+
+def test_symptom_influence_four_symptoms(client: TestClient):
+    """
+    Test that symptom_influence is present for a 4-symptom request:
+    - sorted descending
+    - max is 100
+    - only selected keys are present
+    """
+    keys = ["cough", "fever", "sore_throat", "fatigue"]
+    response = client.post("/api/predict", json={"symptom_keys": keys})
+    assert response.status_code == 200
+    data = response.json()
+
+    assert "symptom_influence" in data
+    influences = data["symptom_influence"]
+    assert isinstance(influences, list)
+    assert len(influences) == 4
+
+    # Keys must match selected symptoms exactly
+    returned_keys = [item["key"] for item in influences]
+    assert set(returned_keys) == set(keys)
+
+    # Max influence must be 100
+    assert influences[0]["influence"] == 100
+
+    # Must be sorted descending
+    for i in range(len(influences) - 1):
+        assert influences[i]["influence"] >= influences[i + 1]["influence"]
+
+    # Each item must contain plain-language label and valid score range
+    for item in influences:
+        assert isinstance(item["label"], str) and len(item["label"]) > 0
+        assert 0 <= item["influence"] <= 100
+
+
+def test_symptom_influence_one_symptom(client: TestClient):
+    """
+    Test that symptom_influence is empty for a 1-symptom request.
+    """
+    response = client.post("/api/predict", json={"symptom_keys": ["fever"]})
+    assert response.status_code == 200
+    data = response.json()
+
+    assert "symptom_influence" in data
+    assert data["symptom_influence"] == []
+
+
+def test_response_fields_identical_to_snapshot(client: TestClient):
+    """
+    Assert that every other response field is identical to a saved snapshot
+    of the previous response for the same input.
+    """
+    keys = ["cough", "fever", "sore_throat", "fatigue"]
+    response = client.post("/api/predict", json={"symptom_keys": keys})
+    assert response.status_code == 200
+    data = response.json()
+
+    expected_snapshot = {
+        "top_match": {
+            "disease": "Laryngitis",
+            "probability": 55.0,
+            "risk_badge": "High",
+            "pathophysiology_summary": "Reference data pending clinical review",
+            "key_symptoms": ["cough", "fever", "sore_throat", "fatigue"],
+            "recommended_lab_tests": [],
+            "reference_data_complete": False,
+        },
+        "differential": [
+            {
+                "disease": "Laryngitis",
+                "probability": 55.0,
+                "risk_badge": "High",
+                "key_symptoms": ["cough", "fever", "sore_throat", "fatigue"],
+            },
+            {
+                "disease": "Acute Sinusitis",
+                "probability": 22.5,
+                "risk_badge": "Moderate",
+                "key_symptoms": ["cough", "fever", "sore_throat", "fatigue"],
+            },
+            {
+                "disease": "Respiratory Syncytial Virus Infection",
+                "probability": 22.5,
+                "risk_badge": "Moderate",
+                "key_symptoms": ["cough", "fever", "sore_throat", "fatigue"],
+            },
+        ],
+        "critical_alert": None,
+        "recommended_lab_tests": [],
+        "reference_data_complete": False,
+    }
+
+    assert data["top_match"] == expected_snapshot["top_match"]
+    assert data["differential"] == expected_snapshot["differential"]
+    assert data["critical_alert"] == expected_snapshot["critical_alert"]
+    assert data["recommended_lab_tests"] == expected_snapshot["recommended_lab_tests"]
+    assert data["reference_data_complete"] == expected_snapshot["reference_data_complete"]
+
