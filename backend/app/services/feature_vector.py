@@ -6,7 +6,13 @@ from typing import List, Optional
 
 logger = logging.getLogger("PathoPredict.FeatureVector")
 
-MODELS_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "ml", "models")
+DEFAULT_MODELS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "ml", "models"))
+_ENV_MODEL_DIR = os.getenv("MODEL_DIR")
+if _ENV_MODEL_DIR:
+    MODELS_DIR = os.path.abspath(_ENV_MODEL_DIR) if not os.path.isabs(_ENV_MODEL_DIR) else _ENV_MODEL_DIR
+else:
+    MODELS_DIR = DEFAULT_MODELS_DIR
+
 SYMPTOM_COLUMNS_PATH = os.path.join(MODELS_DIR, "symptom_columns.joblib")
 
 SYMPTOM_ALIASES = {

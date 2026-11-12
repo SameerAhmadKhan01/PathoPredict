@@ -7,7 +7,10 @@ from typing import Dict, Any, Optional
 logger = logging.getLogger("PathoPredict.ReferenceData")
 
 DATA_FILE = os.path.join(os.path.dirname(__file__), "..", "data", "reference_data.json")
-LABEL_ENCODER_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "ml", "models", "label_encoder.joblib")
+DEFAULT_MODELS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "ml", "models"))
+_ENV_MODEL_DIR = os.getenv("MODEL_DIR")
+_MODELS_DIR = os.path.abspath(_ENV_MODEL_DIR) if _ENV_MODEL_DIR else DEFAULT_MODELS_DIR
+LABEL_ENCODER_PATH = os.path.join(_MODELS_DIR, "label_encoder.joblib")
 
 DEFAULT_ENTRY: Dict[str, Any] = {
     "pathophysiology_summary": "Reference data pending clinical review",

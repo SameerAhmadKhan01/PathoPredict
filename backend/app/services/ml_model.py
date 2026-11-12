@@ -21,7 +21,13 @@ from app.services.explain import compute_symptom_influence
 
 logger = logging.getLogger("PathoPredict.MLModel")
 
-MODELS_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "ml", "models")
+DEFAULT_MODELS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "ml", "models"))
+_ENV_MODEL_DIR = os.getenv("MODEL_DIR")
+if _ENV_MODEL_DIR:
+    MODELS_DIR = os.path.abspath(_ENV_MODEL_DIR) if not os.path.isabs(_ENV_MODEL_DIR) else _ENV_MODEL_DIR
+else:
+    MODELS_DIR = DEFAULT_MODELS_DIR
+
 MODEL_PATH = os.path.join(MODELS_DIR, "model.joblib")
 if not os.path.exists(MODEL_PATH):
     MODEL_PATH = os.path.join(MODELS_DIR, "flat_disease_model.joblib")
