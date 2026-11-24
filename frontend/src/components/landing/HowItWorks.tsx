@@ -8,13 +8,13 @@ export function HowItWorks({ steps = defaultSteps }: HowItWorksProps) {
   return (
     <section
       id="how-it-works"
-      className="relative w-full py-[72px] min-[861px]:py-[104px] border-b border-hairline"
+      className="relative w-full py-[72px] min-[861px]:py-[104px] border-b border-border"
     >
       <div className="max-w-[1120px] mx-auto px-[22px] min-[861px]:px-[32px]">
         {/* Section Header */}
         <div className="flex flex-col items-start text-left mb-12 min-[861px]:mb-16">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 mb-4 rounded-[3px] border border-hairline bg-soft-shell text-xs text-text-muted font-sans">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 mb-4 rounded-[3px] border border-border bg-elevated text-xs text-muted font-sans">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
             <span>Workflow</span>
           </div>
 
@@ -22,14 +22,14 @@ export function HowItWorks({ steps = defaultSteps }: HowItWorksProps) {
             How it works
           </h2>
 
-          <p className="font-sans text-base text-text-muted leading-relaxed max-w-xl">
+          <p className="font-sans text-base text-muted leading-relaxed max-w-xl">
             From initial symptom presentation to high-certainty risk stratification in three
             methodical steps.
           </p>
         </div>
 
         {/* 3-Step Numbered Grid with vertical dividers on desktop, horizontal on mobile */}
-        <div className="grid grid-cols-1 min-[861px]:grid-cols-3 divide-y divide-hairline min-[861px]:divide-y-0 min-[861px]:divide-x min-[861px]:divide-hairline border-y border-hairline">
+        <div className="grid grid-cols-1 min-[861px]:grid-cols-3 divide-y divide-border min-[861px]:divide-y-0 min-[861px]:divide-x min-[861px]:divide-border border-y border-border">
           {steps.map((step, index) => (
             <div
               key={step.number}
@@ -42,7 +42,7 @@ export function HowItWorks({ steps = defaultSteps }: HowItWorksProps) {
               }`}
             >
               {/* Number in display font */}
-              <span className="font-display text-4xl font-light text-text-faint/40 mb-5 select-none">
+              <span className="font-display text-4xl font-light text-muted/40 mb-5 select-none">
                 {step.number}
               </span>
 
@@ -52,7 +52,7 @@ export function HowItWorks({ steps = defaultSteps }: HowItWorksProps) {
               </h3>
 
               {/* Step Description */}
-              <p className="font-sans text-sm sm:text-base text-text-muted leading-relaxed">
+              <p className="font-sans text-sm sm:text-base text-muted leading-relaxed">
                 {step.description}
               </p>
             </div>

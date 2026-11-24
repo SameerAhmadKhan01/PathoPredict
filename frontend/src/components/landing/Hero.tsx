@@ -5,16 +5,16 @@ export function Hero() {
         <div className="grid grid-cols-1 min-[861px]:grid-cols-2 gap-10 min-[861px]:gap-16 items-center">
           {/* Left Column: Copy */}
           <div className="flex flex-col items-start text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-lg border border-hairline bg-soft-shell text-xs text-text-muted font-sans">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-lg border border-border bg-elevated text-xs text-muted font-sans">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
               <span>Predictive Clinical Intelligence</span>
             </div>
 
             <h1 className="font-serif text-4xl sm:text-5xl min-[861px]:text-[58px] leading-[1.12] font-normal tracking-[-0.02em] text-text mb-6">
-              Detect pathology <span className="italic text-accent font-normal">before symptoms</span> manifest.
+              Detect pathology <span className="italic text-accent-text font-normal">before symptoms</span> manifest.
             </h1>
 
-            <p className="font-sans text-base min-[861px]:text-lg text-text-muted leading-[1.7] max-w-xl mb-8 font-normal">
+            <p className="font-sans text-base min-[861px]:text-lg text-muted leading-[1.7] max-w-xl mb-8 font-normal">
               PathoPredict transforms raw clinical markers into calibrated probabilistic risk
               assessments across critical disease pathways, enabling proactive clinical
               interventions rather than reactive care.
@@ -23,7 +23,7 @@ export function Hero() {
             <div className="flex flex-wrap items-center gap-4">
               <a
                 href="/start"
-                className="inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white text-base font-medium px-6 py-3 rounded-lg shadow-card hover:shadow-card-hover transition-all duration-150 font-sans hover:-translate-y-px"
+                className="inline-flex items-center justify-center bg-primary hover:bg-primary-hover text-on-primary text-base font-medium px-6 py-3 rounded-lg shadow-card hover:shadow-card-hover transition-all duration-150 font-sans hover:-translate-y-px"
               >
                 Start a clinical check →
               </a>
@@ -32,25 +32,25 @@ export function Hero() {
 
           {/* Right Column: Animated Pulse Line */}
           <div className="w-full">
-            <div className="bg-surface border border-hairline rounded-lg shadow-card p-5 sm:p-7 relative overflow-hidden">
+            <div className="bg-surface border border-border rounded-lg shadow-card p-5 sm:p-7 relative overflow-hidden">
               {/* Header inside panel */}
-              <div className="flex items-center justify-between pb-4 mb-4 border-b border-hairline text-xs font-sans">
+              <div className="flex items-center justify-between pb-4 mb-4 border-b border-border text-xs font-sans">
                 <div className="flex items-center gap-2 text-text">
-                  <span className="w-2 h-2 rounded-full bg-[#E11D48] animate-pulse" />
-                  <span className="font-medium tracking-wide uppercase text-[11px] text-text-muted">
+                  <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  <span className="font-medium tracking-wide uppercase text-[11px] text-muted">
                     Signal Telemetry
                   </span>
                 </div>
-                <div className="text-text-faint font-mono text-[11px]">
+                <div className="text-muted font-mono text-[11px]">
                   CH-01
                 </div>
               </div>
 
               {/* Background Grid & SVG Waveform */}
-              <div className="relative w-full aspect-[16/9] min-h-[190px] flex items-center justify-center overflow-hidden bg-surface rounded-lg border border-hairline">
+              <div className="relative w-full aspect-[16/9] min-h-[190px] flex items-center justify-center overflow-hidden bg-surface rounded-lg border border-border">
                 {/* ECG Background Grid */}
                 <svg
-                  className="absolute inset-0 w-full h-full stroke-hairline opacity-60"
+                  className="absolute inset-0 w-full h-full stroke-border opacity-60"
                   width="100%"
                   height="100%"
                   xmlns="http://www.w3.org/2000/svg"
@@ -89,11 +89,9 @@ export function Hero() {
                       x2="100%"
                       y2="0%"
                     >
-                      <stop offset="0%" stopColor="#E11D48" />
-                      <stop offset="38%" stopColor="#EF4444" />
-                      <stop offset="55%" stopColor="#8B5CF6" />
-                      <stop offset="78%" stopColor="#3B82F6" />
-                      <stop offset="100%" stopColor="#2563EB" />
+                      <stop offset="0%" stopColor="var(--primary)" />
+                      <stop offset="50%" stopColor="#DC2626" />
+                      <stop offset="100%" stopColor="#71717A" />
                     </linearGradient>
                   </defs>
 
@@ -122,19 +120,19 @@ export function Hero() {
               </div>
 
               {/* Status Line in Panel */}
-              <div className="mt-4 pt-4 border-t border-hairline text-left flex items-center justify-between">
-                <div className="font-sans text-xs text-text-faint tracking-wide">
+              <div className="mt-4 pt-4 border-t border-border text-left flex items-center justify-between">
+                <div className="font-sans text-xs text-muted tracking-wide">
                   Screening 202 conditions
                 </div>
-                <div className="flex items-center gap-2.5 text-[11px] font-sans text-text-faint">
+                <div className="flex items-center gap-2.5 text-[11px] font-sans text-muted">
                   <span className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#E11D48]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                     Arterial
                   </span>
-                  <span className="text-text-faint/40">/</span>
+                  <span className="text-muted/40">/</span>
                   <span className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-                    Venous
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#71717A]" />
+                    Neutral
                   </span>
                 </div>
               </div>

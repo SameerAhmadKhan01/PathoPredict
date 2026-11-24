@@ -8,13 +8,13 @@ export function WhatYouGet({ panels = defaultPanels }: WhatYouGetProps) {
   return (
     <section
       id="what-you-get"
-      className="relative w-full py-[72px] min-[861px]:py-[104px] border-b border-hairline"
+      className="relative w-full py-[72px] min-[861px]:py-[104px] border-b border-border"
     >
       <div className="max-w-[1120px] mx-auto px-[22px] min-[861px]:px-[32px]">
         {/* Section Header */}
         <div className="flex flex-col items-start text-left mb-12 min-[861px]:mb-16">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 mb-4 rounded-[3px] border border-hairline bg-soft-shell text-xs text-text-muted font-sans">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 mb-4 rounded-[3px] border border-border bg-elevated text-xs text-muted font-sans">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
             <span>Deliverables</span>
           </div>
 
@@ -22,27 +22,35 @@ export function WhatYouGet({ panels = defaultPanels }: WhatYouGetProps) {
             What you get
           </h2>
 
-          <p className="font-sans text-base text-text-muted leading-relaxed max-w-xl">
+          <p className="font-sans text-base text-muted leading-relaxed max-w-xl">
             Dense, calibrated outputs structured for immediate clinical utility and informed
             consultation.
           </p>
         </div>
 
         {/* 2x2 Grid of Bordered Panels with Hairline Dividers */}
-        <div className="grid grid-cols-1 min-[861px]:grid-cols-2 gap-px bg-hairline border border-hairline rounded-[3px] overflow-hidden">
+        <div className="grid grid-cols-1 min-[861px]:grid-cols-2 gap-px bg-border border border-border rounded-[3px] overflow-hidden">
           {panels.map((panel) => {
             return (
               <div
                 key={panel.title}
-                className="bg-surface p-7 sm:p-10 flex flex-col justify-between text-left transition-colors duration-150 hover:bg-soft-shell"
+                className="bg-surface p-7 sm:p-10 flex flex-col justify-between text-left transition-colors duration-150 hover:bg-elevated"
               >
                 <div>
                   {/* Accent Circular Mark */}
                   <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center border mb-6 border-accent/35 bg-accent-light/35"
+                    className={`w-8 h-8 rounded-full flex items-center justify-center border mb-6 ${
+                      panel.accent === 'red'
+                        ? 'border-primary/35 bg-elevated'
+                        : 'border-border bg-elevated'
+                    }`}
                   >
                     <span
-                      className="w-2.5 h-2.5 rounded-full bg-accent"
+                      className={`w-2.5 h-2.5 rounded-full ${
+                        panel.accent === 'red'
+                          ? 'bg-primary'
+                          : 'bg-muted'
+                      }`}
                     />
                   </div>
 
@@ -52,7 +60,7 @@ export function WhatYouGet({ panels = defaultPanels }: WhatYouGetProps) {
                   </h3>
 
                   {/* Description in IBM Plex Sans */}
-                  <p className="font-sans text-sm sm:text-base text-text-muted leading-relaxed">
+                  <p className="font-sans text-sm sm:text-base text-muted leading-relaxed">
                     {panel.description}
                   </p>
                 </div>

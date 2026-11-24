@@ -1,11 +1,11 @@
 export function Footer() {
   return (
-    <footer className="w-full border-t border-hairline bg-bg py-8 min-[861px]:py-10">
+    <footer className="w-full border-t border-border bg-bg py-8 min-[861px]:py-10">
       <div className="max-w-[1120px] mx-auto px-[22px] min-[861px]:px-[32px] flex flex-col min-[861px]:flex-row items-start min-[861px]:items-center justify-between gap-4 min-[861px]:gap-8">
         {/* Logo Left */}
         <a href="/" className="flex items-center gap-2.5 text-text group flex-shrink-0">
           <svg
-            className="w-4 h-4 text-accent transition-transform duration-200 group-hover:scale-105"
+            className="w-4 h-4 text-primary transition-transform duration-200 group-hover:scale-105"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -22,7 +22,7 @@ export function Footer() {
         </a>
 
         {/* One-Line Disclaimer Text Right (wraps on mobile) */}
-        <p className="font-sans text-xs text-text-faint leading-relaxed text-left min-[861px]:text-right">
+        <p className="font-sans text-xs text-muted leading-relaxed text-left min-[861px]:text-right">
           Investigational clinical decision support. Not intended to replace diagnostic judgment
           by licensed healthcare professionals.
         </p>

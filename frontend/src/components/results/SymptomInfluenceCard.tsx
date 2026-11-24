@@ -17,12 +17,12 @@ export function SymptomInfluenceCard({
   const items = symptomInfluence.slice(0, 6);
 
   return (
-    <div className="bg-surface border border-hairline rounded-lg shadow-card p-6 sm:p-8 break-inside-avoid print:shadow-none print:border-gray-300">
+    <div className="bg-surface border border-border rounded-lg shadow-card p-6 sm:p-8 break-inside-avoid print:shadow-none print:border-gray-300">
       <div className="mb-6">
         <h2 className="font-display text-xl sm:text-2xl font-medium tracking-tight text-text">
           What influenced this result
         </h2>
-        <p className="font-sans text-xs sm:text-sm text-text-muted mt-1 leading-relaxed">
+        <p className="font-sans text-xs sm:text-sm text-muted mt-1 leading-relaxed">
           How much each symptom adds to the score for {topCondition}
         </p>
       </div>
@@ -34,12 +34,12 @@ export function SymptomInfluenceCard({
               <span className="truncate text-text font-normal" title={item.label}>
                 {item.label}
               </span>
-              <span className="font-mono text-xs text-text-faint tabular-nums shrink-0">
+              <span className="font-mono text-xs text-accent-text font-medium tabular-nums shrink-0">
                 -{item.points} pts
               </span>
             </div>
             <div
-              className="w-full bg-soft-shell h-2 rounded-full overflow-hidden relative"
+              className="w-full bg-elevated h-2 rounded-full overflow-hidden relative"
               role="progressbar"
               aria-valuenow={item.points}
               aria-valuemin={0}
@@ -47,7 +47,7 @@ export function SymptomInfluenceCard({
               aria-label={`${item.label}: -${item.points} pts`}
             >
               <div
-                className="h-full rounded-full bg-accent transition-all duration-500"
+                className="h-full rounded-full bg-primary transition-all duration-500"
                 style={{ width: `${item.points > 0 ? Math.max(4, Math.min(100, item.points)) : 0}%` }}
               />
             </div>
@@ -55,7 +55,7 @@ export function SymptomInfluenceCard({
         ))}
       </div>
 
-      <p className="text-xs font-sans text-text-faint mt-5 pt-4 border-t border-hairline">
+      <p className="text-xs font-sans text-muted mt-5 pt-4 border-t border-border">
         Score points lost if that symptom is removed. Not a cause or a diagnosis.
       </p>
     </div>

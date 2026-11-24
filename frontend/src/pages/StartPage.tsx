@@ -98,6 +98,7 @@ export function StartPage() {
     setHighlightedIndex(0);
   }, [filteredSuggestions.length, query]);
 
+  // Map selected IDs to full symptom objects
   const selectedSymptoms = useMemo(() => {
     return selectedIds
       .map((id) => SYMPTOMS_DATASET.find((s) => s.id === id))
@@ -106,47 +107,53 @@ export function StartPage() {
 
   const handleSelect = (symptom: Symptom) => {
     if (!selectedIds.includes(symptom.id)) {
-      setSelectedIds((prev) => [...prev, symptom.id]);
+      const updated = [...selectedIds, symptom.id];
+      setSelectedIds(updated);
+      sessionStorage.setItem('pathopredict_symptoms', JSON.stringify(updated));
     }
     setQuery('');
     setIsDropdownOpen(false);
-    inputRef.current?.focus();
   };
 
   const handleRemove = (id: string) => {
-    setSelectedIds((prev) => prev.filter((item) => item !== id));
+    const updated = selectedIds.filter((item) => item !== id);
+    setSelectedIds(updated);
+    sessionStorage.setItem('pathopredict_symptoms', JSON.stringify(updated));
   };
 
   const handleClearAll = () => {
     setSelectedIds([]);
     sessionStorage.removeItem('pathopredict_symptoms');
-    setQuery('');
   };
 
   const handleAnalyze = () => {
-    if (selectedIds.length === 0 || isAnalyzing) return;
+    if (selectedIds.length === 0) return;
     setIsAnalyzing(true);
-    sessionStorage.setItem('pathopredict_symptoms', JSON.stringify(selectedIds));
+    // Simulate brief transition and navigate to results
     setTimeout(() => {
       navigate('/results', { state: { symptomIds: selectedIds } });
     }, 450);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (!isDropdownOpen || filteredSuggestions.length === 0) return;
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!isDropdownOpen || filteredSuggestions.length === 0) {
+      if (e.key === 'ArrowDown' || e.key === 'Enter') {
+        setIsDropdownOpen(true);
+      }
+      return;
+    }
 
     if (e.key === 'ArrowDown') {
       e.preventDefault();
       setHighlightedIndex((prev) => (prev + 1) % filteredSuggestions.length);
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      setHighlightedIndex(
-        (prev) => (prev - 1 + filteredSuggestions.length) % filteredSuggestions.length
-      );
+      setHighlightedIndex((prev) => (prev - 1 + filteredSuggestions.length) % filteredSuggestions.length);
     } else if (e.key === 'Enter') {
       e.preventDefault();
-      if (filteredSuggestions[highlightedIndex]) {
-        handleSelect(filteredSuggestions[highlightedIndex]);
+      const current = filteredSuggestions[highlightedIndex];
+      if (current) {
+        handleSelect(current);
       }
     } else if (e.key === 'Escape') {
       setIsDropdownOpen(false);
@@ -169,14 +176,14 @@ export function StartPage() {
                 <div className="flex items-center gap-3 mb-2.5">
                   <Link
                     to="/"
-                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-text-muted hover:text-text transition-colors group"
+                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-muted hover:text-text transition-colors group"
                   >
                     <span className="transition-transform group-hover:-translate-x-0.5">←</span>
                     <span>Overview</span>
                   </Link>
-                  <span className="text-text-whisper text-xs">/</span>
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-accent/10 border border-accent/20 text-xs text-accent font-medium">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                  <span className="text-muted text-xs">/</span>
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-xs text-primary font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                     <span>Clinical Intake</span>
                   </div>
                 </div>
@@ -185,16 +192,16 @@ export function StartPage() {
                   Select Presenting Symptoms
                 </h1>
 
-                <p className="font-sans text-xs sm:text-sm text-text-muted leading-relaxed mt-1">
+                <p className="font-sans text-xs sm:text-sm text-muted leading-relaxed mt-1">
                   Search or select symptoms below to compute differential disease probabilities across 202 conditions.
                 </p>
               </div>
 
               {/* Prominent Search Bar */}
               <div ref={containerRef} className="relative w-full">
-                <div className="relative flex items-center bg-surface border border-hairline hover:border-hairline-strong rounded-xl shadow-card transition-all duration-200 focus-within:border-accent focus-within:ring-2 focus-within:ring-accent/20 h-12 sm:h-14">
+                <div className="relative flex items-center bg-surface border border-border hover:border-border rounded-xl shadow-card transition-all duration-200 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 h-12 sm:h-14">
                   {/* Search Icon */}
-                  <div className="pl-4 pr-2.5 text-text-faint pointer-events-none">
+                  <div className="pl-4 pr-2.5 text-muted pointer-events-none">
                     <svg
                       className="w-5 h-5"
                       viewBox="0 0 24 24"
@@ -222,7 +229,7 @@ export function StartPage() {
                     onFocus={() => setIsDropdownOpen(true)}
                     onKeyDown={handleKeyDown}
                     placeholder="Search symptoms (e.g. fever, headache, chest pain, cough)..."
-                    className="w-full bg-transparent py-3 pr-10 text-sm sm:text-base text-text placeholder:text-text-whisper focus:outline-none font-sans"
+                    className="w-full bg-transparent py-3 pr-10 text-sm sm:text-base text-text placeholder:text-muted focus:outline-none font-sans"
                     aria-autocomplete="list"
                     aria-expanded={isDropdownOpen}
                   />
@@ -235,7 +242,7 @@ export function StartPage() {
                         setQuery('');
                         inputRef.current?.focus();
                       }}
-                      className="absolute right-3.5 p-1 text-text-faint hover:text-text rounded-full hover:bg-soft-shell transition-colors"
+                      className="absolute right-3.5 p-1 text-muted hover:text-text rounded-full hover:bg-elevated transition-colors"
                       aria-label="Clear search input"
                     >
                       <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -248,9 +255,9 @@ export function StartPage() {
 
                 {/* Suggestions Dropdown Popover */}
                 {isDropdownOpen && (
-                  <div className="absolute left-0 right-0 top-full mt-1.5 z-30 bg-surface border border-hairline rounded-xl shadow-card-elevated overflow-hidden max-h-[320px] overflow-y-auto">
+                  <div className="absolute left-0 right-0 top-full mt-1.5 z-30 bg-surface border border-border rounded-xl shadow-card-elevated overflow-hidden max-h-[320px] overflow-y-auto">
                     {filteredSuggestions.length > 0 ? (
-                      <ul className="divide-y divide-hairline">
+                      <ul className="divide-y divide-border">
                         {filteredSuggestions.map((symptom, index) => {
                           const isHighlighted = index === highlightedIndex;
                           const isCritical = symptom.severity === 'critical';
@@ -262,7 +269,7 @@ export function StartPage() {
                                 onClick={() => handleSelect(symptom)}
                                 onMouseEnter={() => setHighlightedIndex(index)}
                                 className={`w-full text-left px-4 py-3 flex items-center justify-between transition-colors duration-100 ${
-                                  isHighlighted ? 'bg-soft-shell' : 'hover:bg-soft-shell'
+                                  isHighlighted ? 'bg-elevated' : 'hover:bg-elevated'
                                 }`}
                               >
                                 <div className="flex flex-col pr-3">
@@ -271,23 +278,23 @@ export function StartPage() {
                                       {symptom.name}
                                     </span>
                                     {isCritical && (
-                                      <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] bg-critical/15 text-critical font-mono font-semibold uppercase tracking-wider">
+                                      <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] bg-alert-bg/15 text-primary font-mono font-semibold uppercase tracking-wider">
                                         Critical
                                       </span>
                                     )}
                                   </div>
                                   {symptom.description && (
-                                    <span className="font-sans text-xs text-text-muted mt-0.5 leading-snug line-clamp-1">
+                                    <span className="font-sans text-xs text-muted mt-0.5 leading-snug line-clamp-1">
                                       {symptom.description}
                                     </span>
                                   )}
                                 </div>
 
                                 <div className="flex items-center gap-2.5 flex-shrink-0">
-                                  <span className="hidden sm:inline-block font-sans text-xs px-2 py-0.5 rounded bg-soft-shell text-text-faint border border-hairline">
+                                  <span className="hidden sm:inline-block font-sans text-xs px-2 py-0.5 rounded bg-elevated text-muted border border-border">
                                     {symptom.category}
                                   </span>
-                                  <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-accent text-white text-xs font-semibold hover:bg-accent-hover transition-colors shadow-sm">
+                                  <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-primary text-on-primary text-xs font-semibold hover:bg-primary-hover transition-colors shadow-sm">
                                     + Add
                                   </span>
                                 </div>
@@ -297,9 +304,9 @@ export function StartPage() {
                         })}
                       </ul>
                     ) : (
-                      <div className="px-5 py-6 text-center text-text-muted text-sm font-sans">
+                      <div className="px-5 py-6 text-center text-muted text-sm font-sans">
                         No symptoms matching <span className="font-semibold text-text">"{query}"</span>.
-                        <p className="text-xs text-text-faint mt-1">Try another term or select from the common signs below.</p>
+                        <p className="text-xs text-muted mt-1">Try another term or select from the common signs below.</p>
                       </div>
                     )}
                   </div>
@@ -309,10 +316,10 @@ export function StartPage() {
               {/* Frequently Reported Symptoms Chips */}
               <div>
                 <div className="flex items-center justify-between mb-2.5">
-                  <span className="text-xs font-sans text-text-faint uppercase tracking-wider font-semibold">
+                  <span className="text-xs font-sans text-muted uppercase tracking-wider font-semibold">
                     Frequently Reported Symptoms
                   </span>
-                  <span className="text-[11px] font-sans text-text-faint">
+                  <span className="text-[11px] font-sans text-muted">
                     Quick-add
                   </span>
                 </div>
@@ -335,8 +342,8 @@ export function StartPage() {
                         }}
                         className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium px-3.5 py-2 rounded-xl border transition-all duration-150 ${
                           isSelected
-                            ? 'bg-accent text-white border-accent shadow-sm'
-                            : 'bg-surface border-hairline text-text hover:border-hairline-strong hover:bg-soft-shell'
+                            ? 'bg-primary text-on-primary border-primary shadow-sm'
+                            : 'bg-elevated border-border text-text hover:border-border hover:bg-surface'
                         }`}
                       >
                         <span className="font-bold text-xs">{isSelected ? '✓' : '+'}</span>
@@ -349,7 +356,7 @@ export function StartPage() {
 
               {/* Browse by Body System */}
               <div>
-                <div className="text-xs font-sans text-text-faint uppercase tracking-wider font-semibold mb-2.5">
+                <div className="text-xs font-sans text-muted uppercase tracking-wider font-semibold mb-2.5">
                   Browse by Body System
                 </div>
                 <div className="flex flex-wrap gap-1.5 sm:gap-2">
@@ -363,8 +370,8 @@ export function StartPage() {
                       }}
                       className={`text-xs font-medium px-3 py-1.5 rounded-lg border transition-all duration-150 ${
                         activeCategory === cat
-                          ? 'bg-accent text-white border-accent shadow-sm'
-                          : 'bg-surface border-hairline text-text-muted hover:text-text hover:border-hairline-strong'
+                          ? 'bg-primary text-on-primary border-primary shadow-sm'
+                          : 'bg-surface border-border text-muted hover:text-text hover:border-border'
                       }`}
                     >
                       {cat}
@@ -376,14 +383,14 @@ export function StartPage() {
 
             {/* Right Sticky Action Sidebar: Selected Summary & Primary CTA (col-span-4) */}
             <div className="lg:col-span-4 mt-8 lg:mt-0">
-              <div className="lg:sticky lg:top-24 rounded-2xl border border-hairline p-5 sm:p-6 shadow-card bg-surface flex flex-col space-y-4">
+              <div className="lg:sticky lg:top-24 rounded-2xl border border-border p-5 sm:p-6 shadow-card bg-surface flex flex-col space-y-4">
                 {/* Card Header: Count + Clear All */}
-                <div className="flex items-center justify-between pb-3.5 border-b border-hairline">
+                <div className="flex items-center justify-between pb-3.5 border-b border-border">
                   <div className="flex items-center gap-2">
                     <span className="font-display text-base sm:text-lg font-semibold text-text">
                       Selected Symptoms
                     </span>
-                    <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-accent/15 text-accent border border-accent/25">
+                    <span className="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-primary/15 text-primary border border-primary/25">
                       {selectedSymptoms.length}
                     </span>
                   </div>
@@ -392,7 +399,7 @@ export function StartPage() {
                     <button
                       type="button"
                       onClick={handleClearAll}
-                      className="text-xs font-sans font-medium text-text-faint hover:text-critical transition-colors"
+                      className="text-xs font-sans font-medium text-muted hover:text-primary transition-colors"
                     >
                       Clear all
                     </button>
@@ -411,14 +418,14 @@ export function StartPage() {
                             key={symptom.id}
                             className={`flex items-center justify-between px-3 py-2 rounded-xl border text-xs sm:text-sm font-medium transition-colors ${
                               isCritical
-                                ? 'bg-critical/10 border-critical/30 text-critical'
-                                : 'bg-soft-shell border-hairline text-text'
+                                ? 'bg-alert-bg/10 border-alert-bg/30 text-primary'
+                                : 'bg-elevated border-border text-text'
                             }`}
                           >
                             <div className="flex items-center gap-2 truncate pr-2">
                               <span
                                 className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
-                                  isCritical ? 'bg-critical animate-pulse' : 'bg-accent'
+                                  isCritical ? 'bg-primary animate-pulse' : 'bg-primary'
                                 }`}
                               />
                               <span className="truncate">{symptom.name}</span>
@@ -427,7 +434,7 @@ export function StartPage() {
                             <button
                               type="button"
                               onClick={() => handleRemove(symptom.id)}
-                              className="w-5 h-5 flex-shrink-0 flex items-center justify-center rounded-md text-text-faint hover:text-critical hover:bg-critical/20 transition-colors font-bold text-xs"
+                              className="w-5 h-5 flex-shrink-0 flex items-center justify-center rounded-md text-muted hover:text-primary hover:bg-elevated transition-colors font-bold text-xs"
                               aria-label={`Remove ${symptom.name}`}
                             >
                               ✕
@@ -437,9 +444,9 @@ export function StartPage() {
                       })}
                     </div>
                   ) : (
-                    <div className="h-full py-10 flex flex-col items-center justify-center text-center p-4 border border-dashed border-hairline rounded-xl">
+                    <div className="h-full py-10 flex flex-col items-center justify-center text-center p-4 border border-dashed border-border rounded-xl">
                       <svg
-                        className="w-8 h-8 text-text-faint/50 mb-2"
+                        className="w-8 h-8 text-muted/50 mb-2"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
@@ -449,10 +456,10 @@ export function StartPage() {
                       >
                         <path d="M12 9v6M9 12h6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
                       </svg>
-                      <p className="text-xs font-medium text-text-muted">
+                      <p className="text-xs font-medium text-muted">
                         Select symptoms from the left to start.
                       </p>
-                      <p className="text-[11px] text-text-faint mt-0.5">
+                      <p className="text-[11px] text-muted mt-0.5">
                         Add 1 or more indicators to begin.
                       </p>
                     </div>
@@ -460,20 +467,20 @@ export function StartPage() {
                 </div>
 
                 {/* Primary Sticky Action CTA */}
-                <div className="pt-2 border-t border-hairline space-y-2">
+                <div className="pt-2 border-t border-border space-y-2">
                   <button
                     type="button"
                     onClick={handleAnalyze}
                     disabled={selectedSymptoms.length === 0 || isAnalyzing}
                     className={`w-full py-3 px-4 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-all shadow-card min-h-[46px] ${
                       selectedSymptoms.length > 0 && !isAnalyzing
-                        ? 'bg-accent hover:bg-accent-hover text-white cursor-pointer hover:shadow-card-elevated hover:-translate-y-px'
-                        : 'bg-soft-shell text-text-whisper border border-hairline cursor-not-allowed opacity-50'
+                        ? 'bg-primary hover:bg-primary-hover text-on-primary cursor-pointer hover:shadow-card-elevated hover:-translate-y-px'
+                        : 'bg-elevated text-muted border border-border cursor-not-allowed opacity-50'
                     }`}
                   >
                     {isAnalyzing ? (
                       <span className="flex items-center gap-2">
-                        <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <span className="w-4 h-4 border-2 border-on-primary/30 border-t-on-primary rounded-full animate-spin" />
                         <span>Analyzing differential...</span>
                       </span>
                     ) : (
@@ -484,7 +491,7 @@ export function StartPage() {
                     )}
                   </button>
 
-                  <p className="text-[11px] text-center text-text-faint">
+                  <p className="text-[11px] text-center text-muted">
                     {selectedSymptoms.length === 0
                       ? 'Select at least 1 symptom to proceed.'
                       : `Evaluating differential across 202 conditions.`}
@@ -498,14 +505,14 @@ export function StartPage() {
       </div>
 
       {/* Mobile Sticky Bottom Action Bar (< lg) */}
-      <div className="fixed bottom-0 inset-x-0 p-3.5 sm:p-4 border-t border-hairline bg-surface/95 backdrop-blur-md z-40 lg:hidden shadow-lg flex items-center justify-between gap-3">
+      <div className="fixed bottom-0 inset-x-0 p-3.5 sm:p-4 border-t border-border bg-surface/95 backdrop-blur-md z-40 lg:hidden shadow-lg flex items-center justify-between gap-3">
         <div className="flex flex-col">
           <span className="text-xs font-semibold text-text">
             {selectedSymptoms.length === 0
               ? 'No symptoms selected'
               : `${selectedSymptoms.length} symptom${selectedSymptoms.length > 1 ? 's' : ''} added`}
           </span>
-          <span className="text-[11px] text-text-faint">
+          <span className="text-[11px] text-muted">
             {selectedSymptoms.length === 0 ? 'Select from above' : 'Ready for differential analysis'}
           </span>
         </div>
@@ -516,13 +523,13 @@ export function StartPage() {
           disabled={selectedSymptoms.length === 0 || isAnalyzing}
           className={`py-2.5 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-1.5 transition-all shadow-sm ${
             selectedSymptoms.length > 0 && !isAnalyzing
-              ? 'bg-accent hover:bg-accent-hover text-white cursor-pointer'
-              : 'bg-soft-shell text-text-whisper border border-hairline cursor-not-allowed opacity-60'
+              ? 'bg-primary hover:bg-primary-hover text-on-primary cursor-pointer'
+              : 'bg-elevated text-muted border border-border cursor-not-allowed opacity-60'
           }`}
         >
           {isAnalyzing ? (
             <span className="flex items-center gap-1.5">
-              <span className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              <span className="w-3.5 h-3.5 border-2 border-on-primary/30 border-t-on-primary rounded-full animate-spin" />
               <span>Analyzing...</span>
             </span>
           ) : (

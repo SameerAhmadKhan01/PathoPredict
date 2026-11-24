@@ -2,31 +2,31 @@ export function WhySection() {
   return (
     <section
       id="why-pathopredict"
-      className="relative w-full py-[72px] min-[861px]:py-[104px] border-b border-hairline"
+      className="relative w-full py-[72px] min-[861px]:py-[104px] border-b border-border"
     >
       <div className="max-w-[1120px] mx-auto px-[22px] min-[861px]:px-[32px]">
         {/* Two-column grid; on mobile copy is on top, diagram is below */}
         <div className="grid grid-cols-1 min-[861px]:grid-cols-2 gap-12 min-[861px]:gap-16 items-center">
           {/* Column 1: Explanatory Copy */}
           <div className="flex flex-col items-start text-left order-1">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 mb-4 rounded-[3px] border border-hairline bg-soft-shell text-xs text-text-muted font-sans">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 mb-4 rounded-[3px] border border-border bg-elevated text-xs text-muted font-sans">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
               <span>Diagnostic Ambiguity</span>
             </div>
 
             <h2 className="font-display text-3xl sm:text-4xl min-[861px]:text-[44px] leading-[1.12] font-medium tracking-tight text-text mb-6">
               One common symptom. <br className="hidden sm:inline" />
-              <span className="italic text-accent">Five divergent</span> clinical trajectories.
+              <span className="italic text-accent-text">Five divergent</span> clinical trajectories.
             </h2>
 
-            <p className="font-sans text-base text-text-muted leading-relaxed mb-6">
+            <p className="font-sans text-base text-muted leading-relaxed mb-6">
               An elevated body temperature is one of medicine’s most frequent yet least specific
               signals. On day two, a patient presenting with an identical 102°F fever could be
               fighting a benign viral flu or entering the critical incubation phase of Dengue,
               Typhoid, COVID-19, or Malaria.
             </p>
 
-            <p className="font-sans text-base text-text-muted leading-relaxed mb-8">
+            <p className="font-sans text-base text-muted leading-relaxed mb-8">
               PathoPredict de-convolutes shared surface symptoms by evaluating multi-vector biometric
               markers, onset chronology, and vital patterns — surfacing high-confidence
               differential risk probabilities before complications take root.
@@ -34,19 +34,19 @@ export function WhySection() {
 
             {/* Micro comparison points */}
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              <div className="p-3.5 rounded-lg border border-hairline bg-surface text-left">
-                <div className="font-mono text-xs text-text-faint uppercase tracking-wider mb-1">
+              <div className="p-3.5 rounded-lg border border-border bg-surface text-left">
+                <div className="font-mono text-xs text-muted uppercase tracking-wider mb-1">
                   Conventional
                 </div>
-                <div className="font-sans text-xs text-text-muted leading-normal">
+                <div className="font-sans text-xs text-muted leading-normal">
                   Symptom-checking rules isolate fever in isolation, delaying differential testing.
                 </div>
               </div>
-              <div className="p-3.5 rounded-lg border border-hairline bg-surface text-left">
-                <div className="font-mono text-xs text-accent uppercase tracking-wider mb-1">
+              <div className="p-3.5 rounded-lg border border-border bg-surface text-left">
+                <div className="font-mono text-xs text-accent-text uppercase tracking-wider mb-1">
                   PathoPredict Calibrated
                 </div>
-                <div className="font-sans text-xs text-text-muted leading-normal">
+                <div className="font-sans text-xs text-muted leading-normal">
                   Cross-checks secondary indicators to calculate specific pathology probabilities.
                 </div>
               </div>
@@ -55,22 +55,22 @@ export function WhySection() {
 
           {/* Column 2: Hub-and-Spoke SVG Diagram */}
           <div className="w-full order-2">
-            <div className="w-full bg-surface border border-hairline rounded-lg p-5 sm:p-7 relative shadow-card">
+            <div className="w-full bg-surface border border-border rounded-lg p-5 sm:p-7 relative shadow-card">
               {/* Diagram Card Header */}
-              <div className="flex items-center justify-between pb-4 mb-4 border-b border-hairline text-xs font-sans">
+              <div className="flex items-center justify-between pb-4 mb-4 border-b border-border text-xs font-sans">
                 <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                   <span className="font-medium uppercase tracking-wider text-[11px] text-text">
                     Differential Mapping
                   </span>
                 </div>
-                <span className="font-mono text-[11px] text-text-faint">
+                <span className="font-mono text-[11px] text-muted">
                   Topology 1:5 Cluster
                 </span>
               </div>
 
               {/* Inline SVG Hub and Spoke Diagram */}
-              <div className="relative w-full aspect-[4/3] min-h-[300px] flex items-center justify-center bg-surface rounded-lg border border-hairline p-2 overflow-hidden">
+              <div className="relative w-full aspect-[4/3] min-h-[300px] flex items-center justify-center bg-surface rounded-lg border border-border p-2 overflow-hidden">
                 <svg
                   viewBox="0 0 540 400"
                   className="w-full h-full"
@@ -338,13 +338,13 @@ export function WhySection() {
               </div>
 
               {/* Bottom annotation */}
-              <div className="flex items-center justify-between pt-3 mt-3 border-t border-hairline text-xs font-sans text-text-faint">
+              <div className="flex items-center justify-between pt-3 mt-3 border-t border-border text-xs font-sans text-muted">
                 <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                   High critical divergence
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                   Secondary biomarker verified
                 </span>
               </div>

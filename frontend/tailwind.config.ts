@@ -1,5 +1,12 @@
 import type { Config } from 'tailwindcss';
 
+const withAlpha = (variable: string) => ({ opacityValue }: { opacityValue?: string }) => {
+  if (opacityValue !== undefined) {
+    return `color-mix(in srgb, var(${variable}) calc(100% * ${opacityValue}), transparent)`;
+  }
+  return `var(${variable})`;
+};
+
 export default {
   content: [
     './index.html',
@@ -9,42 +16,69 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Light surfaces (auto-switch via CSS variables)
-        bg: 'rgb(var(--c-bg) / <alpha-value>)',
-        surface: 'rgb(var(--c-surface) / <alpha-value>)',
-        'soft-shell': 'rgb(var(--c-soft-shell) / <alpha-value>)',
-        panel: 'rgb(var(--c-surface) / <alpha-value>)',
-        'panel-raised': 'rgb(var(--c-soft-shell) / <alpha-value>)',
+        // Direct design tokens
+        bg: withAlpha('--bg'),
+        surface: withAlpha('--surface'),
+        elevated: withAlpha('--elevated'),
+        border: withAlpha('--border'),
 
-        // Text hierarchy
         text: {
-          DEFAULT: 'rgb(var(--c-text) / <alpha-value>)',
-          muted: 'rgb(var(--c-text-muted) / <alpha-value>)',
-          faint: 'rgb(var(--c-text-faint) / <alpha-value>)',
-          whisper: 'rgb(var(--c-text-whisper) / <alpha-value>)',
+          DEFAULT: withAlpha('--text'),
+          muted: withAlpha('--muted'),
+          faint: withAlpha('--muted'),
+          whisper: withAlpha('--muted'),
         },
+        muted: withAlpha('--muted'),
 
-        // Primary accent
+        primary: {
+          DEFAULT: withAlpha('--primary'),
+          hover: withAlpha('--primary-hover'),
+        },
+        'primary-hover': withAlpha('--primary-hover'),
+        'on-primary': withAlpha('--on-primary'),
+        'accent-text': withAlpha('--accent-text'),
+
+        'alert-bg': withAlpha('--alert-bg'),
+        'alert-text': withAlpha('--alert-text'),
+
+        warn: {
+          DEFAULT: withAlpha('--warn'),
+          bg: withAlpha('--warn-bg'),
+        },
+        'warn-bg': withAlpha('--warn-bg'),
+
+        info: {
+          DEFAULT: withAlpha('--info'),
+          bg: withAlpha('--info-bg'),
+        },
+        'info-bg': withAlpha('--info-bg'),
+
+        success: {
+          DEFAULT: withAlpha('--success'),
+          bg: withAlpha('--success-bg'),
+        },
+        'success-bg': withAlpha('--success-bg'),
+
+        // Compatibility aliases for existing classes
         accent: {
-          DEFAULT: 'rgb(var(--c-accent) / <alpha-value>)',
-          hover: 'rgb(var(--c-accent-hover) / <alpha-value>)',
-          light: 'rgb(var(--c-accent-light) / <alpha-value>)',
+          DEFAULT: withAlpha('--primary'),
+          hover: withAlpha('--primary-hover'),
+          light: withAlpha('--elevated'),
         },
-
-        // Severity colors (clinical meaning ONLY)
+        'soft-shell': withAlpha('--elevated'),
+        panel: withAlpha('--surface'),
+        'panel-raised': withAlpha('--elevated'),
+        hairline: {
+          DEFAULT: withAlpha('--border'),
+          strong: withAlpha('--border'),
+        },
         amber: {
-          DEFAULT: 'rgb(var(--c-amber) / <alpha-value>)',
-          light: 'rgb(var(--c-amber-light) / <alpha-value>)',
+          DEFAULT: withAlpha('--warn'),
+          light: withAlpha('--warn-bg'),
         },
         critical: {
-          DEFAULT: 'rgb(var(--c-critical) / <alpha-value>)',
-          light: 'rgb(var(--c-critical-light) / <alpha-value>)',
-        },
-
-        // Structural
-        hairline: {
-          DEFAULT: 'rgb(var(--c-hairline) / <alpha-value>)',
-          strong: 'rgb(var(--c-hairline-strong) / <alpha-value>)',
+          DEFAULT: withAlpha('--alert-bg'),
+          light: withAlpha('--elevated'),
         },
       },
       fontFamily: {
