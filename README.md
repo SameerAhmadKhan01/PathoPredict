@@ -1,223 +1,209 @@
-# PathoPredict
+<p align="center">
+  <img src="frontend/public/favicon.svg" alt="PathoPredict Logo" width="80" height="80" />
+</p>
 
-Calibrated symptom-based disease prediction and differential diagnosis system.
+<h1 align="center">PathoPredict</h1>
 
-> **Medical Notice**: PathoPredict is an academic, non-clinical research project and clinical decision-support prototype. It does not provide medical diagnoses, treatment plans, or clinical triage advice. Always consult a licensed healthcare professional for medical concerns.
+<p align="center">
+  <strong>Calibrated Symptom-Based Differential Diagnosis & Disease Prediction System</strong>
+</p>
+
+<p align="center">
+  <a href="#tech-stack"><img src="https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 18" /></a>
+  <a href="#tech-stack"><img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" /></a>
+  <a href="#tech-stack"><img src="https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" /></a>
+  <a href="#tech-stack"><img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" /></a>
+  <a href="#tech-stack"><img src="https://img.shields.io/badge/scikit--learn-1.5+-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="scikit-learn" /></a>
+  <a href="#tech-stack"><img src="https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" /></a>
+  <a href="#tech-stack"><img src="https://img.shields.io/badge/Vite-6.x-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" /></a>
+</p>
+
+<p align="center">
+  <a href="#overview">Overview</a> •
+  <a href="#tech-stack">Tech Stack</a> •
+  <a href="#architecture">Architecture</a> •
+  <a href="#features">Features</a> •
+  <a href="#interface-preview">Interface Preview</a> •
+  <a href="#ml-pipeline">ML Pipeline</a> •
+  <a href="#api-reference">API Reference</a> •
+  <a href="#getting-started">Quick Start</a> •
+  <a href="#team">Team</a>
+</p>
+
+---
+
+> [!WARNING]
+> **Clinical & Regulatory Disclaimer**: PathoPredict is an academic decision-support and clinical research prototype developed as an undergraduate major project. It does **not** provide professional medical advice, clinical diagnoses, treatment plans, or emergency triage recommendations. Always consult a licensed medical professional for health concerns.
 
 ---
 
 ## Overview
 
-Clinical diagnosis is frequently complicated by symptomatic overlap across pathologies: ubiquitous indicators such as fatigue, headache, and fever appear across dozens of distinct conditions spanning infectious, cardiac, neurological, and metabolic etiologies. PathoPredict addresses this multi-class discrimination challenge by mapping patient-reported symptom constellations to probabilistic differential hypotheses.
+Clinical diagnosis is frequently complicated by symptomatic overlap: ubiquitous indicators such as fatigue, headache, and fever appear across dozens of distinct conditions spanning infectious, cardiac, neurological, and metabolic etiologies. **PathoPredict** addresses this multi-class discrimination challenge by mapping patient-reported symptom constellations to calibrated probabilistic differential hypotheses.
 
 Given a validated set of symptom inputs, the application computes:
-
-- **Ranked Top-3 Differential Diagnoses**: Probabilistic likelihood scores across candidate conditions.
-- **Primary Hypothesis Characterization**: Clinical urgency risk badge (`High`, `Moderate`, `Low`) and a pathophysiological summary.
-- **Key Contributing Symptoms**: Exact patient-reported symptoms that match the disease prototype.
-- **Critical Red-Flag Alerts**: Deterministic clinical safety rules that evaluate emergency presentations (such as acute coronary syndrome, acute dyspnea, stroke/focal neurological deficits, or severe mucosal bleeding) independent of model confidence.
-- **Recommended Diagnostic Tests**: Confirmatory laboratory and diagnostic investigations associated with the candidate disease.
-
-**System Limitations**: PathoPredict operates on a discrete binary feature vocabulary (122 symptoms across 202 diseases) derived from reference symptom matrices and synthetic patient cohorts. It assumes unrecorded symptoms are absent ($0$) and has not undergone prospective clinical trials or regulatory validation.
-
----
-
-## Features
-
-- **Split-View Intake Interface (`/start`)**: Desktop two-column dashboard with live search, 11 organ-system category filters, quick-select symptom chips, and a sticky selection sidebar with real-time counters and dismiss controls.
-- **Mobile Responsive Action Bar**: Sticky bottom panel ensuring analysis triggers remain accessible on small viewports without vertical scrolling.
-- **Dual-Engine Prediction Pipeline**: Primary inference via FastAPI (`POST /api/predict`), with an automatic client-side heuristic fallback engine ensuring continuity if the backend service is offline.
-- **Calibrated Probability Distributions**: Normalizes multi-class outputs to prevent flat confidence distributions across wide label spaces.
-- **Deterministic Red-Flag Safety System**: Independent rule-based evaluation detecting acute, life-threatening symptoms and escalating triage urgency to `High`.
-- **Diagnostic Results Dashboard (`/results`)**: Displays primary candidate details, descending differential comparison bars, matched indicators, and confirmatory lab tests.
-- **Theming**: Toggleable dark and light modes with custom CSS tokens and SVG styling.
-- **Service Health Check (`/api/health`)**: Diagnostic endpoint reporting active model status, total loaded features (122), and diagnosable disease classes (202).
-
----
-
-## Screenshots
-
-<!-- TODO: Add application screenshots to docs/screenshots/start.png and docs/screenshots/results.png -->
-<p align="center">
-  <img src="docs/screenshots/start.png" alt="PathoPredict Symptom Intake Dashboard" width="800" />
-</p>
-<p align="center">
-  <img src="docs/screenshots/scan.png" alt="selecting disease page" width="800" />
-</p>
-<p align="center">
-  <img src="docs/screenshots/results.png" alt="PathoPredict Diagnostic Results and Differential Diagnosis" width="800" />
-</p>
+- **Ranked Top-3 Differential Diagnoses**: Evidence-weighted likelihood scores across 202 potential pathologies.
+- **Primary Hypothesis Characterization**: Clinical urgency badge (`High`, `Moderate`, `Low`) and a pathophysiological summary.
+- **Hallmark Indicator Correlation**: Direct alignment of patient symptoms with disease prototype profiles.
+- **Deterministic Red-Flag Safety System**: Real-time rule-based evaluation detecting acute emergencies (e.g., myocardial infarction, severe mucosal hemorrhage, stroke/focal deficits) independent of model probabilities.
+- **Recommended Diagnostic Tests**: Confirmatory laboratory and radiological workups associated with the candidate disease.
 
 ---
 
 ## Tech Stack
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=react,ts,vite,tailwind" alt="React, TypeScript, Vite, Tailwind CSS" />
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=react,ts,vite,tailwind,python,fastapi,sklearn,git,github,vscode,postman" alt="PathoPredict Full Tech Stack" />
+  </a>
 </p>
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=py,fastapi" alt="Python, FastAPI" />
-</p>
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=sklearn" alt="scikit-learn" />
-</p>
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=git,github" alt="Git, GitHub" />
-</p>
+
+### Detailed Technology Breakdown
+
+| Domain | Technology / Library | Logo / Badge | Version | Role in PathoPredict |
+| :--- | :--- | :---: | :---: | :--- |
+| **Frontend Framework** | **React** | ![React](https://img.shields.io/badge/-React-20232A?style=flat-square&logo=react&logoColor=61DAFB) | `^18.3.1` | Declarative UI, functional component architecture, and custom hooks. |
+| **Language (Client)** | **TypeScript** | ![TypeScript](https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white) | `~5.x` | End-to-end type safety, domain model contracts, and compile-time verification. |
+| **Build & Dev Server** | **Vite** | ![Vite](https://img.shields.io/badge/-Vite-646CFF?style=flat-square&logo=vite&logoColor=white) | `^6.1.1` | Ultra-fast HMR and seamless `/api/*` reverse proxying to the FastAPI daemon. |
+| **Styling & Design System** | **Tailwind CSS** | ![TailwindCSS](https://img.shields.io/badge/-Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white) | `^3.4.19` | Editorial dark-mode theme tokens, custom CSS variables, and responsive layout. |
+| **Client Routing** | **React Router** | ![React Router](https://img.shields.io/badge/-React_Router-CA4245?style=flat-square&logo=react-router&logoColor=white) | `^7.18.3` | SPA navigation, intake state routing, and history management. |
+| **CSS Processing** | **PostCSS & Autoprefixer** | ![PostCSS](https://img.shields.io/badge/-PostCSS-DD3A0A?style=flat-square&logo=postcss&logoColor=white) | `^8.5.28` | CSS compilation, cross-browser vendor prefixing, and style tree optimization. |
+| **Frontend Linter** | **Oxlint** | ![Oxlint](https://img.shields.io/badge/-Oxlint-38A169?style=flat-square&logo=eslint&logoColor=white) | `^1.81.0` | High-performance Rust-based static code analysis and linting. |
+| **Backend Framework** | **FastAPI** | ![FastAPI](https://img.shields.io/badge/-FastAPI-005571?style=flat-square&logo=fastapi&logoColor=white) | `>=0.115.0` | Asynchronous high-throughput RESTful API microservice with OpenAPI auto-docs. |
+| **ASGI Server** | **Uvicorn** | ![Uvicorn](https://img.shields.io/badge/-Uvicorn-499848?style=flat-square&logo=gunicorn&logoColor=white) | `>=0.30.0` | Asynchronous web server implementation for FastAPI with auto-reload. |
+| **Data Validation** | **Pydantic** | ![Pydantic](https://img.shields.io/badge/-Pydantic_v2-E92063?style=flat-square&logo=pydantic&logoColor=white) | `>=2.7.0` | Strict request/response serialization, type coercion, and schema enforcement. |
+| **Machine Learning** | **scikit-learn** | ![scikit-learn](https://img.shields.io/badge/-scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white) | `>=1.5.0` | Random Forest classifier, LabelEncoder, and multi-class probability scoring. |
+| **Model Serialization** | **Joblib** | ![Joblib](https://img.shields.io/badge/-Joblib-3776AB?style=flat-square&logo=python&logoColor=white) | `>=1.4.0` | Optimized disk serialization and loading of trained estimators and vectors. |
+| **Array Computing** | **NumPy** | ![NumPy](https://img.shields.io/badge/-NumPy-013243?style=flat-square&logo=numpy&logoColor=white) | `>=1.26.0` | Vectorized indicator calculations and multi-class probability arrays. |
+| **Data Manipulation** | **Pandas** | ![Pandas](https://img.shields.io/badge/-Pandas-150458?style=flat-square&logo=pandas&logoColor=white) | `>=2.2.0` | Dataframe transformations, category matrix harmonization, and feature parsing. |
+| **HTTP Client (Testing)** | **HTTPX** | ![HTTPX](https://img.shields.io/badge/-HTTPX-1A202C?style=flat-square&logo=curl&logoColor=white) | `>=0.28.0` | Asynchronous HTTP client for backend test suite and verification. |
+| **Backend Testing** | **Pytest** | ![Pytest](https://img.shields.io/badge/-Pytest-0A9EDC?style=flat-square&logo=pytest&logoColor=white) | `>=8.x` | Unit testing, integration validation, and boundary assertion harness. |
+| **Version Control & Dev** | **Git & GitHub** | ![Git](https://img.shields.io/badge/-Git-F05032?style=flat-square&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github&logoColor=white) | `Latest` | Distributed version control, collaborative development, and release tracking. |
 
 ---
 
 ## Architecture
 
-PathoPredict is architected as a decoupled single-page application and RESTful microservice. The React frontend collects validated symptom keys and dispatches an HTTP POST request to `/api/predict`. In local development, the Vite development server proxies requests from port `5173` to the FastAPI backend running on Uvicorn at port `8000`. The backend validates incoming tokens against the canonical 122-symptom vocabulary, constructs an indicator feature vector, runs rule-based red flag evaluations, and queries the serialized Random Forest classifier (`model.joblib`) and label encoder (`label_encoder.joblib`). Predictions are enriched with clinical reference summaries from `reference_data.json` before being returned to the client.
+PathoPredict is designed with a decoupled architecture separating UI state management from ML inference:
 
 ```
 [ React + TypeScript Frontend (Port 5173) ]
                      │
-            POST /api/predict
+            POST /api/predict  (Vite Reverse Proxy)
                      ▼
-[ FastAPI Inference Service (Port 8000) ]
-        │                        │
-        ▼                        ▼
-[ Rule-Based Red Flags ]    [ Feature Vector (122 cols) ]
-        │                        │
-        │                        ▼
-        │              [ model.joblib (Random Forest) ]
-        │                        │
-        │                        ▼
-        │              [ label_encoder.joblib (202 classes) ]
-        │                        │
-        └────────────────┬───────┘
+[ FastAPI Inference Microservice (Port 8000) ]
+         │                               │
+         ▼                               ▼
+[ Rule-Based Red Flags ]    [ 122-Feature Indicator Vector ]
+(check_critical_alert)                   │
+         │                               ▼
+         │                 [ model.joblib (Random Forest) ]
+         │                               │
+         │                               ▼
+         │                 [ label_encoder.joblib (202 Classes) ]
+         │                               │
+         └───────────────┬───────────────┘
                          ▼
-        [ reference_data.json Enrichment ]
+        [ reference_data.json Clinical Enrichment ]
                          │
                          ▼
-    [ Top-3 Differential + Critical Alert JSON ]
+    [ Top-3 Differential + Safety Alerts JSON Payload ]
+                         │
+                         ▼
+      [ Client Differential Calibration & Visualization ]
 ```
+
+### Request Lifecycle
+1. **Intake & Validation**: User selects symptoms in the UI; keys are verified against the canonical 122-item vocabulary.
+2. **Proxy Dispatch**: The Vite client proxies `POST /api/predict` to `http://localhost:8000`.
+3. **Dual Processing**:
+   - **ML Pipeline**: Transforms selected keys into a 122-length binary vector, queries the Random Forest classifier (`model.joblib`), and decodes disease labels (`label_encoder.joblib`).
+   - **Safety Rules**: Evaluates acute presentation indicators (e.g., chest pain + dyspnea, focal neurological deficits) independently of model probabilities to guarantee triage safety.
+4. **Clinical Enrichment**: Adds pathophysiological summaries and recommended lab tests from `reference_data.json`.
+5. **Fallback Resilience**: If the backend is offline, an in-browser heuristic engine (`fallbackHeuristicPredict`) automatically activates, ensuring zero downtime.
 
 ---
 
-## Project Structure
+## Features
 
-```
-PathoPredict/
-├── backend/
-│   ├── app/
-│   │   ├── data/                 # Clinical reference data scaffold (reference_data.json)
-│   │   ├── routers/              # API route definitions (predict.py)
-│   │   ├── schemas/              # Pydantic request and response schemas (prediction.py)
-│   │   ├── services/             # Feature vector builder, ML inference, reference data, and risk rules
-│   │   └── main.py               # FastAPI application setup, CORS middleware, and lifespan assertions
-│   ├── ml/
-│   │   ├── data/
-│   │   │   ├── raw/              # 15 category symptom matrix CSVs
-│   │   │   └── processed/        # Merged dataset and simulated patient cohorts
-│   │   ├── logs/                 # Data preparation logs and Stratified K-Fold CV metrics report
-│   │   ├── models/               # Serialized model, label encoder, and feature columns (.joblib)
-│   │   ├── merge_datasets.py     # Unification script combining raw CSVs into combined_dataset.csv
-│   │   ├── standardize.py        # Vocabulary normalization and symptom alias definitions
-│   │   └── train_flat_eval.py    # Stratified 5-Fold CV training, SMOTE oversampling, and artifact export
-│   ├── tests/                    # Pytest test suite (prediction and reference data tests)
-│   └── requirements.txt          # Python dependencies
-├── frontend/
-│   ├── src/
-│   │   ├── assets/               # Static images and vector icons
-│   │   ├── components/           # UI components (Header, Footer, Hero, ThemeToggle)
-│   │   ├── contexts/             # ThemeContext provider for dark/light theme state
-│   │   ├── data/                 # Canonical symptoms catalog (122 items) and organ-system groupings
-│   │   ├── pages/                # Route views (LandingPage, StartPage, ResultsPage, SignInPage)
-│   │   ├── services/             # API client and calibrated client-side fallback engine
-│   │   ├── App.tsx               # Route declarations
-│   │   └── main.tsx              # React DOM root entry point
-│   ├── package.json              # Frontend scripts and npm package dependencies
-│   ├── tailwind.config.js        # Design tokens and Tailwind utility configuration
-│   └── vite.config.ts            # Vite build configuration and backend API proxy
-└── README.md                     # Project documentation
-```
+- 🩺 **Split-View Intake Interface (`/start`)**: Desktop two-column dashboard with live search, 11 organ-system category filters, quick-select symptom chips, and a sticky selection sidebar with real-time counters.
+- 📱 **Mobile Responsive Action Bar**: Sticky bottom panel ensuring analysis triggers remain accessible on small viewports without vertical scrolling.
+- ⚡ **Dual-Engine Prediction Pipeline**: Primary inference via FastAPI (`POST /api/predict`) with an automatic client-side heuristic fallback engine ensuring uninterrupted continuity.
+- 📊 **Calibrated Probability Distributions**: Normalizes multi-class outputs across wide label spaces to ensure evidence-proportional clinical probabilities.
+- 🚨 **Deterministic Red-Flag Safety System**: Independent rule-based evaluation detecting acute, life-threatening symptoms and escalating triage urgency to `High`.
+- 📋 **Diagnostic Results Dashboard (`/results`)**: Displays primary candidate details, descending differential comparison bars, matched indicators, and confirmatory lab tests.
+- 🌓 **Adaptive Theming**: Seamless dark and light modes with custom CSS tokens and SVG styling.
+- 🩺 **Diagnostic Health Check (`/api/health`)**: Diagnostic endpoint reporting active model status, total loaded features (122), and diagnosable disease classes (202).
+
+---
+
+## Interface Preview
+
+<div align="center">
+  <h3>Symptom Intake & Category Exploration</h3>
+  <img src="docs/screenshots/start.png" alt="PathoPredict Symptom Intake Dashboard" width="850" style="border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br /><br />
+  <h3>Organ-System Symptom Filtering</h3>
+  <img src="docs/screenshots/scan.png" alt="Organ System Filter View" width="850" style="border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br /><br />
+  <h3>Differential Diagnosis & Laboratory Recommendations</h3>
+  <img src="docs/screenshots/results.png" alt="PathoPredict Diagnostic Results and Differential Diagnosis" width="850" style="border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);" />
+</div>
 
 ---
 
 ## ML Pipeline
 
-### 1. Data Sources
-
-The dataset originates from clinical symptom-matrix CSVs across organ systems located in `backend/ml/data/raw/`:
-
-- Category matrices: `cardiac_diseases_symptoms_matrix.csv`, `ear_nose_throat_dizziness_hearing.csv`, `eye_related_redness_pain_vision.csv`, `headache_predominant.csv`, `hematological_bleeding_bruising.csv`, `mental_health12_.csv`, `neurological_diseases1.csv`, `skin_rash_dermatological.csv`, `sore_throat_fever_upper_respiratory.csv`, `endocrine_metabolic.csv`, `gastrointestinal.csv`, `joint_and_muscle_pain.csv`, `respiratory.csv`, `urinary_renal.csv`, and `viral_flu_like.csv`.
+### 1. Clinical Data Sources
+Raw clinical data is compiled from 15 organ-specific symptom matrices in `backend/ml/data/raw/`:
+* `cardiac_diseases_symptoms_matrix.csv`, `respiratory.csv`, `neurological_diseases1.csv`, `gastrointestinal.csv`, `endocrine_metabolic.csv`, `hematological_bleeding_bruising.csv`, `joint_and_muscle_pain.csv`, `urinary_renal.csv`, `skin_rash_dermatological.csv`, `eye_related_redness_pain_vision.csv`, `ear_nose_throat_dizziness_hearing.csv`, `sore_throat_fever_upper_respiratory.csv`, `viral_flu_like.csv`, `headache_predominant.csv`, and `mental_health12_.csv`.
 
 ### 2. Standardization & Merging
+* `standardize.py` defines an alias dictionary mapping irregular source columns to a unified vocabulary of **122 canonical symptom identifiers**.
+* `merge_datasets.py` unifies all 15 sources into `combined_dataset.csv`, imputing unrecorded symptoms as $0$, yielding **202 distinct disease labels**.
 
-The `standardize.py` module defines an alias dictionary mapping non-uniform column names to a unified vocabulary of 122 canonical symptom identifiers (e.g., `Chest Pain / Pressure` and `Chest_Pain` map to `chest_pain`; `Fever / Chills` maps to `fever`). Merging via `merge_datasets.py` unifies all 15 sources into `combined_dataset.csv`, filling missing indicators with $0$, yielding 202 distinct disease labels.
-
-### 3. Class-Imbalance & Synthetic Cohort Generation
-
-Because raw clinical matrices contain prototype rows rather than individual patient records, direct multi-class training on single-row classes would cause severe overfitting. The pipeline (`generate_augmented_patient_cohort` in `train_flat_eval.py`) generates 35 simulated patient presentations per disease prototype (7,070 total rows):
-
-- **Sensitivity Dropout**: 10%–15% stochastic omission of prototype symptoms to simulate incomplete or atypical presentations.
-- **Background Noise**: 2.5% random activation probability on absent symptoms to simulate common non-specific complaints.
-- **SMOTE Resampling**: Applied strictly within training folds during cross-validation (`k_neighbors=2` or `min_count - 1`).
+### 3. Synthetic Cohort Generation
+Raw matrices represent disease prototypes rather than individual patient records. The pipeline (`generate_augmented_patient_cohort` in `train_flat_eval.py`) generates 35 simulated patient presentations per disease prototype (7,070 total rows):
+* **Sensitivity Dropout**: 10%–15% stochastic omission of prototype symptoms to simulate incomplete presentations.
+* **Background Noise**: 2.5% random activation probability on absent symptoms to simulate non-specific complaints.
+* **SMOTE Resampling**: Applied strictly within training folds during cross-validation.
 
 ### 4. Cross-Validation & Model Comparison
+Models were evaluated using Stratified 5-Fold Cross-Validation (`random_state=42`):
 
-Models were evaluated using Stratified 5-Fold Cross-Validation (`random_state=42`). Metrics from `backend/ml/logs/cv_evaluation_report.json`:
+| Model | Accuracy (Mean ± Std) | Macro Precision | Macro Recall | Macro F1-Score |
+| :--- | :---: | :---: | :---: | :---: |
+| 🌲 **Random Forest (Production)** | **78.31% ± 1.31%** | **78.82% ± 1.27%** | **78.38% ± 1.38%** | **77.63% ± 1.42%** |
+| 📊 Naive Bayes (Bernoulli) | 75.36% ± 0.90% | 77.71% ± 0.90% | 76.60% ± 0.98% | 76.18% ± 0.97% |
+| 🌿 Decision Tree | 60.67% ± 1.40% | 62.92% ± 1.67% | 60.69% ± 1.47% | 60.25% ± 1.57% |
 
-| Model                   | Accuracy (Mean ± Std) | Macro Precision    | Macro Recall       | Macro F1-Score     |
-| ----------------------- | --------------------- | ------------------ | ------------------ | ------------------ |
-| **Random Forest**       | **78.31% ± 1.31%**    | **78.82% ± 1.27%** | **78.38% ± 1.38%** | **77.63% ± 1.42%** |
-| Naive Bayes (Bernoulli) | 75.36% ± 0.90%        | 77.71% ± 0.90%     | 76.60% ± 0.98%     | 76.18% ± 0.97%     |
-| Decision Tree           | 60.67% ± 1.40%        | 62.92% ± 1.67%     | 60.69% ± 1.47%     | 60.25% ± 1.57%     |
-
-The top 5 most informative features identified by Random Forest feature importance are `fatigue` (3.67%), `fever` (3.05%), `headache` (2.67%), `nausea` (2.50%), and `skin_rash` (2.14%).
-
-### 5. Final Model Artifacts & Retraining
-
-The production model is a Random Forest Classifier (`n_estimators=150`, `random_state=42`) serialized with joblib.
-
-To retrain the model and regenerate all artifacts:
-
-```bash
-# 1. Compile and standardize raw matrices into combined_dataset.csv
-python backend/ml/merge_datasets.py
-
-# 2. Generate augmented cohort, evaluate CV, and export model artifacts
-python backend/ml/train_flat_eval.py
-```
-
-Generated artifacts are saved to `backend/ml/models/`:
-
-- `symptom_columns.joblib`: List of 122 ordered canonical symptom names.
-- `label_encoder.joblib`: Scikit-learn LabelEncoder covering all 202 disease classes.
-- `flat_disease_model.joblib` / `model.joblib`: Trained Random Forest classifier.
+Top features by importance: `fatigue` (3.67%), `fever` (3.05%), `headache` (2.67%), `nausea` (2.50%), and `skin_rash` (2.14%).
 
 ---
 
 ## API Reference
 
 ### `POST /api/predict`
+Evaluates submitted symptom keys and returns ranked differential hypotheses, safety alerts, and lab recommendations.
 
-Evaluates validated symptom keys and returns ranked differential diagnoses, critical safety alerts, and lab recommendations.
-
-- **Path**: `/api/predict` (alias: `/predict`)
-- **Method**: `POST`
-- **Request Body**:
-
+* **Path**: `/api/predict` (alias: `/predict`)
+* **Method**: `POST`
+* **Request Body**:
 ```json
 {
   "symptom_keys": ["fever", "headache", "joint_pain"]
 }
 ```
+*(Note: `symptom_ids` is supported as an alias for backward compatibility)*
 
-_(Note: `symptom_ids` is accepted as an alias for backward compatibility)_
-
-- **Response Body (`200 OK`)**:
-
+* **Response Body (`200 OK`)**:
 ```json
 {
   "top_match": {
     "disease": "Dengue Fever",
     "probability": 48.5,
     "risk_badge": "High",
-    "pathophysiology_summary": "Reference data pending clinical review",
+    "pathophysiology_summary": "Arboviral infection causing acute febrile illness, severe thrombocytopenia, and plasma leakage risk.",
     "key_symptoms": ["fever", "headache", "joint_pain"],
     "recommended_lab_tests": [
       "CBC / Platelet Count",
@@ -256,20 +242,10 @@ _(Note: `symptom_ids` is accepted as an alias for backward compatibility)_
 }
 ```
 
-- **Error Responses**:
-  - `422 Unprocessable Entity`: Raised if `symptom_keys` is empty or contains items not present in `symptom_columns.joblib`.
-  - `500 Internal Server Error`: Unhandled model inference exception.
-
----
-
 ### `GET /api/health`
+Health check and runtime metadata endpoint.
 
-Health check and model status endpoint.
-
-- **Path**: `/api/health` (alias: `/health`)
-- **Method**: `GET`
-- **Response Body (`200 OK`)**:
-
+* **Response Body (`200 OK`)**:
 ```json
 {
   "status": "healthy",
@@ -284,165 +260,118 @@ Health check and model status endpoint.
 ## Getting Started
 
 ### Prerequisites
-
-- Python 3.10+ (tested on Python 3.13 / 3.15)
-- Node.js 18+ and npm
-- Git
+- **Python 3.10+** (tested on 3.10, 3.12, 3.13)
+- **Node.js 18+** and **npm**
+- **Git**
 
 ---
 
-### Quick Start: Running the Complete Application
+### Step-by-Step Installation
 
-PathoPredict requires running the **FastAPI Backend** and **React Frontend** in two separate terminals.
+#### 1. Clone the Repository
+```bash
+git clone https://github.com/SameerAhmadKhan01/PathoPredict.git
+cd PathoPredict
+```
 
-#### Terminal 1: Backend Server (Port 8000)
-
-From the project root:
+#### 2. Start the FastAPI Backend (Port 8000)
+Open your first terminal window:
 
 ```bash
-# 1. Activate the Python virtual environment
+# Activate virtual environment (or create one: python3 -m venv backend/venv)
 source backend/venv/bin/activate
-# On Windows (PowerShell):
-# .\backend\venv\Scripts\Activate.ps1
+# On Windows PowerShell: .\backend\venv\Scripts\Activate.ps1
 
-# 2. (First-time setup only) Install dependencies
+# Install backend dependencies
 pip install -r backend/requirements.txt pytest
 
-# 3. Start the FastAPI Uvicorn server on port 8000
+# Start Uvicorn ASGI server
 uvicorn app.main:app --app-dir backend --port 8000 --reload
 ```
+> **Verification**: Check for `[INFO] PathoPredict: PATHOPREDICT CLINICAL INFERENCE SERVICE READY` and `Uvicorn running on http://127.0.0.1:8000`.
 
-> **Verification**: Look for `[INFO] PathoPredict: PATHOPREDICT CLINICAL INFERENCE SERVICE READY` and `Uvicorn running on http://127.0.0.1:8000`.
-
-#### Terminal 2: Frontend Client (Port 5173)
-
-Open a second terminal window/tab:
+#### 3. Start the React Frontend (Port 5173)
+Open a second terminal window:
 
 ```bash
-# 1. Navigate to the frontend directory
 cd frontend
 
-# 2. (First-time setup only) Install npm dependencies
+# Install npm packages
 npm install
 
-# 3. Start the Vite development server
+# Start Vite dev server
 npm run dev
 ```
-
-> **Verification**: Look for `➜ Local: http://localhost:5173/`.
-
-#### Open in Browser
-Open **`http://localhost:5173`** in your browser. Vite automatically proxies all `/api/*` prediction requests to `http://localhost:8000`.
+> **Verification**: Open **`http://localhost:5173`** in your browser. All `/api/*` requests are automatically proxied to port 8000.
 
 ---
 
-### Switching Models (Optional)
-
-By default, the backend loads the baseline Random Forest model from `backend/ml/models/`. You can switch to the improved soft-voting ensemble (`models_v2`) at runtime using the `MODEL_DIR` environment variable:
+### Optional: Model Switching
+Switch to the soft-voting ensemble model (`models_v2`) at launch using the `MODEL_DIR` environment variable:
 
 ```bash
-# Run with models_v2
 MODEL_DIR=backend/ml/models_v2 uvicorn app.main:app --app-dir backend --port 8000 --reload
 ```
 
 ---
 
-### Syncing a Forked Repository
+## Testing & Quality Assurance
 
-If you or a collaborator have forked this repository, follow these steps to keep your fork up to date with the latest changes:
-
+### Run Backend Tests (Pytest)
 ```bash
-# 1. Ensure you are on the main branch
-git checkout main
-
-# 2. Add the upstream original repository (first-time only)
-git remote add upstream https://github.com/SameerAhmadKhan01/PathoPredict.git
-
-# 3. Fetch all updates from upstream
-git fetch upstream
-
-# 4. Merge the latest updates into your local main
-git merge upstream/main
-
-# 5. Push the updated main to your personal GitHub fork
-git push origin main
-```
-
----
-
-### Troubleshooting Common Issues
-
-#### `[vite] http proxy error: /api/predict AggregateError [ECONNREFUSED]`
-- **Cause**: The Vite frontend is running, but the FastAPI backend on port `8000` is offline or stopped.
-- **Fix**: Open a terminal and start the backend: `source backend/venv/bin/activate && uvicorn app.main:app --app-dir backend --port 8000 --reload`.
-
-#### Unresolved Imports in VS Code (`Problems: reportMissingImports`)
-- **Fix**: Ensure your VS Code interpreter points to `backend/venv/bin/python`. Press `Cmd + Shift + P` (or `Ctrl + Shift + P`), select **Python: Select Interpreter**, and choose `./backend/venv/bin/python`.
-
----
-
-## Testing
-
-### Backend Test Suite
-
-The backend contains a test suite written in pytest:
-
-```bash
-# From the repository root (with backend virtual environment activated):
-pytest backend/tests/
-
-# Or with verbose logging:
+# Run all tests
 pytest -v backend/tests/
 ```
+The test suite validates:
+- Complete coverage of all 202 diseases in `reference_data.json`.
+- Strict 422 validations on unrecognized symptom tokens.
+- Descending probability invariants in differential outputs.
+- Deterministic escalation of critical alerts.
 
-Test coverage includes:
-
-- `backend/tests/test_predict.py`: Verifies response schema structures, probability descending order, clinical scenarios (GERD, Stable Angina, Common Cold), 422 validations on empty or unrecognized symptoms, and rule-based red flag alert escalations.
-- `backend/tests/test_reference_data.py`: Asserts that all 202 disease classes from `label_encoder.joblib` have valid entries in `reference_data.json` and checks placeholder fallback safety.
-
-### Frontend Quality Checks
-
+### Run Frontend Typechecks & Linting
 ```bash
 cd frontend
 
-# Type-checking and bundle compilation
+# TypeScript compilation check
 npm run build
 
-# Static lint analysis
+# Static code linting
 npm run lint
-
-# TODO: Frontend unit test suite (e.g., Vitest or Jest) is not yet configured in package.json.
 ```
 
 ---
 
-## Dataset and Limitations
+## Troubleshooting
 
-### Data Provenance
-
-Data is compiled from 15 symptom-disease category matrices under `backend/ml/data/raw/` detailing binary symptom presences across organ-specific diseases.
-
-### Known Limitations
-
-1. **Symptom Absence Assumption**: Any symptom not explicitly documented for a disease in the raw matrix is treated as $0$ (absent), conflating unrecorded clinical data with confirmed negative findings.
-2. **Synthetic Patient Generation**: Supervised training is conducted on simulated patient vectors generated with synthetic dropout and perturbation rather than real-world electronic health records (EHR).
-3. **Vocabulary Boundary**: The model only recognizes symptoms present in `symptom_columns.joblib` (122 tokens). Free-text narratives or symptoms outside this dictionary cannot be parsed directly without prior mapping.
-4. **Non-Clinical Validation**: PathoPredict has not undergone clinical trials, diagnostic validation studies, or healthcare agency evaluations.
-
-> **Disclaimer**: PathoPredict is strictly an academic demonstration and research tool. It must never be relied upon for medical decision-making, clinical diagnosis, or emergency triage.
+| Issue / Error | Probable Cause | Recommended Resolution |
+| :--- | :--- | :--- |
+| `[vite] http proxy error: /api/predict AggregateError [ECONNREFUSED]` | FastAPI backend on port `8000` is stopped or crashed. | Open a terminal and run `source backend/venv/bin/activate && uvicorn app.main:app --app-dir backend --port 8000 --reload`. |
+| Unresolved Python imports in VS Code | VS Code is using the global interpreter rather than the virtual environment. | Press `Cmd + Shift + P` $\rightarrow$ **Python: Select Interpreter** $\rightarrow$ choose `./backend/venv/bin/python`. |
+| Port `8000` already in use | An orphaned Uvicorn process is still running in the background. | Run `lsof -i :8000` and `kill -9 <PID>` before restarting Uvicorn. |
 
 ---
 
-## Team and Academic Context
+## Limitations
 
-BTech Major Project.
-
-### Team Members
-
-- Sameer Ahmad Khan
-- Rudra Gautam
-- Sahitya Bhaumik
-- Saishreeya Mohanty
-- Samrat Dutta
+1. **Symptom Absence Assumption**: Unchecked symptoms are assumed absent ($0$), conflating unrecorded clinical data with confirmed negative findings.
+2. **Synthetic Cohort Training**: The model is trained on perturbed synthetic patient presentations rather than primary electronic health records (EHR).
+3. **Vocabulary Boundary**: Restricted strictly to the 122 canonical symptom tokens defined in `symptom_columns.joblib`.
+4. **Research Only**: Has not undergone prospective clinical trials, peer-reviewed clinical validation, or regulatory approval.
 
 ---
+
+## Team
+
+Developed as a BTech Major Project by:
+
+- **Sameer Ahmad Khan**
+- **Rudra Gautam**
+- **Sahitya Bhaumik**
+- **Saishreeya Mohanty**
+- **Samrat Dutta**
+
+---
+
+<p align="center">
+  <sub>Built with ❤️ for clinical decision-support and machine learning research.</sub>
+</p>
