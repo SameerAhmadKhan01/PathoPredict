@@ -140,14 +140,24 @@ PathoPredict is designed with a decoupled architecture separating UI state manag
 ## Interface Preview
 
 <div align="center">
-  <h3>Symptom Intake & Category Exploration</h3>
+  <h3>1. Clinical Landing Page & Real-Time Signal Telemetry</h3>
+  <p><em>Predictive clinical intelligence entry point with real-time signal telemetry visualization.</em></p>
+  <img src="docs/screenshots/landing.png" alt="PathoPredict Clinical Landing Dashboard" width="850" style="border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br /><br /><br />
+
+  <h3>2. Symptom Intake Dashboard & Organ-System Taxonomy</h3>
+  <p><em>Searchable 122-symptom catalog across 11 organ systems with quick-add chips and active selection panel.</em></p>
   <img src="docs/screenshots/start.png" alt="PathoPredict Symptom Intake Dashboard" width="850" style="border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);" />
-  <br /><br />
-  <h3>Organ-System Symptom Filtering</h3>
-  <img src="docs/screenshots/scan.png" alt="Organ System Filter View" width="850" style="border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);" />
-  <br /><br />
-  <h3>Differential Diagnosis & Laboratory Recommendations</h3>
-  <img src="docs/screenshots/results.png" alt="PathoPredict Diagnostic Results and Differential Diagnosis" width="850" style="border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br /><br /><br />
+
+  <h3>3. Differential Diagnosis & Symptom Influence Attribution (Moderate Urgency)</h3>
+  <p><em>Candidate probability breakdown, symptom contribution points, and differential rankings (Yellow Fever).</em></p>
+  <img src="docs/screenshots/results-yellow-fever.png" alt="PathoPredict Differential Diagnosis - Yellow Fever" width="850" style="border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);" />
+  <br /><br /><br />
+
+  <h3>4. High-Probability Acute Presentation & Confidence Scoring (High Urgency)</h3>
+  <p><em>Acute differential analysis with key contributing markers and diagnostic ranking distributions (Epiglottitis).</em></p>
+  <img src="docs/screenshots/results-epiglottitis.png" alt="PathoPredict Differential Diagnosis - Epiglottitis" width="850" style="border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);" />
 </div>
 
 ---
