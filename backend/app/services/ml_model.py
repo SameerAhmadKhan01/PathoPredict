@@ -103,9 +103,9 @@ class MLModelService:
             match_count = len(matching)
 
             combined_score = (
-                (float(p) * 0.40) +
-                (patient_coverage * 0.45) +
-                (disease_coverage * 0.15)
+                (float(p) * 0.60) +
+                (patient_coverage * 0.30) +
+                (disease_coverage * 0.10)
             ) * (match_count ** 0.5)
 
             candidates.append({
@@ -143,40 +143,25 @@ class MLModelService:
         candidates.sort(key=lambda x: (x["match_count"], x["score"]), reverse=True)
         top3 = candidates[:3]
 
-        # Compute normalized probabilities across top-3 differential
-        weights = [c["score"] for c in top3]
+        # Power-scaled evidence distribution across top-3 candidates
+        max_s = max(top3[0]["score"], 0.001)
+        power = 2.4 if num_input_symptoms >= 3 else 2.0
+        weights = [(max(0.05, c["score"] / max_s) ** power) for c in top3]
         sum_weights = sum(weights) or 1.0
-        normalized = [w / sum_weights for w in weights]
 
-        if num_input_symptoms >= 3 and top3[0]["match_count"] >= 3:
-            p1 = max(55.0, min(85.0, normalized[0] * 100.0))
-            rem = 100.0 - p1
-            sub_sum = (normalized[1] + normalized[2]) or 1.0
-            p2 = max(8.0, min(rem - 4.0, rem * (normalized[1] / sub_sum)))
-            p3 = max(2.0, 100.0 - p1 - p2)
-        elif top3[0]["match_count"] >= 2:
-            p1 = max(51.0, min(75.0, normalized[0] * 100.0))
-            rem = 100.0 - p1
-            sub_sum = (normalized[1] + normalized[2]) or 1.0
-            p2 = max(12.0, min(rem - 6.0, rem * (normalized[1] / sub_sum)))
-            p3 = max(4.0, 100.0 - p1 - p2)
-        else:
-            p1 = max(40.0, min(65.0, normalized[0] * 100.0))
-            rem = 100.0 - p1
-            sub_sum = (normalized[1] + normalized[2]) or 1.0
-            p2 = max(18.0, min(rem - 8.0, rem * (normalized[1] / sub_sum)))
-            p3 = max(8.0, 100.0 - p1 - p2)
+        p1 = round((weights[0] / sum_weights) * 100.0, 2)
+        p2 = round((weights[1] / sum_weights) * 100.0, 2)
+        p3 = round(100.0 - p1 - p2, 2)
 
-        # Enforce strictly descending order: p1 > p2 > p3
+        # Enforce strictly descending order: p1 > p2 > p3 with minimum clinical separation
         if p2 >= p1:
-            p2 = max(1.0, p1 - 5.0)
+            p2 = round(max(1.0, p1 - 5.0), 2)
+            p3 = round(100.0 - p1 - p2, 2)
         if p3 >= p2:
-            p3 = max(1.0, p2 - 4.0)
+            p3 = round(max(1.0, p2 - 3.0), 2)
+            p1 = round(100.0 - p2 - p3, 2)
 
-        p1_r = round(p1, 2)
-        p2_r = round(p2, 2)
-        p3_r = round(100.0 - p1_r - p2_r, 2)
-        probs = [p1_r, p2_r, p3_r]
+        probs = [p1, p2, p3]
 
         differential: List[DifferentialItem] = []
         for i, c in enumerate(top3):
